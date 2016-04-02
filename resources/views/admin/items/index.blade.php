@@ -110,7 +110,6 @@
             </div>
             <!-- END FORM-->
         </div>
-@{{ obj.obj }}
         <!-- BEGIN CONTENT BODY -->
         <div class="portlet-body">
             <div class="table-scrollable">

@@ -19,6 +19,9 @@ myApp.controller('myCtrl', ['$scope', '$http',
                 });
             $http.post('/admin/get/items', {name:'type_auto'}).
                 success(function(data, status, headers, config) {
+                    angular.forEach(data, function (value) {
+                        value.id = parseFloat(value.id);
+                    });
                     $scope.items = data;
                     $scope.cloneItems = angular.copy($scope.items);
                 }).
