@@ -35,6 +35,8 @@ class CatalogController extends Controller
         if($items->count()){
             $items = $items->toArray();
 
+            dd($items);
+
             foreach($items as $value){
                 if(isset($value['obj'])){
                     $obj = json_decode($value['obj'], true);
