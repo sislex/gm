@@ -12,9 +12,19 @@
                 <div class="col-md-9 single-post">
                     <header class="single-post-header clearfix">
                         <div class="post-actions">
-                            <div class="post-date">
+                            {{--<div class="post-date col-md-2 col-sm-2 col-xs-2">--}}
+                            <div class="col-xs-3" style="line-height: 40px">
                                 {{--November 27, 2014--}}
                                 {{ date('d-m-Y', strtotime($content['created_at'])) }}
+                            </div>
+                            <div class="col-xs-9">
+
+                                <div class="ya-share2 pull-right" style="padding-top: 8px" data-services="vkontakte,facebook,odnoklassniki,moimir,gplus,twitter,viber,whatsapp"></div>
+                                <span class="share-text pull-right" style="margin-right: 20px"><i class="icon-share"></i> Поделись </span>
+
+                                <script type="text/javascript" src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js" charset="utf-8"></script>
+                                <script type="text/javascript" src="//yastatic.net/share2/share.js" charset="utf-8"></script>
+
                             </div>
                         </div>
                         <h1 class="post-title">
