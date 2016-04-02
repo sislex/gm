@@ -257,7 +257,7 @@
                                     <div class="rect5"></div>
                                 </div>
                             </div>
-                            <div id="results-holder" class="results-list-view" ng-show="cloneItems" ng-init="order='-price'">
+                            <div id="results-holder" class="results-list-view" ng-show="cloneItems" ng-init="order='-item.id'">
                                 <!-- Result Item -->
 
                                 <div class="result-item format-standard" ng-repeat="item in cloneItems | orderBy:order">
