@@ -100,8 +100,8 @@
                     <div class="toggle-view view-format-choice pull-right">
                         <label>Вид списка</label>
                         <div class="btn-group">
-                            <a href="#" class="btn btn-default active" id="results-list-view"><i class="fa fa-th-list"></i></a>
-                            <a href="#" class="btn btn-default" id="results-grid-view"><i class="fa fa-th"></i></a>
+                            <a href="#" class="btn btn-default" id="results-list-view"><i class="fa fa-th-list"></i></a>
+                            <a href="#" class="btn btn-default active" id="results-grid-view"><i class="fa fa-th"></i></a>
                         </div>
                     </div>
                     <!-- Small Screens Filters Toggle Button -->
@@ -257,7 +257,7 @@
                                     <div class="rect5"></div>
                                 </div>
                             </div>
-                            <div id="results-holder" class="results-list-view" ng-show="cloneItems" ng-init="order='-item.id'">
+                            <div id="results-holder" class="results-grid-view" ng-show="cloneItems" ng-init="order='-item.id'">
                                 <!-- Result Item -->
 
                                 <div class="result-item format-standard" ng-repeat="item in cloneItems | orderBy:order">
