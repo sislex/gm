@@ -8,6 +8,7 @@
 <div ng-app="myApp" ng-controller="myCtrl">
     <div id="robot">
         {{--        {{dd($itemsNames)}}--}}
+
         @foreach($itemsNames as $values)
             <a href="{{ action('Catalog\CatalogController@item', ['id' => $values['id']]) }}">{{$values['name']}}</a>
         @endforeach
