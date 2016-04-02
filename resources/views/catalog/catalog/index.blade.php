@@ -6,6 +6,7 @@
 
 @section('content')
 <div ng-app="myApp" ng-controller="myCtrl">
+    @if(isset($itemsNames))
     <div id="robot">
         {{--        {{dd($itemsNames)}}--}}
 
@@ -13,6 +14,7 @@
             <a href="{{ action('Catalog\CatalogController@item', ['id' => $values['id']]) }}">{{$values['name']}}</a>
         @endforeach
     </div>
+    @endif
     <!-- Start Page header -->
 
     @if(isset($catalog_banner['images'][0]))
