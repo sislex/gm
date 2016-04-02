@@ -21,7 +21,6 @@ myApp.controller('myCtrl', ['$scope', '$http',
                 success(function(data, status, headers, config) {
                     angular.forEach(data, function (value) {
                         value.item.id = parseFloat(value.item.id);
-                        //console.log()
                     });
                     $scope.items = data;
                     $scope.cloneItems = angular.copy($scope.items);

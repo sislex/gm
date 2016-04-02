@@ -32,6 +32,7 @@ myApp.controller('myCtrl', ['$scope', '$http',
                 });
             $http.post('/admin/get/items', {name:'type_auto', check:'published'}).
                 success(function(data, status, headers, config) {
+                    $scope.obj.helpers.keyToNumber(data, 'id');
                     $scope.obj.helpers.keyToNumber(data, 'price');
                     $scope.obj.helpers.keyToNumber(data, 'Probeg');
                     $scope.items = data;
