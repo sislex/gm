@@ -39,7 +39,8 @@
                         <th> Parent_ID </th>
                         <th> Order </th>
                         <th> Created </th>
-                        <th> Updated </th>
+                        {{--<th> Updated </th>--}}
+                        <th> Menu </th>
                         <th>
                             <a href="{{action('Admin\ContentController@add', ['type' => $type])}}" class="btn btn-outline btn-circle btn-sm green">
                                 <i class="fa fa-plus"></i>
@@ -58,7 +59,8 @@
                                     <td> {{$value['parent_id']}} </td>
                                     <td> {{$value['order']}} </td>
                                     <td> {{$value['created_at']}} </td>
-                                    <td> {{$value['updated_at']}} </td>
+                                    {{--<td> {{$value['updated_at']}} </td>--}}
+                                    <td> {{$value['menu']}} </td>
                                     <td>
                                         <a href="{{action('Admin\ContentController@show', ['id' => $value['id']])}}" class="btn btn-outline btn-circle btn-sm purple">
                                             <i class="fa fa-edit"></i>
