@@ -32,7 +32,7 @@ class ItemsController extends Controller
         if(isset($input['check'])){$type = $input['check'];}
         else{$type = '';}
 
-        $items = Items::get()->take($limit)->toArray();
+        $items = Items::where('published', '=', 1)->orderBy('id', 'desc')->take($limit)->get()->toArray();
         $arr = [];
 
         foreach($items as $value){
