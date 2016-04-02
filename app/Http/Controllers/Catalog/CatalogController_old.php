@@ -9,7 +9,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Items;
 
-class CatalogController extends Controller
+class CatalogController_old extends Controller
 {
     /**
      * Display a listing of the resource.
