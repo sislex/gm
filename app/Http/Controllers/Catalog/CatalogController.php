@@ -18,57 +18,6 @@ class CatalogController extends Controller
      */
     public function index()
     {
-        $catalog_banner = UIComponents::where('name','=','catalog-banner')->get()->first();
-        $catalog_banner_arr = [];
-
-        if(isset($catalog_banner) && isset($catalog_banner->obj)){
-            $obj = json_decode($catalog_banner->obj);
-            if(isset($obj->images)){
-                $catalog_banner_arr['images'] = $obj->images;
-            }
-            if(isset($obj->html)){
-                $catalog_banner_arr['html'] = $obj->html;
-            }
-        }
-        $itemsNames = [];
-        $items = Items::where('published', '=', '1')->get();
-
-        dd($items);
-
-        if($items->count()){
-            $items = $items->toArray();
-            foreach($items as $value){
-                if(isset($value['obj'])){
-                    $obj = json_decode($value['obj'], true);
-
-                    $mark = '';
-                    $model = '';
-                    $modification = '';
-                    $year = '';
-
-                    if(isset($obj['type_auto'][0]['children'][0]['text'])){
-                        $mark = $obj['type_auto'][0]['children'][0]['text'];
-                    }
-
-                    if(isset($obj['type_auto'][0]['children'][0]['children'][0]['text'])){
-                        $model = $obj['type_auto'][0]['children'][0]['children'][0]['text'];
-                    }
-
-                    if(isset($obj['Версия/Модификация'])){
-                        $modification = $obj['Версия/Модификация'];
-                    }
-
-                    if(isset($obj['God_vypuska'][0]['text'])){
-                        $year = $obj['God_vypuska'][0]['text'];
-                    }
-
-                    $name = "{$mark} {$model} {$modification} {$year} ";
-
-                    $itemsNames[] = ['id' => $value['id'], 'name' => $name];
-                }
-            }
-        }
-
 
 
         return view('catalog/catalog/index', [
