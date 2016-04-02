@@ -189,7 +189,7 @@
                                                     ng-change="obj.helpers.makeObj('price', 'value')"
                                                     placeholder="Цена от"
                                                     >
-                                                <option value="">Цена от:</option>
+                                                <option value="">Цена от $:</option>
                                             </select>
                                         </div>
                                         <div class="form-group last-child">
@@ -200,7 +200,7 @@
                                                     ng-change="obj.helpers.makeObj('price', 'value')"
                                                     placeholder="Цена до"
                                                     >
-                                                <option value="">До: 200000</option>
+                                                <option value="">До $: 200000</option>
                                             </select>
                                             {{--<input ng-model="obj.help['price']['max']"--}}
                                             {{--ng-change="obj.helpers.makeObj('price', 'value')"--}}
