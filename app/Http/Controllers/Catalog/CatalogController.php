@@ -30,41 +30,45 @@ class CatalogController extends Controller
                 $catalog_banner_arr['html'] = $obj->html;
             }
         }
-
-        $items = Items::where('published', '=', '1')->get();
-        if($items->count()){$items = $items->toArray();}
-
         $itemsNames = [];
-        foreach($items as $value){
-            if(isset($value['obj'])){
-                $obj = json_decode($value['obj'], true);
+        $items = Items::where('published', '=', '1')->get();
+        if($items->count()){
+            $items = $items->toArray();
 
-                $mark = '';
-                $model = '';
-                $modification = '';
-                $year = '';
+            foreach($items as $value){
+                if(isset($value['obj'])){
+                    $obj = json_decode($value['obj'], true);
 
-                if(isset($obj['type_auto'][0]['children'][0]['text'])){
-                    $mark = $obj['type_auto'][0]['children'][0]['text'];
+                    $mark = '';
+                    $model = '';
+                    $modification = '';
+                    $year = '';
+
+                    if(isset($obj['type_auto'][0]['children'][0]['text'])){
+                        $mark = $obj['type_auto'][0]['children'][0]['text'];
+                    }
+
+                    if(isset($obj['type_auto'][0]['children'][0]['children'][0]['text'])){
+                        $model = $obj['type_auto'][0]['children'][0]['children'][0]['text'];
+                    }
+
+                    if(isset($obj['Версия/Модификация'])){
+                        $modification = $obj['Версия/Модификация'];
+                    }
+
+                    if(isset($obj['God_vypuska'][0]['text'])){
+                        $year = $obj['God_vypuska'][0]['text'];
+                    }
+
+                    $name = "{$mark} {$model} {$modification} {$year} ";
+
+                    $itemsNames[] = ['id' => $value['id'], 'name' => $name];
                 }
-
-                if(isset($obj['type_auto'][0]['children'][0]['children'][0]['text'])){
-                    $model = $obj['type_auto'][0]['children'][0]['children'][0]['text'];
-                }
-
-                if(isset($obj['Версия/Модификация'])){
-                    $modification = $obj['Версия/Модификация'];
-                }
-
-                if(isset($obj['God_vypuska'][0]['text'])){
-                    $year = $obj['God_vypuska'][0]['text'];
-                }
-
-                $name = "{$mark} {$model} {$modification} {$year} ";
-
-                $itemsNames[] = ['id' => $value['id'], 'name' => $name];
             }
         }
+
+
+
         return view('catalog/catalog/index', [
             'catalog_banner' => $catalog_banner_arr,
             'itemsNames' => $itemsNames
