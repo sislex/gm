@@ -32,7 +32,9 @@ class CatalogController extends Controller
         }
         $itemsNames = [];
         $items = Items::where('published', '=', '1')->get();
+
         dd($items);
+
         if($items->count()){
             $items = $items->toArray();
 
