@@ -617,7 +617,7 @@
                                     <label class="col-md-3 control-label"> Description </label>
                                     <div class="col-md-4">
                                         {{--<input type="text" class="form-control input-circle" value="{{ $item{'description'} }}" placeholder="Enter text">--}}
-                                        <textarea rows="4" class="form-control input-circle" name="description" placeholder="Enter text">{{ $item['description'] or '' }}</textarea>
+                                        <textarea rows="4" maxlength="180" class="form-control input-circle" name="description" placeholder="Enter text">{{ $item['description'] or '' }}</textarea>
                                     </div>
                                 </div>
                                 <div class="form-group">

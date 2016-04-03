@@ -3004,7 +3004,7 @@ h1.page-title{
 	margin-left:2.3%;
 	float:left;
 	margin-bottom:40px;
-	height: 455px;
+	height: ;
 }
 .search-filters{
 	position:relative;
@@ -5676,3 +5676,25 @@ body{
 .old-price{text-decoration:line-through; font-weight: normal}
 
 #robot{display: none;}
+
+.ok, .ok *{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: 10;
+}
+
+.ok{display: none;}
+
+.ok .shadow{
+	background: #FFFFFF;
+	opacity: 0.9;
+}
+
+.ok .text{
+	text-align: center;
+	font-size: 50px;
+	color: #0A2;
+	margin-top: 115px;
+	height: auto;
+}

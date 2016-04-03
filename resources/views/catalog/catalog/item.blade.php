@@ -394,6 +394,7 @@
         <div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
+
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         <h4>Запросить дополнительную информацию</h4>
@@ -419,7 +420,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <input ng-click="infoModal.send()" type="button" data-dismiss="modal" class="btn btn-primary pull-right" name="action" value="Запросить информацию">
+                            <input ng-click="infoModal.send()" type="button" class="btn btn-primary pull-right" name="action" value="Запросить информацию">
                             <div class="clearfix"></div>
                         </form>
                     </div>
@@ -465,7 +466,7 @@
                                 </div>
                             </div>
                             <textarea ng-model="offerModal.comment" class="form-control" placeholder="Комментарий"></textarea>
-                            <input ng-click="offerModal.send()" type="button" data-dismiss="modal" class="btn btn-primary pull-right" name="action" value="Предложить">
+                            <input ng-click="offerModal.send()" type="button" class="btn btn-primary pull-right" name="action" value="Предложить">
                             <div class="clearfix"></div>
                         </form>
                     </div>
@@ -516,7 +517,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <input ng-click="testdriveModal.send()" type="button" data-dismiss="modal" class="btn btn-primary pull-right" name="action" value="Записаться">
+                            <input ng-click="testdriveModal.send()" type="button" class="btn btn-primary pull-right" name="action" value="Записаться">
                             <div class="clearfix"></div>
                         </form>
                     </div>
@@ -553,7 +554,7 @@
                                 </div>
                             </div>
                             <textarea ng-model="sendModal.message" class="form-control" name="message" placeholder="Сообщение"></textarea>
-                            <input ng-click="sendModal.send()" type="button" data-dismiss="modal" class="btn btn-primary pull-right" name="action" value="Отправить">
+                            <input ng-click="sendModal.send()" type="button" class="btn btn-primary pull-right" name="action" value="Отправить">
                             <div class="clearfix"></div>
                         </form>
                     </div>

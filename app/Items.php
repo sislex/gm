@@ -45,6 +45,7 @@ class Items extends Model
             }
             if(isset($input['description']) && $input['description']==''){
                 $input['description'] = "Продажа в РБ {$mark} {$model} {$text}";
+                $input['description'] = mb_substr($input['description'], 0, 180);
             }
             if(isset($input['keywords']) && $input['keywords']==''){
                 $input['keywords'] = "{$mark} {$model}";

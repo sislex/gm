@@ -110,6 +110,14 @@ if(!mailApp){
 
 mailApp.controller('mailWidget', ['$scope', '$http',
     function($scope, $http) {
+        $scope.ok = function(selector){
+            var ok = $('<div class="ok"><div class="shadow"></div><div class="text">Отправленно!</div></div>');
+            $(selector + ' .modal-content').prepend(ok);
+            $(selector + ' .ok').fadeIn(1500, function(){
+                $(selector + ' .ok').remove();
+                $(selector).modal('hide');
+            });
+        };
         $scope.infoModal = {
             type : 'Запрос дополнительной информации',
             name : '',
@@ -117,6 +125,8 @@ mailApp.controller('mailWidget', ['$scope', '$http',
             phone : '',
             url : window.location.href,
             send : function(){
+                $scope.ok('#infoModal');
+
                 $http.post('/mail/index',{modal : $scope.infoModal})
                     .success(function(data, status, headers, config){
                         console.log('запрос отправлен успешно');
@@ -142,6 +152,8 @@ mailApp.controller('mailWidget', ['$scope', '$http',
             comment : '',
             url : window.location.href,
             send : function(){
+                $scope.ok('#offerModal');
+
                 $http.post('/mail/index',{modal : $scope.offerModal})
                     .success(function(data, status, headers, config){
                         console.log('запрос отправлен успешно');
@@ -169,6 +181,8 @@ mailApp.controller('mailWidget', ['$scope', '$http',
             time : '',
             url : window.location.href,
             send : function(){
+                $scope.ok('#testdriveModal');
+
                 $http.post('/mail/index',{modal : $scope.testdriveModal})
                     .success(function(data, status, headers, config){
                         console.log('запрос отправлен успешно');
@@ -195,6 +209,8 @@ mailApp.controller('mailWidget', ['$scope', '$http',
             message : '',
             url : window.location.href,
             send : function(){
+                $scope.ok('#sendModal');
+
                 $http.post('/mail/index',{modal : $scope.sendModal})
                     .success(function(data, status, headers, config){
                         console.log('запрос отправлен успешно');
