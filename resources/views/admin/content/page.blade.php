@@ -219,7 +219,7 @@
                                 <div class="form-group">
                                     <label class="col-md-3 control-label"> Description </label>
                                     <div class="col-md-4">
-                                        <textarea rows="4" class="form-control input-circle" name="description" placeholder="Enter text">{{ $page['description'] or '' }}</textarea>
+                                        <textarea rows="4" maxlength="180" class="form-control input-circle" name="description" placeholder="Enter text">{{ $page['description'] or '' }}</textarea>
                                     </div>
                                 </div>
 

@@ -108,6 +108,10 @@ class ContentController extends Controller
             }
         }
 
+        if (isset($input['description']) && trim($input['description']) != '') {
+            $input['description'] = mb_substr($input['description'],0,180);
+        }
+
         if ($input['id']) {
             if (isset($input['pseudo_url']) && trim($input['pseudo_url']) == '') {
                 if(isset($input['name']) && trim($input['name']) != '') {
