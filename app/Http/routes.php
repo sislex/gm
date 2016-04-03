@@ -39,51 +39,51 @@ Route::post('blog/last','Catalog\CatalogController@getLastContent');
 // Admin module //
 
 // Index route...
-Route::get('admin/index', 'Admin\IndexController@index');
+Route::get('admin/index', ['middleware' => 'auth', 'uses' => 'Admin\IndexController@index']);
 
 // Filters routes...
 Route::post('filter/ajax', 'Admin\FiltersController@getJSONByName');
-Route::get('admin/filters', 'Admin\FiltersController@index');
-Route::get('admin/filter/{id}', 'Admin\FiltersController@filter');
+Route::get('admin/filters', ['middleware' => 'auth', 'uses' => 'Admin\FiltersController@index']);
+Route::get('admin/filter/{id}', ['middleware' => 'auth', 'uses' => 'Admin\FiltersController@filter']);
 //Route::post('admin/filter/{name}', 'Admin\FiltersController@update');
-Route::post('admin/filter/{id?}', 'Admin\FiltersController@update');
-Route::get('admin/filters/add', 'Admin\FiltersController@add');
-Route::get('admin/filters/delete/{id}', 'Admin\FiltersController@delete');
+Route::post('admin/filter/{id?}', ['middleware' => 'auth', 'uses' => 'Admin\FiltersController@update']);
+Route::get('admin/filters/add', ['middleware' => 'auth', 'uses' => 'Admin\FiltersController@add']);
+Route::get('admin/filters/delete/{id}', ['middleware' => 'auth', 'uses' => 'Admin\FiltersController@delete']);
 
 Route::get('admin/filters/names', 'Admin\FiltersController@getJSONNames');
 
 // Items routes...
-Route::get('admin/items', 'Admin\ItemsController@index');
-Route::get('admin/items/add/{type}', 'Admin\ItemsController@add');
-Route::get('admin/items/show/{id?}', 'Admin\ItemsController@show');
-Route::get('admin/items/delete/{id?}', 'Admin\ItemsController@delete');
-Route::post('admin/items/update', 'Admin\ItemsController@update');
+Route::get('admin/items', ['middleware' => 'auth', 'uses' => 'Admin\ItemsController@index']);
+Route::get('admin/items/add/{type}', ['middleware' => 'auth', 'uses' => 'Admin\ItemsController@add']);
+Route::get('admin/items/show/{id?}', ['middleware' => 'auth', 'uses' => 'Admin\ItemsController@show']);
+Route::get('admin/items/delete/{id?}', ['middleware' => 'auth', 'uses' => 'Admin\ItemsController@delete']);
+Route::post('admin/items/update', ['middleware' => 'auth', 'uses' => 'Admin\ItemsController@update']);
 Route::post('admin/get/items/{limit?}', 'Admin\ItemsController@getItemsObj');
-Route::post('admin/items/update/images', 'Admin\ItemsController@updateImages');
+Route::post('admin/items/update/images', ['middleware' => 'auth', 'uses' => 'Admin\ItemsController@updateImages']);
 
 // Specifications routes...
 Route::post('specifications/ajax', 'Admin\SpecificationsController@getJSONByName');
-Route::get('admin/specifications', 'Admin\SpecificationsController@index');
-Route::get('admin/specification/{id}', 'Admin\SpecificationsController@specification');
-Route::get('admin/specifications/add/{id}', 'Admin\SpecificationsController@add');
+Route::get('admin/specifications', ['middleware' => 'auth', 'uses' => 'Admin\SpecificationsController@index']);
+Route::get('admin/specification/{id}', ['middleware' => 'auth', 'uses' => 'Admin\SpecificationsController@specification']);
+Route::get('admin/specifications/add/{id}', ['middleware' => 'auth', 'uses' => 'Admin\SpecificationsController@add']);
 Route::get('admin/specifications/json', 'Admin\SpecificationsController@getJSONspecifications');
-Route::post('admin/specifications/update', 'Admin\SpecificationsController@update');
-Route::get('admin/specifications/delete/{id}', 'Admin\SpecificationsController@delete');
+Route::post('admin/specifications/update', ['middleware' => 'auth', 'uses' => 'Admin\SpecificationsController@update']);
+Route::get('admin/specifications/delete/{id}', ['middleware' => 'auth', 'uses' => 'Admin\SpecificationsController@delete']);
 
 // Content routes...
-Route::get('admin/content/{type}', 'Admin\ContentController@index');
-Route::get('admin/content/add/{type}', 'Admin\ContentController@add');
-Route::get('admin/content/show/main', 'Admin\ContentController@showMainPage');
-Route::get('admin/content/show/{id?}', 'Admin\ContentController@show');
-Route::get('admin/content/delete/{id}', 'Admin\ContentController@delete');
-Route::post('admin/content/update', 'Admin\ContentController@update');
+Route::get('admin/content/{type}', ['middleware' => 'auth', 'uses' => 'Admin\ContentController@index']);
+Route::get('admin/content/add/{type}', ['middleware' => 'auth', 'uses' => 'Admin\ContentController@add']);
+Route::get('admin/content/show/main', ['middleware' => 'auth', 'uses' => 'Admin\ContentController@showMainPage']);
+Route::get('admin/content/show/{id?}', ['middleware' => 'auth', 'uses' => 'Admin\ContentController@show']);
+Route::get('admin/content/delete/{id}', ['middleware' => 'auth', 'uses' => 'Admin\ContentController@delete']);
+Route::post('admin/content/update', ['middleware' => 'auth', 'uses' => 'Admin\ContentController@update']);
 
 //Mail rotes
-Route::post('mail/index', 'Catalog\MailController@index');
+Route::post('mail/index', ['middleware' => 'auth', 'uses' => 'Catalog\MailController@index']);
 
 // Banners and Sliders routes...
-Route::get('admin/ui-components/show/{name}', 'Admin\UIComponentsController@show');
-Route::post('admin/ui-components/update', 'Admin\UIComponentsController@update');
+Route::get('admin/ui-components/show/{name}', ['middleware' => 'auth', 'uses' => 'Admin\UIComponentsController@show']);
+Route::post('admin/ui-components/update', ['middleware' => 'auth', 'uses' => 'Admin\UIComponentsController@update']);
 
 
 // Authentication routes...
@@ -98,26 +98,27 @@ Route::post('auth/register', 'Auth\AuthController@postRegister');
 
 // Settings routes..
 //    _counters
-Route::get('admin/settings/counters', 'Admin\SettingsController@counters');
-Route::get('admin/settings/counters/add', 'Admin\SettingsController@addCounter');
-Route::post('admin/settings/counters/add', 'Admin\SettingsController@insertCounter');
-Route::get('admin/settings/counters/delete/{id}', 'Admin\SettingsController@deleteCounter');
+Route::get('admin/settings/counters', ['middleware' => 'auth', 'uses' => 'Admin\SettingsController@counters']);
+Route::get('admin/settings/counters/add', ['middleware' => 'auth', 'uses' => 'Admin\SettingsController@addCounter']);
+Route::post('admin/settings/counters/add', ['middleware' => 'auth', 'uses' => 'Admin\SettingsController@insertCounter']);
+Route::get('admin/settings/counters/delete/{id}', ['middleware' => 'auth', 'uses' => 'Admin\SettingsController@deleteCounter']);
 //    _phones
-Route::get('admin/settings/phones', 'Admin\SettingsController@phones');
-Route::get('admin/settings/phones/add', 'Admin\SettingsController@addPhone');
-Route::post('admin/settings/phones/add', 'Admin\SettingsController@insertPhone');
-Route::get('admin/settings/phones/delete/{id}', 'Admin\SettingsController@deletePhone');
+Route::get('admin/settings/phones', ['middleware' => 'auth', 'uses' => 'Admin\SettingsController@phones']);
+Route::get('admin/settings/phones/add', ['middleware' => 'auth', 'uses' => 'Admin\SettingsController@addPhone']);
+Route::post('admin/settings/phones/add', ['middleware' => 'auth', 'uses' => 'Admin\SettingsController@insertPhone']);
+Route::get('admin/settings/phones/delete/{id}', ['middleware' => 'auth', 'uses' => 'Admin\SettingsController@deletePhone']);
 //    _currencies
-Route::get('admin/settings/currencies', 'Admin\SettingsController@currencies');
-Route::get('admin/settings/currencies/add', 'Admin\SettingsController@addCurrency');
-Route::get('admin/settings/currencies/show/{id?}', 'Admin\SettingsController@showCurrency');
-Route::get('admin/settings/currencies/delete/{id}', 'Admin\SettingsController@deleteCurrency');
-Route::post('admin/settings/currencies/update', 'Admin\SettingsController@updateCurrency');
-Route::post('admin/settings/currencies/default/update', 'Admin\SettingsController@updateDefaultCurrency');
+Route::get('admin/settings/currencies', ['middleware' => 'auth', 'uses' => 'Admin\SettingsController@currencies']);
+Route::get('admin/settings/currencies/add', ['middleware' => 'auth', 'uses' => 'Admin\SettingsController@addCurrency']);
+Route::get('admin/settings/currencies/show/{id?}', ['middleware' => 'auth', 'uses' => 'Admin\SettingsController@showCurrency']);
+Route::get('admin/settings/currencies/delete/{id}', ['middleware' => 'auth', 'uses' => 'Admin\SettingsController@deleteCurrency']);
+Route::post('admin/settings/currencies/update', ['middleware' => 'auth', 'uses' => 'Admin\SettingsController@updateCurrency']);
+Route::post('admin/settings/currencies/default/update', ['middleware' => 'auth', 'uses' => 'Admin\SettingsController@updateDefaultCurrency']);
+
 Route::post('admin/settings/currencies/getCurrencies', 'Admin\SettingsController@getCurrencies');
 //    _email
-Route::get('admin/settings/email', 'Admin\SettingsController@email');
-Route::get('admin/settings/email/add', 'Admin\SettingsController@addEmail');
-Route::get('admin/settings/email/show/{id?}', 'Admin\SettingsController@showEmail');
-Route::get('admin/settings/email/delete/{id}', 'Admin\SettingsController@deleteEmail');
-Route::post('admin/settings/email/update', 'Admin\SettingsController@updateEmail');
+Route::get('admin/settings/email', ['middleware' => 'auth', 'uses' => 'Admin\SettingsController@email']);
+Route::get('admin/settings/email/add', ['middleware' => 'auth', 'uses' => 'Admin\SettingsController@addEmail']);
+Route::get('admin/settings/email/show/{id?}', ['middleware' => 'auth', 'uses' => 'Admin\SettingsController@showEmail']);
+Route::get('admin/settings/email/delete/{id}', ['middleware' => 'auth', 'uses' => 'Admin\SettingsController@deleteEmail']);
+Route::post('admin/settings/email/update', ['middleware' => 'auth', 'uses' => 'Admin\SettingsController@updateEmail']);
