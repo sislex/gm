@@ -57,7 +57,8 @@ class Content extends Model
     }
 
     public function getContentElements($type,$parent_id){
-        $content_pages = $this->where('type','=',$type)->where('parent_id','=',$parent_id)->orderBy('order','asc')->get();
+//        $content_pages = $this->where('type','=',$type)->where('parent_id','=',$parent_id)->orderBy('order','asc')->get();
+        $content_pages = $this->where('type','=',$type)->where('parent_id','=',$parent_id)->orderBy('created_at','desc')->get();
         if(isset($content_pages)){
             if($content_pages->count()){
                 $contentPagesArr = $content_pages->toArray();

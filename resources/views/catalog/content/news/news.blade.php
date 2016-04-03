@@ -9,7 +9,7 @@
     <div id="content" class="content full" ng-app="myApp">
         <div class="container">
             <div class="row">
-                <div class="col-md-9 single-post">
+                <div class="col-md-9 single-post utility-bar">
                     <header class="single-post-header clearfix">
                         <div class="post-actions">
                             {{--<div class="post-date col-md-2 col-sm-2 col-xs-2">--}}
