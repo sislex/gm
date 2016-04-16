@@ -61,7 +61,7 @@ myApp.controller('lastBlogPostsWidget', ['$scope', '$http',
             $http.post('/blog/last', {type:'blog', limit:5}).
             success(function(data, status, headers, config) {
                 $scope.blog = data;
-                console.log($scope.blog);
+                // console.log($scope.blog);
             }).
             error(function(data, status, headers, config) {
                 console.log('ошибка при отправке объекта');
@@ -70,6 +70,23 @@ myApp.controller('lastBlogPostsWidget', ['$scope', '$http',
     }
 ]);
 
+myApp.controller('PartnersWidget', ['$scope', '$http',
+  function($scope, $http) {
+      $scope.func = (function(){
+          $http.get('/partners').
+            success(function(data, status, headers, config) {
+                $scope.partners = data;
+                // console.log($scope.partners);                
+                setTimeout(function(){
+                        if(window.AUTOSTARS){window.AUTOSTARS.OwlCarousel($('#partners-slider'));}
+                    }, 500);
+            }).
+            error(function(data, status, headers, config) {
+                console.log('ошибка при отправке объекта');
+            });
+        })();
+    }
+]);
 
 myApp.controller('callMeBackWidget', ['$scope', '$http',
     function($scope, $http) {
@@ -111,7 +128,7 @@ if(!mailApp){
 mailApp.controller('mailWidget', ['$scope', '$http',
     function($scope, $http) {
         $scope.ok = function(selector){
-            var ok = $('<div class="ok"><div class="shadow"></div><div class="text">Отправленно!</div></div>');
+            var ok = $('<div class="ok"><div class="shadow"></div><div class="text">Отправлено!</div></div>');
             $(selector + ' .modal-content').prepend(ok);
             $(selector + ' .ok').fadeIn(1500, function(){
                 $(selector + ' .ok').remove();

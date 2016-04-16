@@ -91,47 +91,47 @@
 
                     <!-- Latest News -->
                     <section class="listing-block latest-news" ng-controller="lastNewsWidget" ng-init="getLastNews(6)">
-                            <div ng-if="news.length > 0">
-                                <div class="listing-header">
-                                    <h3>
-                                        Последние новости
-                                    </h3>
-                                </div>
-                                <div class="listing-container">
-                                    <div class="carousel-wrapper">
-                                        <div class="row">
-                                            <ul class="owl-carousel" id="news-slider" data-columns="3" data-autoplay="5000" data-pagination="yes" data-arrows="no" data-single-item="no" data-items-desktop="3" data-items-desktop-small="1" data-items-tablet="3" data-items-mobile="1">
+                        <div ng-if="news.length > 0">
+                            <div class="listing-header">
+                                <h3>
+                                    Последние новости
+                                </h3>
+                            </div>
+                            <div class="listing-container">
+                                <div class="carousel-wrapper">
+                                    <div class="row">
+                                        <ul class="owl-carousel" id="news-slider" data-columns="3" data-autoplay="5000" data-pagination="yes" data-arrows="no" data-single-item="no" data-items-desktop="3" data-items-desktop-small="1" data-items-tablet="3" data-items-mobile="1">
 
-                                                    <li class="item" ng-repeat="single_news in news">
-                                                        <div class="post-block format-standard">
-{{--                                                            @{{ single_news['previewImageURL'] }}--}}
-                                                            <a ng-if="single_news['previewImageURL']" href="{{ action('Catalog\CatalogController@news')}}/@{{ single_news['pseudo_url'] }}">
-                                                                <img ng-src="@{{ single_news['previewImageURL'] }}" alt="" class="img-thumbnail">
-                                                            </a>
-                                                            <div class="post-actions">
-                                                                <div class="post-date">
-                                                                    @{{ single_news['date'] }}
-                                                                </div>
-                                                            </div>
-                                                            <h3 class="post-title">
-                                                                <a href="{{ action('Catalog\CatalogController@news')}}/@{{ single_news['pseudo_url'] }}">
-                                                                    @{{ single_news['name'] }}
-                                                                </a>
-                                                            </h3>
-                                                            <div class="post-content">
-                                                                <p>
-                                                                    @{{ single_news['short_text'] }}
-                                                                </p>
+                                                <li class="item" ng-repeat="single_news in news">
+                                                    <div class="post-block format-standard">
+                                                        {{-- @{{ single_news['previewImageURL'] }} --}}
+                                                        <a ng-if="single_news['previewImageURL']" href="{{ action('Catalog\CatalogController@news')}}/@{{ single_news['pseudo_url'] }}">
+                                                            <img ng-src="@{{ single_news['previewImageURL'] }}" alt="" class="img-thumbnail">
+                                                        </a>
+                                                        <div class="post-actions">
+                                                            <div class="post-date">
+                                                                @{{ single_news['date'] }}
                                                             </div>
                                                         </div>
-                                                    </li>
+                                                        <h3 class="post-title">
+                                                            <a href="{{ action('Catalog\CatalogController@news')}}/@{{ single_news['pseudo_url'] }}">
+                                                                @{{ single_news['name'] }}
+                                                            </a>
+                                                        </h3>
+                                                        <div class="post-content">
+                                                            <p>
+                                                                @{{ single_news['short_text'] }}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </li>
 
-                                            </ul>
-                                        </div>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
-                        </section>
+                        </div>
+                    </section>
 
                     <div class="spacer-40"></div>
 
@@ -178,11 +178,14 @@
                     @endif
 
                 </div>
+                
                 <div class="spacer-50"></div>
+                
                 <div class="lgray-bg make-slider">
                     <div class="container">
 
                         <!-- Partners slider -->
+                        <!-- 
                         @if(isset($partners_slider) && is_array($partners_slider))
                             @if((isset($partners_slider['configuration']) && $partners_slider['configuration'] == 'images' && isset($partners_slider['images']) && count($partners_slider['images']))
                             || (!isset($partners_slider['configuration']) && isset($partners_slider['images']) && count($partners_slider['images'])))
@@ -217,6 +220,36 @@
                                 </div>
                             @endif
                         @endif
+                        -->
+                        
+                        <!-- Partners slider via AJAX -->
+                            <div ng-controller="PartnersWidget" class="row">
+                                <div ng-if="partners['configuration'] == 'images' && partners['images'] && partners['images'].length > 0">
+                                    <div class="col-md-3 col-sm-4">
+                                        <h3> Наши партнеры </h3>
+                                    </div>
+                                    <div class="col-md-9 col-sm-8">
+                                        <div class="row">
+                                            <ul class="owl-carousel" id="partners-slider" data-columns="5" data-autoplay="6000" data-pagination="no" data-arrows="no" data-single-item="no" data-items-desktop="5" data-items-desktop-small="4" data-items-tablet="3" data-items-mobile="3">
+                                                <li ng-repeat="partner_image in partners['images']" class="item">
+                                                    <img ng-src="/images/ui-components/partners-slider/@{{ partner_image }}" alt="Partner Image">
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div ng-if="partners['configuration'] == 'html' && partners['html'] && partners['html'].length > 0">
+                                    <div class="col-md-3 col-sm-4">
+                                        <h3> Наши партнеры </h3>
+                                    </div>
+                                    <div class="col-md-9 col-sm-8">
+                                        <div class="row">
+                                            @{{ $partners['html'] }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <!-- End Partners slider -->
 
                     </div>
                 </div>

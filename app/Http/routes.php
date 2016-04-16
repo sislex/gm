@@ -36,6 +36,9 @@ Route::get('blog/{id}','Catalog\CatalogController@blog_category');
 Route::post('news/last','Catalog\CatalogController@getLastContent');
 Route::post('blog/last','Catalog\CatalogController@getLastContent');
 
+// partners route (ajax call)
+Route::get('partners','Admin\UIComponentsController@getPartners');
+
 // Admin module //
 
 // Index route...
@@ -79,7 +82,8 @@ Route::get('admin/content/delete/{id}', ['middleware' => 'auth', 'uses' => 'Admi
 Route::post('admin/content/update', ['middleware' => 'auth', 'uses' => 'Admin\ContentController@update']);
 
 //Mail rotes
-Route::post('mail/index', ['middleware' => 'auth', 'uses' => 'Catalog\MailController@index']);
+// Route::post('mail/index', ['middleware' => 'auth', 'uses' => 'Catalog\MailController@index']);
+Route::post('mail/index', 'Catalog\MailController@index');
 
 // Banners and Sliders routes...
 Route::get('admin/ui-components/show/{name}', ['middleware' => 'auth', 'uses' => 'Admin\UIComponentsController@show']);
