@@ -28,6 +28,36 @@
         </div>
         <!-- End Main Slider -->
 
+        <!-- Utiity Bar -->
+        <div class="utility-bar">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-sm-6 col-xs-8">
+                        <div class="toggle-make">
+                            <a href="#"><i class="fa fa-navicon"></i></a>
+                            <span>Отсортировать по типу кузова</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="by-type-options">
+                <div class="container">
+                    <div class="row">
+                        <ul class="owl-carousel carousel-alt" data-columns="6" data-autoplay="" data-pagination="no" data-arrows="yes" data-single-item="no" data-items-desktop="6" data-items-desktop-small="4" data-items-mobile="3" data-items-tablet="4">
+                            <li class="item"> <a href='{{action('Catalog\CatalogController@index')}}#filter={"Тип кузова":{"0":{"text":"автобус"}}}'><img src="/catalog/images/body-types/wagon.png" alt=""> <span>Wagon</span></a></li>
+                            <li class="item"> <a href="results-list.html"><img src="/catalog/images/body-types/minivan.png" alt=""> <span>Minivan</span></a></li>
+                            <li class="item"> <a href="results-list.html"><img src="/catalog/images/body-types/coupe.png" alt=""> <span>Coupe</span></a></li>
+                            <li class="item"> <a href="results-list.html"><img src="/catalog/images/body-types/convertible.png" alt=""> <span>Convertible</span></a></li>
+                            <li class="item"> <a href="results-list.html"><img src="/catalog/images/body-types/crossover.png" alt=""> <span>Crossover</span></a></li>
+                            <li class="item"> <a href="results-list.html"><img src="/catalog/images/body-types/suv.png" alt=""> <span>SUV</span></a></li>
+                            <li class="item"> <a href="results-list.html#"><img src="/catalog/images/body-types/minicar.png" alt=""> <span>Minicar</span></a></li>
+                            <li class="item"> <a href="results-list.html"><img src="/catalog/images/body-types/sedan.png" alt=""> <span>Sedan</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Start Body Content -->
         <div class="main" role="main">
             <div id="content" class="content full padding-b0">
@@ -72,11 +102,12 @@
                                                     </a>
                                                     <span class="label label-default vehicle-age">@{{ item['God_vypuska'][0]['text'] }}</span>
                                                     {{--<span class="label label-success premium-listing">Premium </span>--}}
-                                                    <h5 class="vehicle-title"><a href="{{action('Catalog\CatalogController@item')}}/@{{ item.item['id'] }}">@{{ item.type_auto[0].children[0].text }} @{{ item.type_auto[0].children[0].children[0].text }} @{{ item.God_vypuska[0].text }}</a></h5>
+                                                    <h5 class="vehicle-title"><a href="{{action('Catalog\CatalogController@item')}}/@{{ item.item['id'] }}">@{{ item.type_auto[0].children[0].text }} @{{ item.type_auto[0].children[0].children[0].text }} @{{ item['Версия/Модификация']  }} @{{ item.God_vypuska[0].text }}</a></h5>
                                                 <span class="vehicle-meta">
                                                     @{{ item.type_auto[0].children[0].text }}, @{{ item['Цвет'][0]['text'] }}
                                                 </span>
-                                                    <span class="vehicle-cost">$@{{ item.item.price | ceil }}</span>
+                                                    <span class="vehicle-cost pull-left">$@{{ item.item.price | ceil }}</span>
+                                                    <span class="vehicle-cost pull-right">@{{ item.item.price * currencies.BYR | ceil }} <span style="font-size: 10px">руб</span>.</span>
                                                 </div>
                                             </li>
 

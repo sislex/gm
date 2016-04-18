@@ -42,6 +42,9 @@ myApp.controller('myCtrl', ['$scope', '$http',
 
                     setTimeout(function(){
                         if(window.AUTOSTARS){window.AUTOSTARS.PrettyPhoto();}
+
+                        $scope.obj.helpers.makeObj('Трансмиссия');
+
                     }, 500);
                 }).
                 error(function(data, status, headers, config) {
@@ -51,11 +54,14 @@ myApp.controller('myCtrl', ['$scope', '$http',
             if(window.Cookie.get('wishList')){$scope.wishList = angular.fromJson(window.Cookie.get('wishList'));}
 
             if(window.Cookie.get('viewedList')){$scope.viewedList = angular.fromJson(window.Cookie.get('viewedList'));}
+
+
+
         })();
 
         $scope.obj = {
             filter : {type_auto : []},
-            help : {type_auto:[]},
+            help : {"type_auto":[{"text":"Мототехника","children":[{"text":"Kawasaki","children":[{"text":"Vulcan","children":[]}]}]}],"Версия/Модификация":"900","God_vypuska":[{"text":"2008","children":[]}],"Состояние":[{"text":"с пробегом","children":[]}],"Цвет":[{"text":"черный металлик","children":[]}],"Тип двигателя":[{"text":"4-х тактный","children":[]}],"Объем куб. см.":"900","Цилиндров":"2","Probeg":10465,"Трансмиссия":[{"text":"механика","children":[]}],"Привод":[{"text":"ремень","children":[]}],"Класс транспорта":[{"text":"круизер чоппер","children":[]}],"Обмен":[{"text":"не интересует","children":[]}],"Страна":[{"text":"Беларусь","children":[{"text":"Минск","children":[]}]}],"Оснащение":[{"text":"кофры","children":[]},{"text":"защитные дуги","children":[]}],"Электропакет":[{"text":"электростартер ","children":[]}],"images":["DSCN2107.JPG","DSCN2122.JPG","DSCN2109.JPG","DSCN2112.JPG","DSCN2118.JPG","DSCN2120.JPG","DSCN2115.JPG","DSCN2123.JPG"]},
             objJson : '',
             obj : {
                 //type_auto : [{"text":"Авто транспорт"}],
@@ -73,6 +79,10 @@ myApp.controller('myCtrl', ['$scope', '$http',
                     $scope.order = str;
                 },
                 makeObj : function(parentKey, type){
+
+                    //$scope.obj.help['Трансмиссия'][0] = {"text":"механика","children":[]};
+                    console.log($scope.obj.help['Трансмиссия'][0]);
+
                     $scope.obj.obj[parentKey] = [];
 
                     if(type == 'value'){
@@ -271,5 +281,17 @@ myApp.controller('myCtrl', ['$scope', '$http',
                 }
             }
         };
+
+        var lochash    = location.hash.substr(1),
+            rows = lochash.split('&'),
+            hash = {};
+        angular.forEach(rows, function(row, k){
+            var param = row.split('=');
+            hash[param[0]] = param[1];
+        });
+        if(!angular.isUndefined(hash['filter'])){
+            alert();
+            $scope.obj.help = angular.fromJson(hash['filter']);
+        }
     }
 ]);

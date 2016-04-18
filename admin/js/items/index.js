@@ -17,6 +17,14 @@ myApp.controller('myCtrl', ['$scope', '$http',
                 error(function(data, status, headers, config) {
                     console.log('Ошибка при отправки объекта');
                 });
+            $http.post('/admin/settings/currencies/getCurrencies').
+                success(function(data, status, headers, config) {
+                    $scope.currencies = data;
+                    //console.log($scope.currencies);
+                }).
+                error(function(data, status, headers, config) {
+                    console.log('Ошибка при отправки объекта');
+                });
             $http.post('/admin/get/items', {name:'type_auto'}).
                 success(function(data, status, headers, config) {
                     angular.forEach(data, function (value) {
