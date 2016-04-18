@@ -82,7 +82,6 @@ Route::get('admin/content/delete/{id}', ['middleware' => 'auth', 'uses' => 'Admi
 Route::post('admin/content/update', ['middleware' => 'auth', 'uses' => 'Admin\ContentController@update']);
 
 //Mail rotes
-// Route::post('mail/index', ['middleware' => 'auth', 'uses' => 'Catalog\MailController@index']);
 Route::post('mail/index', 'Catalog\MailController@index');
 
 // Banners and Sliders routes...
