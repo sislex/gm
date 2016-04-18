@@ -241,7 +241,7 @@
                                         <option value="">Трансмиссия: любая</option>
                                     </select>
                                 </div>
-                                @{{ obj.help }}
+                                {{--@{{ obj.help }}--}}
                             </div>
                         </div>
                     </div>
