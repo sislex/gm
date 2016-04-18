@@ -32,7 +32,7 @@ class MailController extends Controller
                     $mail_sending_result = \Mail::send('catalog.mail.tpl2-share-with-friend', ['mail_data' => $mail_data], function($message) use ($mail_data)
                     {
                         $message->from('new.goldenmotors@tut.by', 'Автосалон Golden Motors');
-                        $message->to($mail_data['friend'])->subject("Письмо с сайта [goldenmotors.by] - " .$mail_data['type']);
+                        $message->to($mail_data['friend'])->subject("Письмо с сайта [goldenmotors.by]");
                     });
 
                     return 'Письмо отправлено. Код: ' .$mail_sending_result;

@@ -12,10 +12,10 @@
 </head>
 <body yahoo bgcolor="#ffffff">
     <p>
-        Здравсвуйте.
+        Здравствуйте.
     </p>
     <p>
-        Это автоматическое письмо, отправленное с сайта <a href="http://new.goldenmotors.by">new.goldenmotors.by</a> . <br>
+        Это автоматическое письмо, отправленное с сайта <a href="http://goldenmotors.by"> goldenmotors.by </a> . <br>
         Пользователь <i>{{ trim($mail_data['name']) != '' ? $mail_data['name'] : 'имя не указано'}} ({{ trim($mail_data['email']) != '' ? $mail_data['email'] : 'email не указан' }})</i>
         предлагает Вам взглянуть на один из товаров в нашем каталоге.
     </p>

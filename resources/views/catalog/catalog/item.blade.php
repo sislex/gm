@@ -69,16 +69,16 @@
                     </div>
                     <div class="single-listing-actions">
                         <div class="btn-group pull-right" role="group">
-                            <a ng-click="obj.helpers.addToWishList(obj.obj)" class="btn btn-default" title="Save this car">
+                            <a ng-click="obj.helpers.addToWishList(obj.obj)" class="btn btn-default" title="Добавить в избранное">
                                 <i class="fa fa-star-o" ng-if="!obj.helpers.checkId(wishList, obj.obj.id)"></i>
                                 <i class="fa fa-star"  ng-if="obj.helpers.checkId(wishList, obj.obj.id)" style="color: #F5CF44"></i>
                                 <span>В избранное</span>
                             </a>
-                            <a href="#" data-toggle="modal" data-target="#infoModal" class="btn btn-default" title="Request more info"><i class="fa fa-info"></i> <span>Запрос доп. инфо.</span></a>
-                            <a href="#" data-toggle="modal" data-target="#testdriveModal" class="btn btn-default" title="Book a test drive"><i class="fa fa-calendar"></i> <span>Запись на тест драйв</span></a>
-                            <a href="#" data-toggle="modal" data-target="#offerModal" class="btn btn-default" title="Make an offer"><i class="fa fa-dollar"></i> <span>Предложить свою цену</span></a>
-                            <a href="#" data-toggle="modal" data-target="#sendModal" class="btn btn-default" title="Send to a friend"><i class="fa fa-send"></i> <span>Поделиться</span></a>
-                            <a href="javascript:void(0)" onclick="window.print();" class="btn btn-default" title="Print"><i class="fa fa-print"></i> <span>Распечатать</span></a>
+                            <a href="#" data-toggle="modal" data-target="#infoModal" class="btn btn-default" title="Запросить дополнительную информацию"><i class="fa fa-info"></i> <span>Запрос доп. инфо.</span></a>
+                            <a href="#" data-toggle="modal" data-target="#testdriveModal" class="btn btn-default" title="Записаться на тест драйв"><i class="fa fa-calendar"></i> <span>Запись на тест драйв</span></a>
+                            <a href="#" data-toggle="modal" data-target="#offerModal" class="btn btn-default" title="Предложить нам свою цену"><i class="fa fa-dollar"></i> <span>Предложить свою цену</span></a>
+                            <a href="#" data-toggle="modal" data-target="#sendModal" class="btn btn-default" title="Поделиться ссылкой с другом"><i class="fa fa-send"></i> <span>Поделиться</span></a>
+                            <a href="javascript:void(0)" onclick="window.print();" class="btn btn-default" title="Распечатать эту страницу"><i class="fa fa-print"></i> <span>Распечатать</span></a>
                         </div>
                         <div class="btn btn-info price">${{ intval($item['price']) }}</div>
                         <div class="btn btn-info price" >@{{ obj.obj.price * currencies.BYR | ceil }} <span style="font-size: 14px">руб</span>.</div>
@@ -258,6 +258,7 @@
                             <div class="sidebar-widget widget seller-contact-widget">
                                 <h4 class="widgettitle"> Заказать обратный звонок </h4>
                                 <div ng-controller="callMeBackWidget" id="callMeBackWidget" class="vehicle-enquiry-in">
+
                                     <form>
                                         <input ng-model="callMeBack.name" name="name" type="text" placeholder="Имя*" class="form-control" required>
                                         <input ng-model="callMeBack.email" name="email" type="email" placeholder="Email*" class="form-control" required>
@@ -268,10 +269,15 @@
                                         </div>
                                         <textarea ng-model="callMeBack.comment" name="comment" class="form-control" placeholder="Комментарий"></textarea>
                                         {{--<label class="checkbox-inline">--}}
-                                            {{--<input ng-model="callMeBack.subscribe" name="subscribe" type="checkbox" id="inlineCheckbox2" value="false"> Подписаться на новости--}}
+                                        {{--<input ng-model="callMeBack.subscribe" name="subscribe" type="checkbox" id="inlineCheckbox2" value="false"> Подписаться на новости--}}
                                         {{--</label>--}}
+
+
                                         <input ng-click="callMeBack.send()" name="send" type="button" class="btn btn-primary" value="Перезвоните мне">
                                     </form>
+
+                                    <div class="" id="vehicleEnquery" tabindex="-1" role="status" area-hidden="true"> TEST </div>
+
                                 </div>
                                 {{--<div class="vehicle-enquiry-foot">--}}
                                     {{--<span class="vehicle-enquiry-foot-ico"><i class="fa fa-phone"></i></span>--}}

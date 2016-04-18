@@ -128,7 +128,7 @@ if(!mailApp){
 mailApp.controller('mailWidget', ['$scope', '$http',
     function($scope, $http) {
         $scope.ok = function(selector){
-            var ok = $('<div class="ok"><div class="shadow"></div><div class="text">Отправлено!</div></div>');
+            var ok = $('<div class="ok"><div class="shadow"></div><div class="text"> Отправлено! </div></div>');
             $(selector + ' .modal-content').prepend(ok);
             $(selector + ' .ok').fadeIn(1500, function(){
                 $(selector + ' .ok').remove();
