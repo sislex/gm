@@ -276,8 +276,6 @@
                                         <input ng-click="callMeBack.send()" name="send" type="button" class="btn btn-primary" value="Перезвоните мне">
                                     </form>
 
-                                    <div class="" id="vehicleEnquery" tabindex="-1" role="status" area-hidden="true"> TEST </div>
-
                                 </div>
                                 {{--<div class="vehicle-enquiry-foot">--}}
                                     {{--<span class="vehicle-enquiry-foot-ico"><i class="fa fa-phone"></i></span>--}}
@@ -480,7 +478,7 @@
             </div>
         </div>
 
-        <!-- BOOK TEST DRIVE POPUP -->
+    <!-- BOOK TEST DRIVE POPUP -->
         <div class="modal fade" id="testdriveModal" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
