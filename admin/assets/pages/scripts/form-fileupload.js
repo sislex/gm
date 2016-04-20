@@ -112,6 +112,26 @@ var FormFileUpload = function () {
 
                 $(this).fileupload('option', 'done')
                 .call(this, $.Event('done'), {result: result});
+
+                var insertTD = function(){
+                    var urlsStr = $('#fileupload').attr("urls");
+                    var urls = $.parseJSON(urlsStr);
+
+                    var i = 0;
+                    $(".sortable tr").each(function(){
+                        var file = $(this).find('.name a').html();
+                        var td = $('<td><input type="text" fileName="'+file+'"></td>');
+                        td.find('input').val(urls[i]);
+                        $(this).find('td:first').next().after(td);
+                        i++;
+                    });
+
+                }
+
+                if($('#fileupload').attr("data-name") == 'partners-slider'){
+                    insertTD();
+                }
+
             });
         }
 

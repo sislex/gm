@@ -32,11 +32,19 @@ class UIComponentsController extends Controller
                 }else{
                     $uicomponent_arr['images'] = json_encode($obj['images']);
                 }
+
+                if(!isset($obj['urls'])){
+                    $uicomponent_arr['urls'] = json_encode([]);
+                }else{
+                    $uicomponent_arr['urls'] = json_encode($obj['urls']);
+                }
+
                 if(!isset($obj['html'])){
                     $uicomponent_arr['html'] = '';
                 }else{
                     $uicomponent_arr['html'] = $obj['html'];
                 }
+
                 if(!isset($obj['configuration'])){
                     $uicomponent_arr['configuration'] = '';
                 }else{
@@ -68,6 +76,7 @@ class UIComponentsController extends Controller
                 }
                 if (isset($input['images'])) {
                     $arr['images'] = $input['images'];
+                    if (isset($input['urls'])){$arr['urls'] = $input['urls'];}
                     $uicomponent->obj = json_encode($arr);
                     $uicomponent->update();
 

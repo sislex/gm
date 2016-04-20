@@ -43,7 +43,7 @@
         <div class="tab-pane active" id="tab_0">
             <div class="row">
                 <div class="col-md-12">
-                    <form id="fileupload" data-type="ui-component" data-name="{{ $uicomponent['name'] or 'fileupload-form__data-name_is-empty__error' }}" sort="{{ $uicomponent['images'] or ''}}" action="/admin/assets/global/plugins/jquery-file-upload/server/php/index.php?name={{ $uicomponent['name'] or 'form-action__name-parameter_is-empty__error' }}" method="POST" enctype="multipart/form-data">
+                    <form id="fileupload" data-type="ui-component" data-name="{{ $uicomponent['name'] or 'fileupload-form__data-name_is-empty__error' }}" sort="{{ $uicomponent['images'] or ''}}" urls="{{ $uicomponent['urls'] or ''}}" action="/admin/assets/global/plugins/jquery-file-upload/server/php/index.php?name={{ $uicomponent['name'] or 'form-action__name-parameter_is-empty__error' }}" method="POST" enctype="multipart/form-data">
                         <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
                         <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
                         <div class="row fileupload-buttonbar">
@@ -216,21 +216,50 @@
     <script src="/admin/assets/pages/scripts/form-fileupload.js" type="text/javascript"></script>
 
     <script id="files-order" type="text/javascript">
+        var objUpdate = function(){
+
+//            var sortedIDs = $(obj).sortable("toArray");
+            var arr = [];
+            $(".sortable").find('.name a').each(function(){
+
+
+                arr.push($(this).html());
+            });
+
+            var arrUrls = [];
+            $('.sortable').find('input').each(function(){
+                arrUrls.push($(this).val());
+            });
+//                console.log(arrUrls);
+            $.post('/admin/ui-components/update', {
+                _token: '{{ Session::token() }}',
+                name: '{{$uicomponent['name'] or 'images-sorting__name-param-is-empty__error'}}',
+                images: arr,
+                urls: arrUrls
+            }, function(callback){
+//                console.log(callback);
+            });
+        }
+
+        $(document).on('keyup', ".sortable input", function(){
+            objUpdate();
+        });
+
         $(".sortable").sortable({
             items: "> tr",
             axis: "y",
             update: function( event, ui ) {
-                var sortedIDs = $(this).sortable("toArray");
-                var arr = [];
-                $(sortedIDs).find('.name a').each(function(){
-                    arr.push($(this).html());
-                });
-//                console.log(arr);
-                $.post('/admin/ui-components/update', {_token: '{{ Session::token() }}', name: '{{$uicomponent['name'] or 'images-sorting__name-param-is-empty__error'}}', images: arr}, function(callback){
-                    console.log(callback);
-                });
+                objUpdate();
             }
         });
+
+
+
+
+
+
+
+
     </script>
 @endsection
 
