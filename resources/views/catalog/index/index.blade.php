@@ -218,7 +218,10 @@
                                     <div class="row">
                                         <ul class="owl-carousel" id="partners-slider" data-columns="5" data-autoplay="6000" data-pagination="no" data-arrows="no" data-single-item="no" data-items-desktop="5" data-items-desktop-small="4" data-items-tablet="3" data-items-mobile="3">
                                             <li ng-repeat="partner_image in partners['images']" class="item">
-                                                <img ng-src="/images/ui-components/partners-slider/@{{ partner_image }}" alt="Partner Image">
+                                                <a ng-href="@{{ (partners['urls'][$index].trim() != '' && partners['urls'][$index].indexOf('http://') && partners['urls'][$index].indexOf('https://'))
+                                                    ? 'http://' + partners['urls'][$index] : partners['urls'][$index]}}" target="_blank">
+                                                    <img ng-src="/images/ui-components/partners-slider/@{{ partners['images'][$index] }}" alt="Partner Image">
+                                                </a>
                                             </li>
                                         </ul>
                                     </div>
@@ -230,7 +233,7 @@
                                 </div>
                                 <div class="col-md-9 col-sm-8">
                                     <div class="row">
-                                        @{{ $partners['html'] }}
+                                        @{{ partners['html'] }}
                                     </div>
                                 </div>
                             </div>
