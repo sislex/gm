@@ -11,9 +11,8 @@ class ContentController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth', ['except' => 'getFeedbacks']);
     }
-
 
     /**
      * Display a listing of the resource.
@@ -76,8 +75,7 @@ class ContentController extends Controller
 
         return view('admin/content/page', ['page' => $page, 'type' => $page['type']]);
     }
-
-
+    
 
     /**
      * Update the specified resource in storage.
@@ -161,5 +159,13 @@ class ContentController extends Controller
         $content->deleteContentAndAllAssosiatedFiles($id);
 
         return \Redirect::action('Admin\ContentController@index', ['type' => $type]);
+    }
+
+    public function getFeedbacks()
+    {
+        $feedbacks_arr = Content::getContent('feedback',0);
+        $feedbacks_arr_json = json_encode($feedbacks_arr);
+
+        return $feedbacks_arr_json;
     }
 }

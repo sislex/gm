@@ -102,6 +102,7 @@ class UIComponentsController extends Controller
     public function getPartners()
     {
         $partners_arr = UIComponents::where('name','=','partners-slider')->first();
+
         return $partners_arr['obj'];
     }
 }

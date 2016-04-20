@@ -135,124 +135,79 @@
 
                     <div class="spacer-40"></div>
 
-                    <!-- Feedbacks -->
-                    @if(isset($feedbacks) && is_array($feedbacks) && count($feedbacks))
-                        <section class="listing-block latest-testimonials">
-                            <div class="listing-header">
-                                <h3> Отзывы клиентов </h3>
-                            </div>
-                            <div class="listing-container">
-                                <div class="carousel-wrapper">
-                                    <div class="row">
-                                        <ul class="owl-carousel carousel-fw" id="feedbacks-slider" data-columns="2" data-autoplay="5000" data-pagination="no" data-arrows="no" data-single-item="no" data-items-desktop="2" data-items-desktop-small="1" data-items-tablet="1" data-items-mobile="1">
+                    <!-- Feedbacks slider via AJAX -->
+                    <div ng-controller="FeedbacksWidget">
+                        <div ng-if="feedbacks && feedbacks.length > 0">
+                            <section class="listing-block latest-testimonials">
+                                <div class="listing-header">
+                                    <h3> Отзывы клиентов </h3>
+                                </div>
+                                <div class="listing-container">
+                                    <div class="carousel-wrapper">
+                                        <div class="row">
+                                            <ul class="owl-carousel carousel-fw" id="feedbacks-slider" data-columns="2" data-autoplay="5000" data-pagination="no" data-arrows="no" data-single-item="no" data-items-desktop="2" data-items-desktop-small="1" data-items-tablet="1" data-items-mobile="1">
+                                                <li ng-repeat="feedback in feedbacks" class="item">
+                                                    <div ng-if="feedback['name'] && feedback['name'] != '' && feedback['short_text'] && feedback['short_text'] != ''" class="testimonial-block">
+                                                        <blockquote>
+                                                            <p> @{{ feedback['short_text'] }} </p>
+                                                        </blockquote>
 
-                                            @foreach($feedbacks as $feedback)
-                                                @if(isset($feedback['name']) && $feedback['name'] != '' && isset($feedback['short_text']) && $feedback['short_text'] != '')
-                                                    <li class="item">
-                                                        <div class="testimonial-block">
-                                                            <blockquote>
-                                                                <p> {{ $feedback['short_text'] }} </p>
-                                                            </blockquote>
+                                                        <div ng-if="feedback['previewImageURL']" class="testimonial-avatar">
+                                                            <img ng-src="@{{ feedback['previewImageURL'] }}" alt="Feedback Owner Photo" width="60" height="60">
+                                                        </div>
 
-                                                            @if(isset($feedback['previewImageURL']))
-                                                                <div class="testimonial-avatar">
-                                                                    <img src="{{ $feedback['previewImageURL'] }}" alt="Feedback Owner Photo" width="60" height="60">
-                                                                </div>
-                                                            @endif
-
-                                                            <div class="testimonial-info">
-                                                                <div class="testimonial-info-in">
-                                                                    <strong>{{ $feedback['name'] }}</strong>
-                                                                </div>
+                                                        <div class="testimonial-info">
+                                                            <div class="testimonial-info-in">
+                                                                <strong>@{{ feedback['name'] }}</strong>
                                                             </div>
                                                         </div>
-                                                    </li>
-                                                @endif
-                                            @endforeach
-
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-                    @endif
-
-                </div>
-                
-                <div class="spacer-50"></div>
-                
-                <div class="lgray-bg make-slider">
-                    <div class="container">
-
-                        <!-- Partners slider -->
-                        <!-- 
-                        @if(isset($partners_slider) && is_array($partners_slider))
-                            @if((isset($partners_slider['configuration']) && $partners_slider['configuration'] == 'images' && isset($partners_slider['images']) && count($partners_slider['images']))
-                            || (!isset($partners_slider['configuration']) && isset($partners_slider['images']) && count($partners_slider['images'])))
-                                <div class="row">
-                                    <div class="col-md-3 col-sm-4">
-                                        <h3> Наши партнеры </h3>
-                                    </div>
-                                    <div class="col-md-9 col-sm-8">
-                                        <div class="row">
-                                            <ul class="owl-carousel" id="partners-slider" data-columns="5" data-autoplay="6000" data-pagination="no" data-arrows="no" data-single-item="no" data-items-desktop="5" data-items-desktop-small="4" data-items-tablet="3" data-items-mobile="3">
-
-                                                @foreach($partners_slider['images'] as $partners_slider_image)
-                                                    <li class="item">
-                                                        <img src="/images/ui-components/partners-slider/{{ $partners_slider_image }}" alt="Partner Image">
-                                                    </li>
-                                                @endforeach
-
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            @elseif(isset($partners_slider['configuration']) && $partners_slider['configuration'] == 'html' && isset($partners_slider['html']) && trim($partners_slider['html']) != '')
-                                <div class="row">
-                                    <div class="col-md-3 col-sm-4">
-                                        <h3> Наши партнеры </h3>
-                                    </div>
-                                    <div class="col-md-9 col-sm-8">
-                                        <div class="row">
-                                            {!! $partners_slider['html'] !!}
-                                        </div>
-                                    </div>
-                                </div>
-                            @endif
-                        @endif
-                        -->
-                        
-                        <!-- Partners slider via AJAX -->
-                            <div ng-controller="PartnersWidget" class="row">
-                                <div ng-if="partners['configuration'] == 'images' && partners['images'] && partners['images'].length > 0">
-                                    <div class="col-md-3 col-sm-4">
-                                        <h3> Наши партнеры </h3>
-                                    </div>
-                                    <div class="col-md-9 col-sm-8">
-                                        <div class="row">
-                                            <ul class="owl-carousel" id="partners-slider" data-columns="5" data-autoplay="6000" data-pagination="no" data-arrows="no" data-single-item="no" data-items-desktop="5" data-items-desktop-small="4" data-items-tablet="3" data-items-mobile="3">
-                                                <li ng-repeat="partner_image in partners['images']" class="item">
-                                                    <img ng-src="/images/ui-components/partners-slider/@{{ partner_image }}" alt="Partner Image">
+                                                    </div>
                                                 </li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
-                                <div ng-if="partners['configuration'] == 'html' && partners['html'] && partners['html'].length > 0">
-                                    <div class="col-md-3 col-sm-4">
-                                        <h3> Наши партнеры </h3>
-                                    </div>
-                                    <div class="col-md-9 col-sm-8">
-                                        <div class="row">
-                                            @{{ $partners['html'] }}
-                                        </div>
+                            </section>
+                        </div>
+                    </div>
+                    <!-- End Feedbacks slider -->
+                </div>
+
+                <div class="spacer-50"></div>
+
+                <!-- Partners slider via AJAX -->
+                <div class="lgray-bg make-slider">
+                    <div class="container">
+                        <div ng-controller="PartnersWidget" class="row">
+                            <div ng-if="partners['configuration'] == 'images' && partners['images'] && partners['images'].length > 0">
+                                <div class="col-md-3 col-sm-4">
+                                    <h3> Наши партнеры </h3>
+                                </div>
+                                <div class="col-md-9 col-sm-8">
+                                    <div class="row">
+                                        <ul class="owl-carousel" id="partners-slider" data-columns="5" data-autoplay="6000" data-pagination="no" data-arrows="no" data-single-item="no" data-items-desktop="5" data-items-desktop-small="4" data-items-tablet="3" data-items-mobile="3">
+                                            <li ng-repeat="partner_image in partners['images']" class="item">
+                                                <img ng-src="/images/ui-components/partners-slider/@{{ partner_image }}" alt="Partner Image">
+                                            </li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
-                        <!-- End Partners slider -->
-
+                            <div ng-if="partners['configuration'] == 'html' && partners['html'] && partners['html'].length > 0">
+                                <div class="col-md-3 col-sm-4">
+                                    <h3> Наши партнеры </h3>
+                                </div>
+                                <div class="col-md-9 col-sm-8">
+                                    <div class="row">
+                                        @{{ $partners['html'] }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                <!-- End Partners slider -->
+
             </div>
         </div>
         <!-- End Body Content -->

@@ -66,9 +66,7 @@ class CatalogController extends Controller
                 }
             }
         }
-
-
-
+        
         return view('catalog/catalog/index', [
             'catalog_banner' => $catalog_banner_arr,
             'itemsNames' => $itemsNames

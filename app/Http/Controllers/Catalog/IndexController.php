@@ -48,26 +48,28 @@ class IndexController extends Controller
             }
         }
 
-        $partners_slider = UIComponents::where('name','=','partners-slider')->get()->first();
-        $partners_slider_arr = [];
+//        $partners_slider = UIComponents::where('name','=','partners-slider')->get()->first();
+//        $partners_slider_arr = [];
 
-        if(isset($partners_slider) && isset($partners_slider->obj)){
-            $obj = json_decode($partners_slider->obj);
-
-            if(isset($obj->images)){
-                $partners_slider_arr['images'] = $obj->images;
-            }
-            if(isset($obj->html)){
-                $partners_slider_arr['html'] = $obj->html;
-            }
-            if(isset($obj->configuration)){
-                $partners_slider_arr['configuration'] = $obj->configuration;
-            }
-        }
+//        if(isset($partners_slider) && isset($partners_slider->obj)){
+//            $obj = json_decode($partners_slider->obj);
+//
+//            if(isset($obj->images)){
+//                $partners_slider_arr['images'] = $obj->images;
+//            }
+//            if(isset($obj->html)){
+//                $partners_slider_arr['html'] = $obj->html;
+//            }
+//            if(isset($obj->configuration)){
+//                $partners_slider_arr['configuration'] = $obj->configuration;
+//            }
+//        }
 
         $feedbacks_arr = Content::getContent('feedback',0);
 
-        return view('catalog/index/index', ['mainpage' => $main_page_arr, 'main_slider' => $main_slider_arr,
-                'partners_slider' => $partners_slider_arr, 'feedbacks' => $feedbacks_arr]);
+        return view('catalog/index/index', ['mainpage' => $main_page_arr,
+                'main_slider' => $main_slider_arr,
+//                'partners_slider' => $partners_slider_arr, 'feedbacks' => $feedbacks_arr]);
+                'feedbacks' => $feedbacks_arr]);
     }
 }

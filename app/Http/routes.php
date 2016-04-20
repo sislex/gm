@@ -39,6 +39,9 @@ Route::post('blog/last','Catalog\CatalogController@getLastContent');
 // partners route (ajax call)
 Route::get('partners','Admin\UIComponentsController@getPartners');
 
+// feedbacks route (ajax call)
+Route::get('feedbacks','Admin\ContentController@getFeedbacks');
+
 // Admin module //
 
 // Index route...

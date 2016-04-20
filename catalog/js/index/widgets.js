@@ -12,8 +12,6 @@ if(!myApp){
     });
 }
 
-
-
 myApp.controller('lastCarsWidget', ['$scope', '$http',
     function($scope, $http) {
         $scope.filter = {};
@@ -79,6 +77,24 @@ myApp.controller('PartnersWidget', ['$scope', '$http',
                 // console.log($scope.partners);                
                 setTimeout(function(){
                         if(window.AUTOSTARS){window.AUTOSTARS.OwlCarousel($('#partners-slider'));}
+                    }, 500);
+            }).
+            error(function(data, status, headers, config) {
+                console.log('ошибка при отправке объекта');
+            });
+        })();
+    }
+]);
+
+myApp.controller('FeedbacksWidget', ['$scope', '$http',
+  function($scope, $http) {
+      $scope.func = (function(){
+          $http.get('/feedbacks').
+            success(function(data, status, headers, config) {
+                $scope.feedbacks = data;
+                // console.log($scope.partners);                
+                setTimeout(function(){
+                        if(window.AUTOSTARS){window.AUTOSTARS.OwlCarousel($('#feedbacks-slider'));}
                     }, 500);
             }).
             error(function(data, status, headers, config) {
