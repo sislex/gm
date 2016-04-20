@@ -19,7 +19,6 @@ myApp.controller('lastCarsWidget', ['$scope', '$http',
             $http.post('/admin/get/items/8', {name:'type_auto', check:'published'}).
                 success(function(data, status, headers, config) {
                     $scope.items = data;
-
                     //$scope.cloneItems = angular.copy($scope.items);
 
                     setTimeout(function(){
@@ -31,6 +30,14 @@ myApp.controller('lastCarsWidget', ['$scope', '$http',
                 }).
                 error(function(data, status, headers, config) {
                     console.log('ошибка при отправке объекта');
+                });
+            $http.post('/admin/settings/currencies/getCurrencies').
+                success(function(data, status, headers, config) {
+                    $scope.currencies = data;
+                    //console.log($scope.currencies);
+                }).
+                error(function(data, status, headers, config) {
+                    console.log('Ошибка при отправки объекта');
                 });
         })();
     }

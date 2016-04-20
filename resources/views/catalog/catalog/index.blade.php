@@ -236,11 +236,12 @@
                                             class="form-control input-circle"
                                             ng-model="obj.help['Трансмиссия'][0]"
                                             ng-options="item.text for item in filter['Трансмиссия'] | orderBy:'text':false"
-                                            ng-change="obj.helpers.makeObj('Трансмиссия')"
+                                            ng-change="obj.helpers.makeObj('Трансмиссия');"
                                             >
                                         <option value="">Трансмиссия: любая</option>
                                     </select>
                                 </div>
+                                {{--@{{ obj.help }}--}}
                             </div>
                         </div>
                     </div>
