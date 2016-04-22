@@ -79,7 +79,6 @@ myApp.controller('myCtrl', ['$scope', '$http',
                     $scope.order = str;
                 },
                 makeObj : function(parentKey, type){
-debugger;
                     //$scope.obj.help['Трансмиссия'][0] = {"text":"механика","children":[]};
                     console.log($scope.obj.help['God_vypuska']);
 
