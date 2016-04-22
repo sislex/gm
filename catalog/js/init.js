@@ -583,10 +583,10 @@ $(document).ready(function(){
 		$(".by-type-options").slideToggle();
 		return false;
 	});
-	$(".search-trigger").on("click", function(){
-		$(".search-form").slideToggle();
-		return false;
-	});
+	//$(".search-trigger").on("click", function(){
+	//	$(".search-form").slideToggle();
+	//	return false;
+	//});
 	var GridView;
 	function GridViewFunction() {
 		var GridView = setTimeout(function(){

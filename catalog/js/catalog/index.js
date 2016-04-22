@@ -55,8 +55,6 @@ myApp.controller('myCtrl', ['$scope', '$http',
 
             if(window.Cookie.get('viewedList')){$scope.viewedList = angular.fromJson(window.Cookie.get('viewedList'));}
 
-
-
         })();
 
         $scope.obj = {
