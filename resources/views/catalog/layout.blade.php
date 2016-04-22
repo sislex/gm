@@ -88,22 +88,12 @@
         <!-- End Site Header -->
         <div class="navbar">
             <div class="container sp-cont">
-                {{--<div class="search-function">--}}
-                    {{--<a href="#" class="search-trigger"><i class="fa fa-search"></i></a>--}}
-                    {{--@if(\App\Phones::where('type','=','мобильный телефон')->first())--}}
-                        {{--<div>--}}
-                            {{--<i class="fa fa-phone"></i>--}}
-                            {{--Позвони нам <strong>+ 375 (29) 5761520</strong>--}}
-                            {{--Позвони нам--}}
-                            {{--<strong>--}}
-                                {{--<a href="tel://{{ \App\Phones::where('type','=','мобильный телефон')->first()->value('phone') }}">--}}
-                                    {{--{{ \App\Phones::where('type','=','мобильный телефон')->first()->value('phone') }}--}}
-                                {{--</a>--}}
-                            {{--</strong>--}}
-                        {{--</div>--}}
-                    {{--@endif--}}
-                {{--</div>--}}
-                <a href="#" class="visible-sm visible-xs" id="menu-toggle"><i class="fa fa-bars"></i></a>
+                {{--<a href="#" class="visible-sm visible-xs" id="menu-toggle"><i class="fa fa-bars"></i></a>--}}
+
+                <div class="search-function">
+                    <a href="/catalog/index" class="search-trigger"><i class="fa fa-search"></i></a>
+                </div>
+
                 <!-- Main Navigation -->
                 <nav class="main-navigation dd-menu toggle-menu" role="navigation">
                     <ul class="sf-menu">
