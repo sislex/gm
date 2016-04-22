@@ -160,7 +160,7 @@
                                                     ng-model="obj.help['God_vypuska']['min']"
                                                     ng-options="item.text for item in filter['God_vypuska'] | orderBy:'text':true"
                                                     ng-change="obj.helpers.makeObj('God_vypuska', 'value')"
-                                                    placeholder="Цена от"
+                                                    placeholder="Год от"
                                                     >
                                                 <option value="">Год от:</option>
                                             </select>
@@ -171,7 +171,7 @@
                                                     ng-model="obj.help['God_vypuska']['max']"
                                                     ng-options="item.text for item in filter['God_vypuska'] | orderBy:'text':true"
                                                     ng-change="obj.helpers.makeObj('God_vypuska', 'value')"
-                                                    placeholder="Цена до"
+                                                    placeholder="Год до"
                                                     >
                                                 <option value="">Год до</option>
                                             </select>

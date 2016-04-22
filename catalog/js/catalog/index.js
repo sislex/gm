@@ -40,12 +40,12 @@ myApp.controller('myCtrl', ['$scope', '$http',
                     $scope.items = data;
                     $scope.cloneItems = angular.copy($scope.items);
 
-                    setTimeout(function(){
-                        if(window.AUTOSTARS){window.AUTOSTARS.PrettyPhoto();}
-
-                        $scope.obj.helpers.makeObj('Трансмиссия');
-
-                    }, 500);
+                    //setTimeout(function(){
+                    //    if(window.AUTOSTARS){window.AUTOSTARS.PrettyPhoto();}
+                    //
+                    //    $scope.obj.helpers.makeObj('Трансмиссия');
+                    //
+                    //}, 500);
                 }).
                 error(function(data, status, headers, config) {
                     console.log('Ошибка при отправки объекта');
@@ -61,7 +61,7 @@ myApp.controller('myCtrl', ['$scope', '$http',
 
         $scope.obj = {
             filter : {type_auto : []},
-            help : {"type_auto":[{"text":"Мототехника","children":[{"text":"Kawasaki","children":[{"text":"Vulcan","children":[]}]}]}],"Версия/Модификация":"900","God_vypuska":[{"text":"2008","children":[]}],"Состояние":[{"text":"с пробегом","children":[]}],"Цвет":[{"text":"черный металлик","children":[]}],"Тип двигателя":[{"text":"4-х тактный","children":[]}],"Объем куб. см.":"900","Цилиндров":"2","Probeg":10465,"Трансмиссия":[{"text":"механика","children":[]}],"Привод":[{"text":"ремень","children":[]}],"Класс транспорта":[{"text":"круизер чоппер","children":[]}],"Обмен":[{"text":"не интересует","children":[]}],"Страна":[{"text":"Беларусь","children":[{"text":"Минск","children":[]}]}],"Оснащение":[{"text":"кофры","children":[]},{"text":"защитные дуги","children":[]}],"Электропакет":[{"text":"электростартер ","children":[]}],"images":["DSCN2107.JPG","DSCN2122.JPG","DSCN2109.JPG","DSCN2112.JPG","DSCN2118.JPG","DSCN2120.JPG","DSCN2115.JPG","DSCN2123.JPG"]},
+            help : {},
             objJson : '',
             obj : {
                 //type_auto : [{"text":"Авто транспорт"}],
@@ -79,9 +79,9 @@ myApp.controller('myCtrl', ['$scope', '$http',
                     $scope.order = str;
                 },
                 makeObj : function(parentKey, type){
-
+debugger;
                     //$scope.obj.help['Трансмиссия'][0] = {"text":"механика","children":[]};
-                    console.log($scope.obj.help['Трансмиссия'][0]);
+                    console.log($scope.obj.help['God_vypuska']);
 
                     $scope.obj.obj[parentKey] = [];
 
