@@ -3904,6 +3904,7 @@ h1.page-title{
 .grid-item-inner{
 	box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
 	background:#fff;
+	height: 540px;
 }
 .grid-holder .grid-item{
 	margin-left: 3%;
