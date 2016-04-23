@@ -47,9 +47,9 @@ License: You must have a valid license purchased only from themeforest(the above
     <link rel="shortcut icon" href="/favicon.ico" /> </head>
 <!-- END HEAD -->
 
-<body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white">
+<body class=" page-sidebar-closed-hide-logo page-content-white">
 <!-- BEGIN HEADER -->
-<div class="page-header navbar navbar-fixed-top">
+<div class="page-header navbar">
     <!-- BEGIN HEADER INNER -->
     <div class="page-header-inner ">
         <!-- BEGIN LOGO -->
