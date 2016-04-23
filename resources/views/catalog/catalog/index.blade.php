@@ -112,7 +112,7 @@
     </div>
     <!-- Start Body Content -->
     <div class="main" role="main">
-        <div id="content" class="content full">
+        <div id="content" class="content full fade">
             <div class="container">
                 <div class="row">
                     <!-- Search Filters -->

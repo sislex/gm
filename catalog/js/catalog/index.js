@@ -46,6 +46,7 @@ myApp.controller('myCtrl', ['$scope', '$http',
                     //    $scope.obj.helpers.makeObj('Трансмиссия');
                     //
                     //}, 500);
+                    $('#content').removeClass('fade');
                 }).
                 error(function(data, status, headers, config) {
                     console.log('Ошибка при отправки объекта');
