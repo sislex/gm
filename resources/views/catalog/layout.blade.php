@@ -88,7 +88,7 @@
         <!-- End Site Header -->
         <div class="navbar">
             <div class="container sp-cont">
-                {{--<a href="#" class="visible-sm visible-xs" id="menu-toggle"><i class="fa fa-bars"></i></a>--}}
+                <a href="#" class="visible-sm visible-xs" id="menu-toggle"><i class="fa fa-bars"></i></a>
 
                 <div class="search-function">
                     <a href="/catalog/index" class="search-trigger"><i class="fa fa-search"></i></a>
