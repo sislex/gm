@@ -2242,7 +2242,7 @@ h1.page-title{
 .recent-vehicles .action-icons{
 	margin-right:22px;
 }
-.vehicle-age, .premium-listing, .vehicle-sold, .vehicle-hot, .vehicle-new{
+.vehicle-age, .premium-listing, .vehicle-sold, .vehicle-hot, .vehicle-new, .vehicle-new2{
 	position: absolute;
 	top:15px;
 	left:45px;
@@ -2259,6 +2259,10 @@ h1.page-title{
 
 .vehicle-new{
 	left: 55px;
+}
+
+.vehicle-new2{
+	left: 85px;
 }
 
 .dark-bg .vehicle-block{
