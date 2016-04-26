@@ -19,7 +19,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
 <head>
     <meta charset="utf-8" />
-    <title>Metronic | User Login 4</title>
+    <title>Metronic | User Login</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta content="" name="description" />
@@ -417,7 +417,7 @@ License: You must have a valid license purchased only from themeforest(the above
     <!-- END REGISTRATION FORM -->
 </div>
 <div class="copyright">
-    2015 © ООО "Голден Моторс"
+    2016 © ООО "Голден Моторс"
 </div>
 <!--<div class="copyright">-->
 <!--2014 © Metronic. Admin Dashboard Template.-->

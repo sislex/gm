@@ -2242,15 +2242,25 @@ h1.page-title{
 .recent-vehicles .action-icons{
 	margin-right:22px;
 }
-.vehicle-age, .premium-listing, .vehicle-sold{
+.vehicle-age, .premium-listing, .vehicle-sold, .vehicle-hot, .vehicle-new{
 	position: absolute;
 	top:15px;
 	left:45px;
 	z-index:9;
 }
+
 .premium-listing{
 	top:35px;
 }
+
+.vehicle-hot{
+	top:35px;
+}
+
+.vehicle-new{
+	left: 55px;
+}
+
 .dark-bg .vehicle-block{
 	background:#fff;
 }
@@ -2901,7 +2911,7 @@ h1.page-title{
 .results-grid-view .result-item-view-buttons a{
 	padding:4px 0 3px;
 }
-.result-item .vehicle-age, .result-item .premium-listing{
+.result-item .vehicle-age, .result-item .premium-listing, .result-item .vehicle-hot{
 	left:15px;
 }
 .results-list-view .result-item-in{

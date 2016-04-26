@@ -40,6 +40,8 @@ myApp.controller('myCtrl', ['$scope', '$http',
                     $scope.items = data;
                     $scope.cloneItems = angular.copy($scope.items);
 
+                    // console.log($scope.cloneItems);
+
                     //setTimeout(function(){
                     //    if(window.AUTOSTARS){window.AUTOSTARS.PrettyPhoto();}
                     //
@@ -49,7 +51,7 @@ myApp.controller('myCtrl', ['$scope', '$http',
                     $('#content').removeClass('fade');
                 }).
                 error(function(data, status, headers, config) {
-                    console.log('Ошибка при отправки объекта');
+                    console.log('Ошибка при отправке объекта');
                 });
 
             if(window.Cookie.get('wishList')){$scope.wishList = angular.fromJson(window.Cookie.get('wishList'));}

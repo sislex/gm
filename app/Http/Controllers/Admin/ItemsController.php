@@ -40,10 +40,18 @@ class ItemsController extends Controller
                 if($value['obj']!=''){
                     $obj = json_decode($value['obj'], true);
                     unset($value['obj']);
+                }else{
+                    $obj = [];
                 }
-                else{$obj = [];}
+                if($value['promo'] != ''){
+                    $promo = json_decode($value['promo'], true);
+                    unset($value['promo']);
+                }else{
+                    $promo = [];
+                }
                 $obj['item'] = $value;
                 $obj['price'] = $value['price'];
+                $obj['promo'] = $promo;
                 $arr[] = $obj;
             }
         }
@@ -82,6 +90,9 @@ class ItemsController extends Controller
                     $item->images = json_encode($obj['images']);
                 }
             }
+            if($item['promo']){
+                $item['promo'] = json_decode($item['promo'], true);
+            }
         } else {
             $item = '';
         }
@@ -101,7 +112,10 @@ class ItemsController extends Controller
         $input = \Request::all();
         $input = Items::modifiedData($input);
 
-        if ($input['id']) {
+//        dd($input);
+
+        if($input['id']){
+//            dd($input);
             Items::find($input['id'])->update($input);
         }else{
             $input['id'] = Items::create($input);

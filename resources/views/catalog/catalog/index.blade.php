@@ -267,7 +267,10 @@
                                             <img ng-src="/images/items/@{{ item.item['id'] }}/thumbnail/@{{ item.images[0] }}" alt="">
                                         </a>
                                         <span class="label label-default vehicle-age">@{{ item['God_vypuska'][0]['text'] }}</span>
-                                        {{--<span class="label label-success premium-listing">Premium Listing</span>--}}
+
+                                        <span ng-if="item.promo.hot > 0" class="label label-primary vehicle-hot"> Срочно </span>
+                                        <span ng-if="item.promo.new > 0" class="label label-success vehicle-new"> Новое </span>
+
                                         <div class="result-item-view-buttons">
                                             <a ng-if="item['video']" href="https://www.youtube.com/watch?v=@{{ item['video'] }}" data-rel="prettyPhoto"><i class="fa fa-play"></i> Открыть видео</a>
                                             <a href="{{action('Catalog\CatalogController@item')}}/@{{ item.item['id'] }}"  ><i class="fa fa-plus"></i> Подробнее</a>
