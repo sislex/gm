@@ -720,7 +720,7 @@
 
                             <div class="form-body">
                                 <div class="form-group">
-                                    <label class="col-md-3 control-label"> Новинка </label>
+                                    <label class="col-md-3 control-label"> Новое </label>
                                     <div class="col-md-4">
                                         <select form="promo" name="promo_new" class="form-control input-circle">
                                             <option value="0" {{ isset($item['promo']['new']) && $item['promo']['new'] == false ? 'selected' : '' }}>нет</option>
