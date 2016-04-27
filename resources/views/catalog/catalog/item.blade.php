@@ -258,7 +258,8 @@
                             <!-- Vehicle Enquiry -->
                             <div class="sidebar-widget widget seller-contact-widget">
                                 <h4 class="widgettitle"> Заказать обратный звонок </h4>
-                                <div ng-controller="callMeBackWidget" id="callMeBackWidget" class="vehicle-enquiry-in">
+                                <div ng-controller="callMeBackWidget" style="position: relative" id="callMeBackWidget" class="vehicle-enquiry-in">
+
 
                                     <form>
                                         <input ng-model="callMeBack.name" name="name" type="text" placeholder="Имя*" class="form-control" required>
@@ -589,3 +590,26 @@
         }, 500);
     </script>
 @endsection
+
+
+<div class="col-md-6">
+    <div class="sidebar-widget widget seller-contact-widget">
+        <h4 class="widgettitle"> Заказать обратный звонок </h4>
+        <div ng-controller="callMeBackWidget" style="position: relative" id="callMeBackWidget" class="vehicle-enquiry-in">
+
+            <form>
+                <input ng-model="callMeBack.name" name="name" type="text" placeholder="Имя*" class="form-control">
+                <input ng-model="callMeBack.email" name="email" type="email" placeholder="Email*" class="form-control">
+                <div class="row">
+                    <div>
+                        <input ng-model="callMeBack.phone" name="phone" type="text" placeholder="Телефон №*" class="form-control">
+                    </div>
+                </div>
+                <textarea ng-model="callMeBack.comment" name="comment" class="form-control" placeholder="Комментарий"></textarea>
+
+                <input ng-click="callMeBack.send()" name="send" type="button" class="btn btn-primary" value="Перезвоните мне">
+            </form>
+
+        </div>
+    </div>
+</div>

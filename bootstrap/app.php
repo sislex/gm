@@ -52,4 +52,13 @@ $app->singleton(
 |
 */
 
+//$app->missing(function($exception)
+//{
+//    return Response::view('errors.404', array(), 404);
+//});
+
+//$app->configureMonologUsing(function($monolog) {
+//    $monolog->pushHandler('qwe');
+//});
+
 return $app;

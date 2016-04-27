@@ -113,6 +113,13 @@ myApp.controller('FeedbacksWidget', ['$scope', '$http',
 
 myApp.controller('callMeBackWidget', ['$scope', '$http',
     function($scope, $http) {
+        $scope.ok = function(selector){
+            var ok = $('<div class="ok"><div class="shadow"></div><div class="text"> Отправлено! </div></div>');
+            $(selector).prepend(ok);
+            $(selector + ' .ok').fadeIn(1500, function(){
+                //$(selector + ' .ok').remove();
+            });
+        };
         $scope.callMeBack = {
             type : 'Заказ обратного звонка',
             name : '',
@@ -122,6 +129,7 @@ myApp.controller('callMeBackWidget', ['$scope', '$http',
             subscribe : false,
             url : window.location.href,
             send : function(){
+                $scope.ok('#callMeBackWidget');
                 $http.post('/mail/index',{callMeBackWidget : $scope.callMeBack})
                     .success(function(data, status, headers, config){
                         console.log('запрос отправлен успешно');
