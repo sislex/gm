@@ -1,7 +1,8 @@
 @extends('admin.layout')
 
 
-    @section('content')
+
+@section('content')
             <!-- BEGIN CONTENT BODY -->
 
     <!-- BEGIN NAV TAB -->
@@ -67,6 +68,22 @@
     <!-- END FORM-->
 
     <!-- END CONTENT BODY -->
+@endsection
+
+@section('page_bar')
+    <div class="page-bar">
+        <ul class="page-breadcrumb">
+            <li>
+                Настройки
+                <i class="fa fa-circle"></i>
+                <a href="{{action('Admin\SettingsController@currencies')}}" class="nav-link ">
+                    Валюта
+                </a>
+                <i class="fa fa-circle"></i>
+                Добавить валюту
+            </li>
+        </ul>
+    </div>
 @endsection
 
 @section('PAGE-LEVEL-PLUGINS')
