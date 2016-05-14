@@ -1,20 +1,5 @@
 @extends('admin.layout')
 
-@section('page_bar')
-    <div class="page-bar">
-        <ul class="page-breadcrumb">
-            <li>
-                Настройки
-                <i class="fa fa-circle"></i>
-                <a href="{{action('Admin\SettingsController@currencies')}}" class="nav-link ">
-                    Валюта
-                </a>
-                <i class="fa fa-circle"></i>
-                Добавить валюту
-            </li>
-        </ul>
-    </div>
-    @endsection
 
     @section('content')
             <!-- BEGIN CONTENT BODY -->
@@ -78,7 +63,6 @@
                 </div>
             </div>
         </div>
-
     </form>
     <!-- END FORM-->
 

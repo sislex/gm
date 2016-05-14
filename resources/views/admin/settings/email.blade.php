@@ -12,10 +12,10 @@
             </li>
         </ul>
     </div>
-@endsection
+    @endsection
 
-@section('content')
-    <!-- BEGIN PAGE TITLE-->
+    @section('content')
+            <!-- BEGIN PAGE TITLE-->
     <h3 class="page-title">
         Email
         <small> Список email-адресов </small>
@@ -26,7 +26,7 @@
     <div class="portlet-body col-xs-12 col-md-9">
 
         <!-- BEGIN FORM-->
-          <div class="table-scrollable">
+        <div class="table-scrollable">
             <table class="table table-bordered table-hover">
                 <thead>
                 <tr>
