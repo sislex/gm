@@ -25,10 +25,12 @@ class SettingsController extends Controller
         return view('admin/settings/counters', ['counters' => $counters]);
 
     }
+
     public function addCounter()
     {
         return view('admin/settings/addCounter');
     }
+
     public function insertCounter()
     {
         $input = \Request::all();
@@ -36,6 +38,7 @@ class SettingsController extends Controller
         return \Redirect::action('Admin\SettingsController@counters');
 
     }
+
     public function deleteCounter($id)
     {
         Counters::destroy($id);
@@ -50,16 +53,19 @@ class SettingsController extends Controller
         $phones = Phones::get();
         return view('admin/settings/phones', ['phones' => $phones]);
     }
+    
     public function addPhone()
     {
         return view('admin/settings/addPhone');
     }
+
     public function insertPhone()
     {
         $input = \Request::all();   
         Phones::create($input);
         return \Redirect::action('Admin\SettingsController@phones');
     }
+
     public function deletePhone($id)
     {
         Phones::destroy($id);
