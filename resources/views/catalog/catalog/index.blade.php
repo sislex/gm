@@ -105,7 +105,7 @@
                         </div>
                     </div>
                     <!-- Small Screens Filters Toggle Button -->
-                    <button class="btn btn-default visible-xs" id="Show-Filters">Search Filters</button>
+                    <button class="btn btn-default visible-xs" id="Show-Filters">Поиск по параметрам</button>
                 </div>
             </div>
         </div>
