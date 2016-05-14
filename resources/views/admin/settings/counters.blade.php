@@ -22,26 +22,27 @@
     <!-- END PAGE TITLE-->
 
     <!-- BEGIN CONTENT BODY -->
-    <div class="portlet-body col-xs-12 col-md-6">
-        <div class="table-scrollable">
-            @if(count($counters))
-                <table class="table table-bordered table-hover">
-                    <thead>
-                    <tr>
-                        <th> # </th>
-                        <th> Название </th>
-                        <th> Текст счетчика </th>
-                        <th>
-                            <a href="{{action('Admin\SettingsController@addCounter')}}" class="btn btn-outline btn-circle btn-sm green">
-                                <i class="fa fa-plus"></i>
-                                Добавить
-                            </a>
-                        </th>
-                    </tr>
-                    </thead>
+    <div class="row">
+        <div class="portlet-body col-xs-12 col-md-6">
+            <div class="table-scrollable">
+                @if(count($counters))
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th> # </th>
+                            <th> Название </th>
+                            <th> Текст счетчика </th>
+                            <th>
+                                <a href="{{action('Admin\SettingsController@addCounter')}}" class="btn btn-outline btn-circle btn-sm green">
+                                    <i class="fa fa-plus"></i>
+                                    Добавить
+                                </a>
+                            </th>
+                        </tr>
+                        </thead>
 
-                    @if(isset($counters) && count($counters))
-                        <tbody>
+                        @if(isset($counters) && count($counters))
+                            <tbody>
                             @foreach($counters as $counter)
                                 <tr>
                                     <td>{{$counter['id']}}</td>
@@ -58,11 +59,12 @@
                                     </td>
                                 </tr>
                             @endforeach
-                        </tbody>
-                    @endif
+                            </tbody>
+                        @endif
 
-                </table>
-            @endif
+                    </table>
+                @endif
+            </div>
         </div>
     </div>
     <!-- END CONTENT BODY -->

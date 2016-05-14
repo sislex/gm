@@ -21,8 +21,9 @@
     <!-- END PAGE TITLE-->
 
     <!-- BEGIN CONTENT BODY -->
-    <div class="portlet-body col-xs-12 col-md-6">
-        <div class="table-scrollable">
+    <div class="row">
+        <div class="portlet-body col-xs-12 col-md-6">
+            <div class="table-scrollable">
                 <table class="table table-bordered table-hover">
                     <thead>
                     <tr>
@@ -60,6 +61,7 @@
                     @endif
 
                 </table>
+            </div>
         </div>
     </div>
     <!-- END CONTENT BODY -->

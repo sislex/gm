@@ -30,21 +30,22 @@
     <!-- END NAV TAB -->
 
     <!-- BEGIN FORM-->
-    <form id="content_form" action="{{action('Admin\SettingsController@insertCounter')}}" method="post" class="form-horizontal">
-        <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
+    <div class="row">
+        <form id="content_form" action="{{action('Admin\SettingsController@insertCounter')}}" method="post" class="form-horizontal">
+            <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
 
-        <div class="tab-content">
-            <div class="tab-pane active" id="tab_0">
-                <div class="portlet box green">
-                    <div class="portlet-body form">
-                        <div class="form-body">
+            <div class="tab-content">
+                <div class="tab-pane active" id="tab_0">
+                    <div class="portlet box green">
+                        <div class="portlet-body form">
+                            <div class="form-body">
 
-                            <div class="form-group">
-                                <label class="col-md-3 control-label"> Название счетчика </label>
-                                <div class="col-md-4">
-                                    <input type="text" class="form-control input-circle" name="name" value="" placeholder="название счетчика">
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label"> Название счетчика </label>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control input-circle" name="name" value="" placeholder="название счетчика">
+                                    </div>
                                 </div>
-                            </div>
 
                                 <div class="form-group">
                                     <label class="col-md-3 control-label"> Текст счетчика </label>
@@ -53,22 +54,23 @@
                                     </div>
                                 </div>
 
-                        </div>
+                            </div>
 
-                        <div class="form-actions">
-                            <div class="row">
-                                <div class="col-md-offset-3 col-md-9">
-                                    <button type="submit" class="btn btn-circle green">Сохранить</button>
+                            <div class="form-actions">
+                                <div class="row">
+                                    <div class="col-md-offset-3 col-md-9">
+                                        <button type="submit" class="btn btn-circle green">Сохранить</button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-    </form>
+        </form>
+    </div>
     <!-- END FORM-->
 
     <!-- END CONTENT BODY -->
