@@ -31,8 +31,9 @@
 
     <!-- BEGIN FORM-->
     <div class="row">
-        <form id="content_form" action="{{action('Admin\SettingsController@insertCounter')}}" method="post" class="form-horizontal">
+        <form id="content_form" action="{{action('Admin\SettingsController@updateCounter')}}" method="post" class="form-horizontal">
             <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
+            <input type="hidden" name="id" id="id" value="{{ $counter['id'] or '' }}" />
 
             <div class="tab-content">
                 <div class="tab-pane active" id="tab_0">
@@ -43,14 +44,14 @@
                                 <div class="form-group">
                                     <label class="col-md-3 control-label"> Название счетчика </label>
                                     <div class="col-md-4">
-                                        <input type="text" class="form-control input-circle" name="name" value="" placeholder="название счетчика">
+                                        <input type="text" class="form-control input-circle" name="name" value="{{ $counter['name'] or '' }}" placeholder="Название счетчика">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="col-md-3 control-label"> Текст счетчика </label>
+                                    <label class="col-md-3 control-label"> Код счетчика </label>
                                     <div class="col-md-7">
-                                        <textarea rows="6" class="form-control input-circle" name="text" placeholder="Текст счетчика"></textarea>
+                                        <textarea rows="6" class="form-control input-circle" name="text" placeholder="Код счетчика">{{ $counter['text'] or '' }}</textarea>
                                     </div>
                                 </div>
 

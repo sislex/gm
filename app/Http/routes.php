@@ -106,13 +106,16 @@ Route::post('auth/register', 'Auth\AuthController@postRegister');
 //    _counters
 Route::get('admin/settings/counters', ['middleware' => 'auth', 'uses' => 'Admin\SettingsController@counters']);
 Route::get('admin/settings/counters/add', ['middleware' => 'auth', 'uses' => 'Admin\SettingsController@addCounter']);
-Route::post('admin/settings/counters/add', ['middleware' => 'auth', 'uses' => 'Admin\SettingsController@insertCounter']);
+Route::get('admin/settings/counters/show/{id}', ['middleware' => 'auth', 'uses' => 'Admin\SettingsController@showCounter']);
+Route::post('admin/settings/counters/update', ['middleware' => 'auth', 'uses' => 'Admin\SettingsController@updateCounter']);
 Route::get('admin/settings/counters/delete/{id}', ['middleware' => 'auth', 'uses' => 'Admin\SettingsController@deleteCounter']);
+
 //    _phones
 Route::get('admin/settings/phones', ['middleware' => 'auth', 'uses' => 'Admin\SettingsController@phones']);
 Route::get('admin/settings/phones/add', ['middleware' => 'auth', 'uses' => 'Admin\SettingsController@addPhone']);
 Route::post('admin/settings/phones/add', ['middleware' => 'auth', 'uses' => 'Admin\SettingsController@insertPhone']);
 Route::get('admin/settings/phones/delete/{id}', ['middleware' => 'auth', 'uses' => 'Admin\SettingsController@deletePhone']);
+
 //    _currencies
 Route::get('admin/settings/currencies', ['middleware' => 'auth', 'uses' => 'Admin\SettingsController@currencies']);
 Route::get('admin/settings/currencies/add', ['middleware' => 'auth', 'uses' => 'Admin\SettingsController@addCurrency']);
@@ -122,6 +125,7 @@ Route::post('admin/settings/currencies/update', ['middleware' => 'auth', 'uses' 
 Route::post('admin/settings/currencies/default/update', ['middleware' => 'auth', 'uses' => 'Admin\SettingsController@updateDefaultCurrency']);
 
 Route::post('admin/settings/currencies/getCurrencies', 'Admin\SettingsController@getCurrencies');
+
 //    _email
 Route::get('admin/settings/email', ['middleware' => 'auth', 'uses' => 'Admin\SettingsController@email']);
 Route::get('admin/settings/email/add', ['middleware' => 'auth', 'uses' => 'Admin\SettingsController@addEmail']);

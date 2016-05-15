@@ -230,5 +230,14 @@
 
 @yield('PAGE-LEVEL-SCRIPTS')
 
+<!-- BEGIN COUNTERS -->
+@if(\App\Counters::getCounters() != '')
+    @foreach(\App\Counters::getCounters() as $counter)
+        <!-- {{ $counter['name'] }} -->
+        {!! $counter['text'] !!}
+    @endforeach
+@endif
+<!-- END COUNTERS -->
+
 </body>
 </html>

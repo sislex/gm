@@ -28,25 +28,41 @@ class SettingsController extends Controller
 
     public function addCounter()
     {
-        return view('admin/settings/addCounter');
+        return view('admin/settings/showCounter');
     }
 
-    public function insertCounter()
+    public function showCounter($id)
+    {
+        if($id){
+            $counter = Counters::find($id);
+        }
+        return view('admin/settings/showCounter', ['counter' => $counter]);
+    }
+
+    public function updateCounter()
     {
         $input = \Request::all();
-        Counters::create($input);
-        return \Redirect::action('Admin\SettingsController@counters');
 
+        if ($input['id']) {
+            Counters::find($input['id'])->update($input);
+//            $counter['id'] = $input['id'];
+        } else {
+//            $counter['id'] = Counters::create($input);
+            Counters::create($input);
+        }
+        
+        return \Redirect::action('Admin\SettingsController@counters');
     }
 
     public function deleteCounter($id)
     {
-        Counters::destroy($id);
+        if($id){
+            Counters::destroy($id);
+        }
         return \Redirect::action('Admin\SettingsController@counters');
-
     }
 
-
+    
 //    phones settings
     public function phones()
     {

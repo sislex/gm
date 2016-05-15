@@ -31,7 +31,7 @@
                     <tr>
                         <th> # </th>
                         <th> Название </th>
-                        <th> Текст счетчика </th>
+                        <th> Код счетчика </th>
                         <th>
                             <a href="{{action('Admin\SettingsController@addCounter')}}" class="btn btn-outline btn-circle btn-sm green">
                                 <i class="fa fa-plus"></i>
@@ -49,6 +49,10 @@
                                 <td>{{$counter['name']}}</td>
                                 <td>{{$counter['text']}}</td>
                                 <td>
+                                    <a href="{{action('Admin\SettingsController@showCounter', ['id' => $counter['id']])}}" class="btn btn-outline btn-circle btn-sm purple">
+                                        <i class="fa fa-edit"></i>
+                                        Редактировать
+                                    </a>
                                     <a class="btn btn-outline btn-circle btn-sm red modal-del-confirm"
                                        data-toggle="modal"
                                        del-obj="Вы действительно хотите удалить счетчик '{{ $counter['name'] }}' ?"

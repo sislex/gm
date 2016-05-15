@@ -11,4 +11,10 @@ class Counters extends Model
         'name',
         'text',
     ];
+    
+    static function getCounters()
+    {
+        $counters = Counters::get();
+        return $counters;
+    }
 }
