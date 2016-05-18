@@ -588,5 +588,8 @@
             }
         }, 500);
     </script>
+    <!--виджет расчета лизинговой схемы-->
+    <script type="text/javascript" src="http://cln.by/static/js/informers/cln_goldenmotors_by.js"></script>
+    <!-- -->
 @endsection
 
