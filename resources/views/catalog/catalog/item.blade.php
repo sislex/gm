@@ -207,7 +207,9 @@
                                     <div id="vehicle-location" class="tab-pane fade">
                                         @if(isset($item['obj']['Страна'][0]['text']))<li class="list-group-item"> <span class="badge">Страна</span> {{$item['obj']['Страна'][0]['text']}}</li>@endif
                                         @if(isset($item['obj']['Страна'][0]['children'][0]['text']))<li class="list-group-item"> <span class="badge">Город</span> {{$item['obj']['Страна'][0]['children'][0]['text']}}</li>@endif
-                                        <iframe width="100%" height="300px" frameBorder="0" src="http://a.tiles.mapbox.com/v3/imicreation.map-zkcdvthf.html?secure#12/53.9134/27.5716"></iframe>
+
+                                            {{--<iframe width="100%" height="300px" frameBorder="0" src="http://a.tiles.mapbox.com/v3/imicreation.map-zkcdvthf.html?secure#12/{{$item['obj']['mapX']}}/{{$item['obj']['mapY']}}"></iframe>--}}
+                                            <iframe width="100%" height="300px" frameBorder="0" src="http://a.tiles.mapbox.com/v3/imicreation.map-zkcdvthf.html?secure#18/{{$item['obj']['mapX']}}/{{$item['obj']['mapY']}}"></iframe>
                                     </div>
                                     @if(isset($item['obj']['video']))
                                     <div id="vehicle-video" class="tab-pane fade">

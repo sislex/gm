@@ -36,6 +36,9 @@
                 <a href="#tab_3" data-toggle="tab"> Видео </a>
             </li>
             <li>
+                <a href="#tab_7" data-toggle="tab"> Карта </a>
+            </li>
+            <li>
                 <a href="#tab_6" data-toggle="tab"> Спецпредложения </a>
             </li>
         @endif
@@ -660,6 +663,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="tab-pane" id="tab_3">
                 <div class="portlet box green">
                     <div class="portlet-title">
@@ -749,6 +753,62 @@
                         </form>
                     </div>
                     <!-- END FORM -->
+                </div>
+            </div>
+
+            <div class="tab-pane" id="tab_7">
+                <div class="portlet box green">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="fa fa-gift"></i> Место на карте
+                        </div>
+                    </div>
+                    <div class="portlet-body form">
+                        <!-- BEGIN FORM-->
+                        <form id="seo" action="{{action('Admin\ItemsController@update')}}" method="post" class="form-horizontal">
+                            <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
+                            <input type="hidden" name="id" value="{{ $item['id'] or '' }}" />
+                            <input type="hidden" name="tab" value="#tab_7" />
+                            <input ng-init="obj.objJson='{{ $item['obj'] or '' }}'" type="text" name="obj" ng-model="obj.objJson" class="col-md-12 "/>
+
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label"> Широта </label>
+                                <div class="col-md-2">
+                                    <input
+                                            type="text"
+                                            ng-model="obj.help['mapX']"
+                                            ng-change="obj.helpers.makeObj('mapX')"
+                                            class="form-control input-circle"
+                                            placeholder="Широта"
+                                            >
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label"> Долгота </label>
+                                <div class="col-md-2">
+                                    <input
+                                            type="text"
+                                            ng-model="obj.help['mapY']"
+                                            ng-change="obj.helpers.makeObj('mapY')"
+                                            class="form-control input-circle"
+                                            placeholder="Долгота"
+                                            >
+                                </div>
+                            </div>
+
+                            <div class="form-actions">
+                                <div class="row">
+                                    <div class="col-md-offset-3 col-md-9">
+                                        <button type="submit" class="btn btn-circle green"> Сохранить </button>
+                                        {{--<button type="button" class="btn btn-circle grey-salsa btn-outline">Cancel</button>--}}
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <!-- END FORM-->
+                    </div>
                 </div>
             </div>
         <!-- The blueimp Gallery widget -->
