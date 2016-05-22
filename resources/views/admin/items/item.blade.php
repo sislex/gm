@@ -765,43 +765,106 @@
                     </div>
                     <div class="portlet-body form">
                         <!-- BEGIN FORM-->
-                        <form id="seo" action="{{action('Admin\ItemsController@update')}}" method="post" class="form-horizontal">
+                        <form
+                                ng-submit="submit(obj.helpers.makeObj('mapX'), obj.helpers.makeObj('mapY'))"
+                                action="{{action('Admin\ItemsController@update')}}"
+                                method="post"
+                                class="form-horizontal">
                             <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
                             <input type="hidden" name="id" value="{{ $item['id'] or '' }}" />
                             <input type="hidden" name="tab" value="#tab_7" />
                             <input ng-init="obj.objJson='{{ $item['obj'] or '' }}'" type="text" name="obj" ng-model="obj.objJson" class="col-md-12 "/>
 
 
-                            <div class="form-group">
-                                <label class="col-md-3 control-label"> Широта </label>
-                                <div class="col-md-2">
-                                    <input
-                                            type="text"
-                                            ng-model="obj.help['mapX']"
-                                            ng-change="obj.helpers.makeObj('mapX')"
-                                            class="form-control input-circle"
-                                            placeholder="Широта"
-                                            >
-                                </div>
-                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="col-md-6 control-label"> Широта </label>
+                                        <div class="col-md-6">
+                                            <input
+                                                    name="mapX"
+                                                    type="text"
+                                                    ng-model="obj.help['mapX']"
+                                                    ng-change="obj.helpers.makeObj('mapX')"
+                                                    class="form-control input-circle"
+                                                    placeholder="Широта"
+                                                    >
+                                        </div>
+                                    </div>
 
-                            <div class="form-group">
-                                <label class="col-md-3 control-label"> Долгота </label>
-                                <div class="col-md-2">
-                                    <input
-                                            type="text"
-                                            ng-model="obj.help['mapY']"
-                                            ng-change="obj.helpers.makeObj('mapY')"
-                                            class="form-control input-circle"
-                                            placeholder="Долгота"
-                                            >
+                                    <div class="form-group">
+                                        <label class="col-md-6 control-label"> Долгота </label>
+                                        <div class="col-md-6">
+                                            <input
+                                                    name="mapY"
+                                                    type="text"
+                                                    ng-model="obj.help['mapY']"
+                                                    ng-change="obj.helpers.makeObj('mapY')"
+                                                    class="form-control input-circle"
+                                                    placeholder="Долгота"
+                                                    >
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <script src="http://api-maps.yandex.ru/2.0/?load=package.full&mode=release&lang=ru-RU" type="text/javascript"></script>
+                                            <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+                                            <style type="text/css">
+
+                                                /* стили для гугловского автокомплита */
+                                                .pac-item {
+                                                    cursor: pointer;
+                                                    padding: 2px 4px;
+                                                    text-overflow: ellipsis;
+                                                    white-space: nowrap;
+                                                    color: #505050;
+                                                    font: 14px Arial;
+                                                    line-height: 24px;
+                                                }
+
+                                                .pac-item:hover {
+                                                    background-color: #E1E1E1;
+                                                }
+
+                                                .pac-container::after{
+                                                    content: none;
+                                                }
+
+                                                .pac-selected {
+                                                    background-color: #F0F0F0;
+                                                }
+                                            </style>
+                                            <div class="box grid_16">
+                                                <div class="block">
+                                                    <div class="grid_10">
+                                                        <div id="YMapsID" style="width:100%;height:400px"></div>
+                                                        <br/>
+                                                        <p>
+                                                            Поиск по карте: <input type="text" id="googleSearch" style="width:300px">
+                                                        </p>
+                                                        <!--            <p>-->
+                                                        <!--                широта: <input type="text" id="latInput" value="53.52362328411442">, долгота <input type="text" id="longInput" value="30.241416931152322">-->
+                                                        <!--            </p>-->
+
+                                                        <div class="help">
+                                                            <p>Под картой имеется поле ввода для поиска по названию населенного пункта.</p>
+                                                            <p>Метку на карте необходимо установить двойным кликом мышью на указанном месте, после этого необходимо "сохранить" контактные данные.</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
                             <div class="form-actions">
                                 <div class="row">
                                     <div class="col-md-offset-3 col-md-9">
-                                        <button type="submit" class="btn btn-circle green"> Сохранить </button>
+                                        <button type="submit" class="btn btn-circle green" ng-click="alert(1)"> Сохранить </button>
                                         {{--<button type="button" class="btn btn-circle grey-salsa btn-outline">Cancel</button>--}}
                                     </div>
                                 </div>
@@ -919,6 +982,127 @@
 @section('PAGE-LEVEL-SCRIPTS')
     <script src="/admin/assets/pages/scripts/form-fileupload.js" type="text/javascript"></script>
     <script src="/admin/js/items/item.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+
+        var MapsControl = {
+            init: function(config){
+                var self = this;
+
+                //init config
+                var defaultConfig = {
+                    mapId: "YMapsID",
+                    zoom: 14
+                };
+                this.config = $.extend( {}, config, defaultConfig );
+
+                //init controls
+                this.latInput = config.latitudeInput;
+                this.longInput = config.longitudeInput;
+
+                //init google autocomplete search;
+                var input = document.getElementById(config.googleSearchInputId);
+                var autocomplete = new google.maps.places.Autocomplete(input, {types: ['geocode']});
+
+                //задаем начальные координаты
+                var defaultCoords = [ymaps.geolocation.latitude, ymaps.geolocation.longitude];
+
+                //если в input'ах задана широта и долгота, используем их
+                if($.isNumeric(this.latInput.val()) && $.isNumeric(this.longInput.val())){
+                    defaultCoords = [this.latInput.val(), this.longInput.val()];
+                }
+
+                //создание карты
+                this.myMap = new ymaps.Map(this.config.mapId, {
+                    center: defaultCoords,
+                    zoom: this.config.zoom,
+                    behaviors: ["default", "scrollZoom"]
+                });
+                //поведение карты
+                this.myMap.behaviors.disable('dblClickZoom');
+                //инструменты карты
+                this.myMap.controls.add('mapTools');
+                this.myMap.controls.add('typeSelector');
+                this.myMap.controls.add('zoomControl');
+                this.myMap.controls.add('scaleLine');
+
+                //создание перетаскиваемой метки
+                this.placemark = new ymaps.Placemark(defaultCoords, {
+                            //свойства метки
+                            hintContent:'Me!'
+                        },
+                        {
+                            iconImageHref: 'http://alutech-group.com/bitrix/templates/partners/img/mark.png',
+                            iconImageSize: [38, 48], // размеры картинки
+                            iconImageOffset: [-15, -38], // смещение картинки
+                            draggable: true
+                        });
+                this.myMap.geoObjects.add(this.placemark);
+
+                //events
+                google.maps.event.addListener(autocomplete, 'place_changed', function(){
+                    var place = autocomplete.getPlace(),
+                            coords = [place.geometry.location.lat(), place.geometry.location.lng()];
+
+                    self.panTo(coords);
+                });
+
+                this.placemark.events.add('dragend', function (e){
+                    var coords = e.get('coordPosition');
+
+                    self.updateControls();
+                });
+
+                this.myMap.events.add('dblclick', function (e){
+                    var coords = e.get('coordPosition');
+
+                    self.placemark.geometry.setCoordinates(coords);
+
+                    self.updateControls();
+                });
+
+                this.updateControls();
+            },
+
+            updateControls: function(){
+                var coords = this.placemark.geometry.getCoordinates();
+
+                this.latInput.val(coords[0]);
+                this.longInput.val(coords[1]);
+            },
+
+            panTo: function(coords, duration){
+                var self = this,
+                        duration = duration || 1000;
+
+                this.myMap.panTo(
+                        coords, {
+                            flying: true,
+                            checkZoomRange: true,
+                            duration: duration,
+                            callback: function(){
+                                //ставим масштаб
+                                self.myMap.setZoom(self.config.zoom, {checkZoomRange: true});
+                            }
+                        }
+                );
+            }
+        }
+
+        $(document).ready(function(){
+
+            ymaps.ready(function(){
+                MapsControl.init({
+                    mapId: "YMapsID",						//id контейнера с картой
+                    googleSearchInputId: "googleSearch",	//id input с полем поска
+                    latitudeInput: $("[name=mapX]"),		//input широта
+                    longitudeInput: $("[name=mapY]")		//input долгота
+                });
+            });
+
+        });
+
+    </script>
 
     <script id="files-order" type="text/javascript">
         $(".sortable").sortable({

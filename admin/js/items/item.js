@@ -14,6 +14,7 @@ if(!myApp){
 
 myApp.controller('myCtrl', ['$scope', '$http',
     function($scope, $http) {
+        $scope.submit = function(){alert(1234);}
         $scope.filter = {};
         $scope.func = (function(){
             $http.post('/filter/ajax').
