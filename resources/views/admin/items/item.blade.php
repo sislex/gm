@@ -766,7 +766,6 @@
                     <div class="portlet-body form">
                         <!-- BEGIN FORM-->
                         <form
-                                ng-submit="submit(obj.helpers.makeObj('mapX'), obj.helpers.makeObj('mapY'))"
                                 action="{{action('Admin\ItemsController@update')}}"
                                 method="post"
                                 class="form-horizontal">
@@ -779,8 +778,8 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label class="col-md-6 control-label"> Широта </label>
-                                        <div class="col-md-6">
+                                        {{--<label class="col-md-6 control-label"> Широта </label>--}}
+                                        <div class="col-md-12">
                                             <input
                                                     name="mapX"
                                                     type="text"
@@ -793,8 +792,8 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="col-md-6 control-label"> Долгота </label>
-                                        <div class="col-md-6">
+                                        {{--<label class="col-md-6 control-label"> Долгота </label>--}}
+                                        <div class="col-md-12">
                                             <input
                                                     name="mapY"
                                                     type="text"
@@ -1068,7 +1067,9 @@
                 var coords = this.placemark.geometry.getCoordinates();
 
                 this.latInput.val(coords[0]);
+                this.latInput.change();
                 this.longInput.val(coords[1]);
+                this.longInput.change();
             },
 
             panTo: function(coords, duration){
