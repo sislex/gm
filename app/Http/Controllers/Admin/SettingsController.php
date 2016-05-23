@@ -9,6 +9,7 @@ use App\Counters;
 use App\Phones;
 use App\Currencies;
 use App\Email;
+use App\ServiceFiles;
 
 class SettingsController extends Controller
 {
@@ -17,13 +18,71 @@ class SettingsController extends Controller
 //        $this->middleware('auth');
     }
 
+//  service files settings
+    public function serviceFiles()
+    {
+        $serviceFiles = ServiceFiles::get();
+        return view('admin/settings/serviceFiles', ['serviceFiles' => $serviceFiles]);
+    }
+
+    public function addServiceFile()
+    {
+        return view('admin/settings/showServiceFile');
+    }
+
+    public function updateServiceFile()
+    {
+        $input = \Request::all();
+
+        if(isset($input['file']) && $input['file']->getSize() > 0 && $input['file']->getSize() < 8388608){
+            $file = array_get($input, 'file');
+            $file_uploaded = ServiceFiles::uploadServiceFile($file);
+        }else{
+            $file_uploaded = false;
+        }
+
+        if($input['id']){
+            if($file_uploaded){
+                $input['filename'] = $input['file']->getClientOriginalName();
+            }
+            unset($input['file']);
+            ServiceFiles::find($input['id'])->update($input);
+        }else{
+            if($file_uploaded){
+                $input['filename'] = $input['file']->getClientOriginalName();
+                unset($input['file']);
+                ServiceFiles::create($input);
+            }
+        }
+
+        return \Redirect::action('Admin\SettingsController@serviceFiles');
+    }
+
+    public function deleteServiceFile($id)
+    {
+        if($id){
+            $serviceFile = ServiceFiles::find($id);
+            if($serviceFile['filename'] && file_exists($_SERVER['DOCUMENT_ROOT'] .'/' .$serviceFile['filename'])){
+                unlink($_SERVER['DOCUMENT_ROOT'] .'/' .$serviceFile['filename']);
+            }
+            ServiceFiles::destroy($id);
+        }
+        return \Redirect::action('Admin\SettingsController@serviceFiles');
+    }
+    
+//    public function uploadServiceFile()
+//    {
+//        $input = \Request::all();
+//        $serviceFiles = ServiceFiles::get();
+//        return view('admin/settings/servicefiles', ['serviceFiles' => $serviceFiles]);
+//    }
+
 
 //    counter settings
     public function counters()
     {
         $counters = Counters::get();
         return view('admin/settings/counters', ['counters' => $counters]);
-
     }
 
     public function addCounter()
@@ -150,6 +209,7 @@ class SettingsController extends Controller
 
         return \Redirect::action('Admin\SettingsController@currencies');
     }
+    
     //    email settings
     public function email()
     {

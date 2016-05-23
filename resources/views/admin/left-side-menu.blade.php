@@ -159,7 +159,7 @@
             </a>
         </li>
         <li class="nav-item  ">
-            <a href="portlet_draggable.html" class="nav-link ">
+            <a href="{{action('Admin\SettingsController@serviceFiles')}}" class="nav-link ">
                 <span class="title">
                     Служебные файлы
                 </span>

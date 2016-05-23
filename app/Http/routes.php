@@ -103,6 +103,12 @@ Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
 
 // Settings routes..
+// _service files
+Route::get('admin/settings/servicefiles', ['middleware' => 'auth', 'uses' => 'Admin\SettingsController@serviceFiles']);
+Route::get('admin/settings/servicefiles/add', ['middleware' => 'auth', 'uses' => 'Admin\SettingsController@addServiceFile']);
+Route::post('admin/settings/servicefiles/update', ['middleware' => 'auth', 'uses' => 'Admin\SettingsController@updateServiceFile']);
+Route::get('admin/settings/servicefiles/delete/{id}', ['middleware' => 'auth', 'uses' => 'Admin\SettingsController@deleteServiceFile']);
+
 //    _counters
 Route::get('admin/settings/counters', ['middleware' => 'auth', 'uses' => 'Admin\SettingsController@counters']);
 Route::get('admin/settings/counters/add', ['middleware' => 'auth', 'uses' => 'Admin\SettingsController@addCounter']);
