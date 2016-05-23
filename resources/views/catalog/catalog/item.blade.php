@@ -208,8 +208,7 @@
                                         @if(isset($item['obj']['Страна'][0]['text']))<li class="list-group-item"> <span class="badge">Страна</span> {{$item['obj']['Страна'][0]['text']}}</li>@endif
                                         @if(isset($item['obj']['Страна'][0]['children'][0]['text']))<li class="list-group-item"> <span class="badge">Город</span> {{$item['obj']['Страна'][0]['children'][0]['text']}}</li>@endif
 
-                                            {{--<iframe width="100%" height="300px" frameBorder="0" src="http://a.tiles.mapbox.com/v3/imicreation.map-zkcdvthf.html?secure#12/{{$item['obj']['mapX']}}/{{$item['obj']['mapY']}}"></iframe>--}}
-                                            <iframe width="100%" height="300px" frameBorder="0" src="http://a.tiles.mapbox.com/v3/imicreation.map-zkcdvthf.html?secure#18/{{$item['obj']['mapX']}}/{{$item['obj']['mapY']}}"></iframe>
+                                            @if(isset($item['obj']['mapX']) && isset($item['obj']['mapY']))  <iframe width="100%" height="300px" frameBorder="0" src="http://a.tiles.mapbox.com/v3/imicreation.map-zkcdvthf.html?secure#18/{{$item['obj']['mapX']}}/{{$item['obj']['mapY']}}"></iframe> @endif
                                     </div>
                                     @if(isset($item['obj']['video']))
                                     <div id="vehicle-video" class="tab-pane fade">
