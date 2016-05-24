@@ -369,7 +369,7 @@
                                             ng-options="item.text for item in filter['Страна'] | orderBy:'text':false"
                                             ng-change="obj.helpers.makeObj('Страна', 'sublist')"
                                             class="form-control input-circle"
-                                    >
+                                            >
                                         <option value=""> любая </option>
                                     </select>
                                 </div>
@@ -385,6 +385,34 @@
                                             class="form-control input-circle"
                                             >
                                         <option value=""> любая </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label"> Телефон 1 * </label>
+                                <div class="col-md-2">
+                                    <select
+                                            ng-model="obj.help['телефон'][0]"
+                                            ng-options="item.text for item in filter['телефон'] | orderBy:'text':false"
+                                            ng-change="obj.helpers.makeObj('телефон', 'sublist')"
+                                            class="form-control input-circle"
+                                            >
+                                        <option value=""> любой </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label"> Телефон 2 * </label>
+                                <div class="col-md-2">
+                                    <select
+                                            ng-model="obj.help['телефон 2'][0]"
+                                            ng-options="item.text for item in filter['телефон 2'] | orderBy:'text':false"
+                                            ng-change="obj.helpers.makeObj('телефон 2', 'sublist')"
+                                            class="form-control input-circle"
+                                            >
+                                        <option value=""> любой </option>
                                     </select>
                                 </div>
                             </div>
