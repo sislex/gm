@@ -1015,7 +1015,7 @@
         var MapsControl = {
             init: function(config){
                 var self = this;
-
+//debugger;
                 //init config
                 var defaultConfig = {
                     mapId: "YMapsID",
@@ -1037,6 +1037,7 @@
                 //если в input'ах задана широта и долгота, используем их
                 if($.isNumeric(this.latInput.val()) && $.isNumeric(this.longInput.val())){
                     defaultCoords = [this.latInput.val(), this.longInput.val()];
+//                    alert(this.latInput.val(this.longInput.val()));
                 }
 
                 //создание карты
@@ -1095,9 +1096,13 @@
                 var coords = this.placemark.geometry.getCoordinates();
 
                 this.latInput.val(coords[0]);
-                this.latInput.change();
                 this.longInput.val(coords[1]);
-                this.longInput.change();
+                let self = this;
+                setTimeout(function(){
+                    self.latInput.change();
+                    self.longInput.change();
+                }, 1000);
+
             },
 
             panTo: function(coords, duration){
@@ -1119,15 +1124,17 @@
         }
 
         $(document).ready(function(){
+            setTimeout(function(){
+                ymaps.ready(function(){
+                        MapsControl.init({
+                            mapId: "YMapsID",						//id контейнера с картой
+                            googleSearchInputId: "googleSearch",	//id input с полем поска
+                            latitudeInput: $("[name=mapX]"),		//input широта
+                            longitudeInput: $("[name=mapY]")		//input долгота
+                        });
+                    });
+            }, 1000);
 
-            ymaps.ready(function(){
-                MapsControl.init({
-                    mapId: "YMapsID",						//id контейнера с картой
-                    googleSearchInputId: "googleSearch",	//id input с полем поска
-                    latitudeInput: $("[name=mapX]"),		//input широта
-                    longitudeInput: $("[name=mapY]")		//input долгота
-                });
-            });
 
         });
 
