@@ -151,7 +151,7 @@
                                     <li class="active"> <a data-toggle="tab" href="#vehicle-overview">Описание</a></li>
                                     <li> <a data-toggle="tab" href="#vehicle-specs">Тех. характеристики</a></li>
                                     <li> <a data-toggle="tab" href="#vehicle-add-features">Комплектация</a></li>
-                                    <li> <a data-toggle="tab" href="#vehicle-location">На карте</a> </li>
+                                    <li> <a data-toggle="tab" href="#vehicle-location" class="mapButton">На карте</a> </li>
                                     @if(isset($item['obj']['video']))<li> <a data-toggle="tab" href="#vehicle-video">Видео</a> </li>@endif
                                 </ul>
                                 <div class="tab-content">
@@ -208,7 +208,10 @@
                                         @if(isset($item['obj']['Страна'][0]['text']))<li class="list-group-item"> <span class="badge">Страна</span> {{$item['obj']['Страна'][0]['text']}}</li>@endif
                                         @if(isset($item['obj']['Страна'][0]['children'][0]['text']))<li class="list-group-item"> <span class="badge">Город</span> {{$item['obj']['Страна'][0]['children'][0]['text']}}</li>@endif
 
-                                            @if(isset($item['obj']['mapX']) && isset($item['obj']['mapY']))  <iframe width="100%" height="300px" frameBorder="0" src="http://a.tiles.mapbox.com/v3/imicreation.map-zkcdvthf.html?secure#18/{{$item['obj']['mapX']}}/{{$item['obj']['mapY']}}"></iframe> @endif
+                                            @if(isset($item['obj']['mapX']) && isset($item['obj']['mapY']))
+                                                <div id="map" style="width: 100%; height: 400px"></div>
+                                                {{--<iframe width="100%" height="300px" frameBorder="0" src="http://a.tiles.mapbox.com/v3/imicreation.map-zkcdvthf.html?secure#18/{{$item['obj']['mapX']}}/{{$item['obj']['mapY']}}"></iframe>--}}
+                                            @endif
                                     </div>
                                     @if(isset($item['obj']['video']))
                                     <div id="vehicle-video" class="tab-pane fade">
@@ -589,6 +592,30 @@
             }
         }, 500);
     </script>
+    @if(isset($item['obj']['mapX']) && isset($item['obj']['mapY']))
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+    <script type="text/javascript">
+        $('.mapButton').bind('click', function(){
+
+            ymaps.ready(init);
+            var myMap,
+                    myPlacemark;
+
+            function init(){
+                myMap = new ymaps.Map("map", {
+                    center: [{{$item['obj']['mapX']}}, {{$item['obj']['mapY']}}],
+                    zoom: 15
+                });
+
+                myPlacemark = new ymaps.Placemark([{{$item['obj']['mapX']}}, {{$item['obj']['mapY']}}], {
+                });
+
+                myMap.geoObjects.add(myPlacemark);
+            }
+        });
+
+    </script>
+    @endif
     <!--виджет расчета лизинговой схемы-->
     <script type="text/javascript" src="http://cln.by/static/js/informers/cln_goldenmotors_by.js"></script>
     <!-- -->
