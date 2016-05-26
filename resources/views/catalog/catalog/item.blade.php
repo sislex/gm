@@ -289,6 +289,7 @@
 
 {{--                                @if(\App\Phones::where('type','=','мобильный телефон')->first())--}}
                                     <div class="vehicle-enquiry-foot">
+                                        @if(isset($item['obj']['телефон'][0]['text']))
                                         <span>
                                             <i class="fa fa-phone" style="font-size: medium"></i>
                                             <strong>
@@ -296,15 +297,19 @@
                                                 {{--{{ \App\Phones::where('type','=','мобильный телефон')->first()->value('phone') }}--}}
                                             {{--</a>--}}
 
-                                                <a href="tel://+375293746666"> +375-(29)-374-66-66 </a>
+                                                <a href="tel://{{$item['obj']['телефон'][0]['text']}}"> {{$item['obj']['телефон'][0]['text']}} </a>
                                             </strong>
                                         </span>
                                         <br>
+                                        @endif
+
                                         <span>
+                                            @if(isset($item['obj']['телефон 2'][0]['text']))
                                             <i class="fa fa-phone" style="font-size: medium"></i>
                                             <strong>
-                                                <a href="tel://+375333746666"> +375-(33)-374-66-66 </a>
+                                                <a href="tel://{{$item['obj']['телефон 2'][0]['text']}}"> {{$item['obj']['телефон 2'][0]['text']}} </a>
                                             </strong>
+                                            @endif
                                             Продавец: Голденмоторс
                                         </span>
                                     </div>
