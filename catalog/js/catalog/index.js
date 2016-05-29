@@ -80,9 +80,6 @@ myApp.controller('myCtrl', ['$scope', '$http',
                     $scope.order = str;
                 },
                 makeObj : function(parentKey, type){
-                    //$scope.obj.help['Трансмиссия'][0] = {"text":"механика","children":[]};
-                    console.log($scope.obj.help['God_vypuska']);
-
                     $scope.obj.obj[parentKey] = [];
 
                     if(type == 'value'){
