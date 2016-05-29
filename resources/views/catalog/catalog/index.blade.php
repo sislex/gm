@@ -120,10 +120,9 @@
                         <div class="tbsticky filters-sidebar">
                             <h3>Фильтр</h3>
                             <div class="accordion" id="toggleArea">
-
                                 <div>
                                     <select
-                                            class=" input-circle"
+                                            class="form-control input-circle"
                                             ng-model="obj.help.type_auto[0]"
                                             ng-options="item.text for item in filter['type_auto'] | orderBy:'text':false"
                                             ng-change="obj.helpers.makeObj('type_auto', 'sublist')"
