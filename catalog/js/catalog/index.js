@@ -287,7 +287,6 @@ myApp.controller('myCtrl', ['$scope', '$http',
             hash[param[0]] = param[1];
         });
         if(!angular.isUndefined(hash['filter'])){
-            alert();
             $scope.obj.help = angular.fromJson(hash['filter']);
         }
     }

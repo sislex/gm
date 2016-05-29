@@ -111,6 +111,9 @@
         </div>
     </div>
     <!-- Start Body Content -->
+            <style>
+                .form-control{transition: none;}
+            </style>
     <div class="main" role="main">
         <div id="content" class="content full fade">
             <div class="container">
