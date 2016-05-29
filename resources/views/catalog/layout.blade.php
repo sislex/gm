@@ -190,14 +190,14 @@
 
 <script src="/catalog/js/utils.js"></script> <!-- Jquery Library Call -->
 <script src="/catalog/js/jquery-2.0.0.min.js"></script> <!-- Jquery Library Call -->
-<script src="/catalog/vendor/prettyphoto/js/prettyphoto.js"></script> <!-- PrettyPhoto Plugin -->
-<script src="/catalog/js/ui-plugins.js"></script> <!-- UI Plugins -->
-<script src="/catalog/js/helper-plugins.js"></script> <!-- Helper Plugins -->
-<script src="/catalog/vendor/owl-carousel/js/owl.carousel.min.js"></script> <!-- Owl Carousel -->
-<script src="/catalog/vendor/password-checker.js"></script> <!-- Password Checker -->
-<script src="/catalog/js/bootstrap.js"></script> <!-- UI -->
-<script src="/catalog/js/init.js"></script> <!-- All Scripts -->
-<script src="/catalog/vendor/flexslider/js/jquery.flexslider.js"></script> <!-- FlexSlider -->
+{{--<script src="/catalog/vendor/prettyphoto/js/prettyphoto.js"></script> <!-- PrettyPhoto Plugin -->--}}
+{{--<script src="/catalog/js/ui-plugins.js"></script> <!-- UI Plugins -->--}}
+{{--<script src="/catalog/js/helper-plugins.js"></script> <!-- Helper Plugins -->--}}
+{{--<script src="/catalog/vendor/owl-carousel/js/owl.carousel.min.js"></script> <!-- Owl Carousel -->--}}
+{{--<script src="/catalog/vendor/password-checker.js"></script> <!-- Password Checker -->--}}
+{{--<script src="/catalog/js/bootstrap.js"></script> <!-- UI -->--}}
+{{--<script src="/catalog/js/init.js"></script> <!-- All Scripts -->--}}
+{{--<script src="/catalog/vendor/flexslider/js/jquery.flexslider.js"></script> <!-- FlexSlider -->--}}
 <!--<script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>-->
 
 @yield('PAGE-LEVEL-PLUGINS')
