@@ -84,7 +84,7 @@
                         <div class="btn btn-info price" >@{{ obj.obj.price * currencies.BYR | ceil }} <span style="font-size: 14px">руб</span>.</div>
                         {{--<div class="btn btn-info price">${{ intval($item['price']) }}</div>--}}
 
-                        @if(isset($item['obj']['Старая цена']))
+                        @if(isset($item['obj']['Старая цена']) && $item['obj']['Старая цена']!='')
                             <div class="btn btn-warning old-price">${{$item['obj']['Старая цена']}}</div>
                         @endif
 
