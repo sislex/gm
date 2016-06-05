@@ -15,7 +15,7 @@ class ServiceFiles extends Model
             $file_extension = $file->getClientOriginalExtension();
 
             if(in_array($filename, ['index.htm','index.html','index.php','start.htm','start.html','start.php'])
-                || in_array($file_extension, ['sh','exe','js'])){
+                || in_array($file_extension, ['sh','js','exe','cmd','bat'])){
                 return false;
             }
 
