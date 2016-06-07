@@ -128,6 +128,17 @@ myApp.controller('callMeBackWidget', ['$scope', '$http',
             comment : '',
             subscribe : false,
             url : window.location.href,
+
+            // Добавлено для произвольной формы заказа авто
+            mark: '',
+            model: '',
+            year: '',
+            price: '',
+            engine: '',
+            body: '',
+            transmission: '',
+            // ---
+
             send : function(){
                 $scope.ok('#callMeBackWidget');
                 $http.post('/mail/index',{callMeBackWidget : $scope.callMeBack})
@@ -146,6 +157,16 @@ myApp.controller('callMeBackWidget', ['$scope', '$http',
                 $scope.callMeBack.phone = '';
                 $scope.callMeBack.comment = '';
                 $scope.callMeBack.subscribe = false;
+
+                // Добавлено для произвольной формы заказа авто
+                $scope.callMeBack.mark = '';
+                $scope.callMeBack.model = '';
+                $scope.callMeBack.year = '';
+                $scope.callMeBack.price = '';
+                $scope.callMeBack.engine = '';
+                $scope.callMeBack.body = '';
+                $scope.callMeBack.transmission = '';
+                // ---
             }
         };
     }

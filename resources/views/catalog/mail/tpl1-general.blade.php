@@ -17,7 +17,7 @@
             <table width="90%" class="content" align="center" cellpadding="0" cellspacing="0" border="0">
                 <tr>
                     <td>
-                        Письмо с сайта <a href="http://new.goldenmotors.by"> new.goldenmotors.by </a>
+                        Письмо с сайта <a href="http://goldenmotors.by"> goldenmotors.by </a>
                     </td>
                 </tr>
                 <tr>
@@ -156,6 +156,87 @@
                             </td>
                         </tr>
                     @endif
+
+
+                    <!-- Добавлено для произвольной формы заказа авто -->
+                    @if(isset($mail_data['mark']))
+                        <tr>
+                            <td width="30%" style="max-width: 100px; min-width: 70px">
+                                <b>Марка</b>
+                            </td>
+                            <td width="70%" style="max-width: 200px; min-width: 70px">
+                                {{ $mail_data['mark'] != '' ? $mail_data['mark'] : 'отсутствует' }}
+                            </td>
+                        </tr>
+                    @endif
+
+                    @if(isset($mail_data['model']))
+                        <tr>
+                            <td width="30%" style="max-width: 100px; min-width: 70px">
+                                <b>Модель</b>
+                            </td>
+                            <td width="70%" style="max-width: 200px; min-width: 70px">
+                                {{ $mail_data['model'] != '' ? $mail_data['model'] : 'отсутствует' }}
+                            </td>
+                        </tr>
+                    @endif
+
+                    @if(isset($mail_data['year']))
+                        <tr>
+                            <td width="30%" style="max-width: 100px; min-width: 70px">
+                                <b>Год</b>
+                            </td>
+                            <td width="70%" style="max-width: 200px; min-width: 70px">
+                                {{ $mail_data['year'] != '' ? $mail_data['year'] : 'отсутствует' }}
+                            </td>
+                        </tr>
+                    @endif
+
+                    @if(isset($mail_data['price']))
+                        <tr>
+                            <td width="30%" style="max-width: 100px; min-width: 70px">
+                                <b>Цена</b>
+                            </td>
+                            <td width="70%" style="max-width: 200px; min-width: 70px">
+                                {{ $mail_data['price'] != '' ? $mail_data['price'] : 'отсутствует' }}
+                            </td>
+                        </tr>
+                    @endif
+
+                    @if(isset($mail_data['engine']))
+                        <tr>
+                            <td width="30%" style="max-width: 100px; min-width: 70px">
+                                <b>Тип двигателя</b>
+                            </td>
+                            <td width="70%" style="max-width: 200px; min-width: 70px">
+                                {{ $mail_data['engine'] != '' ? $mail_data['engine'] : 'отсутствует' }}
+                            </td>
+                        </tr>
+                    @endif
+
+                    @if(isset($mail_data['body']))
+                        <tr>
+                            <td width="30%" style="max-width: 100px; min-width: 70px">
+                                <b>Тип кузова</b>
+                            </td>
+                            <td width="70%" style="max-width: 200px; min-width: 70px">
+                                {{ $mail_data['body'] != '' ? $mail_data['body'] : 'отсутствует' }}
+                            </td>
+                        </tr>
+                    @endif
+
+                    @if(isset($mail_data['transmission']))
+                        <tr>
+                            <td width="30%" style="max-width: 100px; min-width: 70px">
+                                <b>Трансмиссия</b>
+                            </td>
+                            <td width="70%" style="max-width: 200px; min-width: 70px">
+                                {{ $mail_data['transmission'] != '' ? $mail_data['transmission'] : 'отсутствует' }}
+                            </td>
+                        </tr>
+                    @endif
+                    <!-- --- -->
+
                 </table>
             @endif
 
