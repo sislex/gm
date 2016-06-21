@@ -250,7 +250,6 @@
                                                             <span class="vehicle-cost pull-right">@{{ obj.obj.price * currencies.BYR | ceil }} <span style="font-size: 10px">руб</span>.</span>
                                                         </div>
                                                     </li>
-
                                                 </ul>
                                             </div>
                                         </div>

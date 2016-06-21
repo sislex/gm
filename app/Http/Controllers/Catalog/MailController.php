@@ -10,8 +10,8 @@ class MailController extends Controller
     public function index()
     {
         $input = \Request::all();
-        
-        if(isset($input['modal']) || isset($input['callMeBackWidget'])){
+
+        if(isset($input['modal']) || isset($input['callMeBackWidget']) || isset($input['subscribeWidget'])){
             $transport = \Swift_SmtpTransport::newInstance('smtp.yandex.ru', 465, 'ssl');
             $transport->setUsername('new.goldenmotors@tut.by');
             $transport->setPassword('Gold3nMotors_2016');
@@ -25,6 +25,10 @@ class MailController extends Controller
 
             if(isset($input['callMeBackWidget'])){
                 $mail_data = $input['callMeBackWidget'];
+            }
+
+            if(isset($input['subscribeWidget'])){
+                $mail_data = $input['subscribeWidget'];
             }
 
             if((isset($mail_data['phone']) && trim($mail_data['phone']) != '') || (isset($mail_data['email']) && trim($mail_data['email']) != '')){

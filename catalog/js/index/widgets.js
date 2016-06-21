@@ -172,6 +172,38 @@ myApp.controller('callMeBackWidget', ['$scope', '$http',
     }
 ]);
 
+myApp.controller('subscribeWidget', ['$scope', '$http',
+    function($scope, $http) {
+        $scope.ok = function(selector){
+            var ok = $('<div class="ok"><div class="shadow"></div><div class="text"> Отправлено! </div></div>');
+            $(selector).prepend(ok);
+            $(selector + ' .ok').fadeIn(1500, function(){
+                //$(selector + ' .ok').remove();
+            });
+        };
+        $scope.subscribe = {
+            type : 'Подписка на рассылку',
+            email : '',
+
+            send : function(){
+                $scope.ok('#subscribeWidget');
+                $http.post('/mail/index',{subscribeWidget : $scope.subscribe})
+                    .success(function(data, status, headers, config){
+                        console.log('запрос отправлен успешно');
+                        $scope.subscribe.clear();
+                    })
+                    .error(function(data, status, headers, config){
+                        console.log('ошибка при отправке запроса');
+                        $scope.subscribe.clear();
+                    });
+            },
+            clear : function(){
+                $scope.subscribe.email = '';
+            }
+        };
+    }
+]);
+
 
 if(!mailApp){
     var mailApp = angular.module('mailApp', []);
