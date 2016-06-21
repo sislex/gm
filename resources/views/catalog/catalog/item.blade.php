@@ -238,10 +238,14 @@
                                                                 <img ng-src="/images/items/@{{ item.item['id'] }}/thumbnail/@{{ item.images[0] }}" alt="">
                                                             </a>
                                                             <span class="label label-default vehicle-age">@{{ item['God_vypuska'][0]['text'] }}</span>
+
+                                                            <span ng-if="item.promo.hot > 0" class="label label-primary vehicle-hot"> Срочно </span>
+                                                            <span ng-if="item.promo.new > 0" class="label label-success vehicle-new2"> Новое </span>
+
                                                             <h5 class="vehicle-title"><a href="{{action('Catalog\CatalogController@item')}}/@{{ item.item['id'] }}">@{{ item.type_auto[0].children[0].text }} @{{ item.type_auto[0].children[0].children[0].text }} @{{ item['Версия/Модификация'] }} @{{ item.God_vypuska[0].text }}</a></h5>
-                                                <span class="vehicle-meta">
-                                                    @{{ item.type_auto[0].children[0].text }}, @{{ item['Цвет'][0]['text'] }}
-                                                </span>
+                                                            <span class="vehicle-meta">
+                                                                @{{ item.type_auto[0].children[0].text }}, @{{ item['Цвет'][0]['text'] }}
+                                                            </span>
                                                             <span class="vehicle-cost pull-left">$@{{ item.item.price | ceil }}</span>
                                                             <span class="vehicle-cost pull-right">@{{ obj.obj.price * currencies.BYR | ceil }} <span style="font-size: 10px">руб</span>.</span>
                                                         </div>
