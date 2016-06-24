@@ -182,6 +182,7 @@ myApp.controller('subscribeWidget', ['$scope', '$http',
             });
         };
         $scope.subscribe = {
+            name : '',
             type : 'Подписка на рассылку',
             email : '',
 
@@ -198,6 +199,7 @@ myApp.controller('subscribeWidget', ['$scope', '$http',
                     });
             },
             clear : function(){
+                $scope.subscribe.name = '';
                 $scope.subscribe.email = '';
             }
         };
