@@ -128,6 +128,17 @@ myApp.controller('callMeBackWidget', ['$scope', '$http',
             comment : '',
             subscribe : false,
             url : window.location.href,
+
+            // Добавлено для произвольной формы заказа авто
+            mark: '',
+            model: '',
+            year: '',
+            price: '',
+            engine: '',
+            body: '',
+            transmission: '',
+            // ---
+
             send : function(){
                 $scope.ok('#callMeBackWidget');
                 $http.post('/mail/index',{callMeBackWidget : $scope.callMeBack})
@@ -146,6 +157,50 @@ myApp.controller('callMeBackWidget', ['$scope', '$http',
                 $scope.callMeBack.phone = '';
                 $scope.callMeBack.comment = '';
                 $scope.callMeBack.subscribe = false;
+
+                // Добавлено для произвольной формы заказа авто
+                $scope.callMeBack.mark = '';
+                $scope.callMeBack.model = '';
+                $scope.callMeBack.year = '';
+                $scope.callMeBack.price = '';
+                $scope.callMeBack.engine = '';
+                $scope.callMeBack.body = '';
+                $scope.callMeBack.transmission = '';
+                // ---
+            }
+        };
+    }
+]);
+
+myApp.controller('subscribeWidget', ['$scope', '$http',
+    function($scope, $http) {
+        $scope.ok = function(selector){
+            var ok = $('<div class="ok"><div class="shadow"></div><div class="text"> Отправлено! </div></div>');
+            $(selector).prepend(ok);
+            $(selector + ' .ok').fadeIn(1500, function(){
+                //$(selector + ' .ok').remove();
+            });
+        };
+        $scope.subscribe = {
+            name : '',
+            type : 'Подписка на рассылку',
+            email : '',
+
+            send : function(){
+                $scope.ok('#subscribeWidget');
+                $http.post('/mail/index',{subscribeWidget : $scope.subscribe})
+                    .success(function(data, status, headers, config){
+                        console.log('запрос отправлен успешно');
+                        $scope.subscribe.clear();
+                    })
+                    .error(function(data, status, headers, config){
+                        console.log('ошибка при отправке запроса');
+                        $scope.subscribe.clear();
+                    });
+            },
+            clear : function(){
+                $scope.subscribe.name = '';
+                $scope.subscribe.email = '';
             }
         };
     }
