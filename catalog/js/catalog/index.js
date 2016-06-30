@@ -289,5 +289,58 @@ myApp.controller('myCtrl', ['$scope', '$http',
         if(!angular.isUndefined(hash['filter'])){
             $scope.obj.help = angular.fromJson(hash['filter']);
         }
+
+
+        $scope.ok = function(selector){
+            var ok = $('<div class="ok"><div class="shadow"></div><div class="text"> Отправлено! </div></div>');
+            $(selector).prepend(ok);
+            $(selector + ' .ok').fadeIn(1500, function(){
+                //$(selector + ' .ok').remove();
+            });
+        };
+        $scope.mail = {
+            type : 'Заказ обратного звонка',
+            name : 'qq',
+            email : '',
+            phone : '',
+            comment : '',
+            subscribe : false,
+            url : window.location.href,
+            send : function(){
+                $scope.ok('#callMeBackWidget');
+
+                if($scope.obj.help.type_auto){$scope.mail.type = $scope.obj.help.type_auto[0].text;}
+                if($scope.obj.help.type_auto && $scope.obj.help.type_auto[1]){$scope.mail.mark = $scope.obj.help.type_auto[1].text;}
+                if($scope.obj.help.type_auto && $scope.obj.help.type_auto[2]){$scope.mail.model = $scope.obj.help.type_auto[2].text;}
+                if($scope.obj.help['God_vypuska']){$scope.mail.year_min = $scope.obj.help['God_vypuska']['min'].text;}
+                if($scope.obj.help['God_vypuska']){$scope.mail.year_max = $scope.obj.help['God_vypuska']['max'].text;}
+                if($scope.obj.help['price']){$scope.mail.price_min = $scope.obj.help['price']['min'];}
+                if($scope.obj.help['price']){$scope.mail.price_max = $scope.obj.help['price']['max'];}
+                if($scope.obj.help['Тип двигателя']){$scope.mail.engin = $scope.obj.help['Тип двигателя'][0].text;}
+                if($scope.obj.help['Тип кузова']){$scope.mail.body = $scope.obj.help['Тип кузова'][0].text;}
+                if($scope.obj.help['Трансмиссия']){$scope.mail.transmission = $scope.obj.help['Трансмиссия'][0].text;}
+
+                //console.log($scope.mail);
+
+                $http.post('/mail/index',{callMeBackWidget : $scope.mail})
+                    .success(function(data, status, headers, config){
+                        console.log('запрос отправлен успешно');
+                        //$scope.mail.clear();
+                    })
+                    .error(function(data, status, headers, config){
+                        console.log('ошибка при отправке запроса');
+                        //$scope.mail.clear();
+                    });
+            },
+            clear : function(){
+                $scope.mail.name = '';
+                $scope.mail.email = '';
+                $scope.mail.phone = '';
+                $scope.mail.comment = '';
+                $scope.mail.subscribe = false;
+            }
+        };
+
+
     }
 ]);
