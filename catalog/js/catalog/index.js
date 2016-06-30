@@ -300,7 +300,7 @@ myApp.controller('myCtrl', ['$scope', '$http',
         };
         $scope.mail = {
             type : 'Заказ обратного звонка',
-            name : 'qq',
+            name : '',
             email : '',
             phone : '',
             comment : '',
