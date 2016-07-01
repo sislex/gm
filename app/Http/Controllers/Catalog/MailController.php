@@ -46,6 +46,7 @@ class MailController extends Controller
                     {
                         $message->from('new.goldenmotors@tut.by', 'Автосалон Golden Motors');
                         $message->to('goldenmotors.by@gmail.com', 'Автосалон Golden Motors')->subject("Письмо с сайта [goldenmotors.by] - " .$mail_data['type']);
+//                        $message->to('sislex@ya.ru', 'Автосалон Golden Motors')->subject("Письмо с сайта [goldenmotors.by] - " .$mail_data['type']);
                     });
 
                     return 'Письмо отправлено. Код: ' .$mail_sending_result;

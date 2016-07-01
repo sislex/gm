@@ -192,6 +192,28 @@
                         </tr>
                     @endif
 
+                    @if(isset($mail_data['year_min']))
+                        <tr>
+                            <td width="30%" style="max-width: 100px; min-width: 70px">
+                                <b>Год от</b>
+                            </td>
+                            <td width="70%" style="max-width: 200px; min-width: 70px">
+                                {{ $mail_data['year_min'] != '' ? $mail_data['year_min'] : 'отсутствует' }}
+                            </td>
+                        </tr>
+                    @endif
+
+                    @if(isset($mail_data['year_max']))
+                        <tr>
+                            <td width="30%" style="max-width: 100px; min-width: 70px">
+                                <b>Год до</b>
+                            </td>
+                            <td width="70%" style="max-width: 200px; min-width: 70px">
+                                {{ $mail_data['year_max'] != '' ? $mail_data['year_max'] : 'отсутствует' }}
+                            </td>
+                        </tr>
+                    @endif
+
                     @if(isset($mail_data['price']))
                         <tr>
                             <td width="30%" style="max-width: 100px; min-width: 70px">
@@ -199,6 +221,28 @@
                             </td>
                             <td width="70%" style="max-width: 200px; min-width: 70px">
                                 {{ $mail_data['price'] != '' ? $mail_data['price'] : 'отсутствует' }}
+                            </td>
+                        </tr>
+                    @endif
+
+                    @if(isset($mail_data['price_min']))
+                        <tr>
+                            <td width="30%" style="max-width: 100px; min-width: 70px">
+                                <b>Цена от</b>
+                            </td>
+                            <td width="70%" style="max-width: 200px; min-width: 70px">
+                                {{ $mail_data['price_min'] != '' ? $mail_data['price_min'] : 'отсутствует' }}
+                            </td>
+                        </tr>
+                    @endif
+
+                    @if(isset($mail_data['price_max']))
+                        <tr>
+                            <td width="30%" style="max-width: 100px; min-width: 70px">
+                                <b>Цена до</b>
+                            </td>
+                            <td width="70%" style="max-width: 200px; min-width: 70px">
+                                {{ $mail_data['price_max'] != '' ? $mail_data['price_max'] : 'отсутствует' }}
                             </td>
                         </tr>
                     @endif
