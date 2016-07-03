@@ -316,7 +316,7 @@ myApp.controller('myCtrl', ['$scope', '$http',
                 if($scope.obj.help['God_vypuska']){$scope.mail.year_max = $scope.obj.help['God_vypuska']['max'].text;}
                 if($scope.obj.help['price']){$scope.mail.price_min = $scope.obj.help['price']['min'];}
                 if($scope.obj.help['price']){$scope.mail.price_max = $scope.obj.help['price']['max'];}
-                if($scope.obj.help['Тип двигателя']){$scope.mail.engin = $scope.obj.help['Тип двигателя'][0].text;}
+                if($scope.obj.help['Тип двигателя']){$scope.mail.engine = $scope.obj.help['Тип двигателя'][0].text;}
                 if($scope.obj.help['Тип кузова']){$scope.mail.body = $scope.obj.help['Тип кузова'][0].text;}
                 if($scope.obj.help['Трансмиссия']){$scope.mail.transmission = $scope.obj.help['Трансмиссия'][0].text;}
 
