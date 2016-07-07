@@ -308,17 +308,17 @@ myApp.controller('myCtrl', ['$scope', '$http',
             url : window.location.href,
             send : function(){
                 $scope.ok('#callMeBackWidget');
-
-                if($scope.obj.help.type_auto){$scope.mail.type = $scope.obj.help.type_auto[0].text;}
+                console.log($scope.obj.help.type_auto );
+                if($scope.obj.help.type_auto && $scope.obj.help.type_auto[0]){$scope.mail.type = $scope.obj.help.type_auto[0].text;}
                 if($scope.obj.help.type_auto && $scope.obj.help.type_auto[1]){$scope.mail.mark = $scope.obj.help.type_auto[1].text;}
                 if($scope.obj.help.type_auto && $scope.obj.help.type_auto[2]){$scope.mail.model = $scope.obj.help.type_auto[2].text;}
                 if($scope.obj.help['God_vypuska']){$scope.mail.year_min = $scope.obj.help['God_vypuska']['min'].text;}
                 if($scope.obj.help['God_vypuska']){$scope.mail.year_max = $scope.obj.help['God_vypuska']['max'].text;}
                 if($scope.obj.help['price']){$scope.mail.price_min = $scope.obj.help['price']['min'];}
                 if($scope.obj.help['price']){$scope.mail.price_max = $scope.obj.help['price']['max'];}
-                if($scope.obj.help['Тип двигателя']){$scope.mail.engine = $scope.obj.help['Тип двигателя'][0].text;}
-                if($scope.obj.help['Тип кузова']){$scope.mail.body = $scope.obj.help['Тип кузова'][0].text;}
-                if($scope.obj.help['Трансмиссия']){$scope.mail.transmission = $scope.obj.help['Трансмиссия'][0].text;}
+                if($scope.obj.help['Тип двигателя'] && $scope.obj.help['Тип двигателя'][0]){$scope.mail.engine = $scope.obj.help['Тип двигателя'][0].text;}
+                if($scope.obj.help['Тип кузова'] && $scope.obj.help['Тип кузова'][0]){$scope.mail.body = $scope.obj.help['Тип кузова'][0].text;}
+                if($scope.obj.help['Трансмиссия'] && $scope.obj.help['Трансмиссия'][0]){$scope.mail.transmission = $scope.obj.help['Трансмиссия'][0].text;}
 
                 //console.log($scope.mail);
 
