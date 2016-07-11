@@ -377,11 +377,10 @@
                                         {{--<span ng-if="((((price - downPayment) * (month/12) * percent/100) + (price - downPayment))/month)>0">--}}
                                             {{--$@{{ ((((price - downPayment) * (month/12) * percent/100) + (price - downPayment))/month) | ceil }}--}}
                                         {{--</span>--}}
-                                        <span >
-{{--                                            $@{{ $@{{ ((price - downPayment)/((1 - (1 + percent / 12) ** (-month)) / (percent / 12))) }} }}--}}
+                                        <span ng-if="(calc(price - downPayment, percent, month))>0">
                                             $@{{ calc(price - downPayment, percent, month) }}
                                         </span>
-                                        <span ng-if="((((price - downPayment) * (month/12) * percent/100) + (price - downPayment))/month)<=0">$0</span>
+                                        <span ng-if="(calc(price - downPayment, percent, month))<=0">$0</span>
 
                                         <small>/месяц</small>
                                     </span>
