@@ -266,7 +266,6 @@
                                 <h4 class="widgettitle"> Заказать обратный звонок </h4>
                                 <div ng-controller="callMeBackWidget" style="position: relative" id="callMeBackWidget" class="vehicle-enquiry-in">
 
-
                                     <form>
                                         <input ng-model="callMeBack.name" name="name" type="text" placeholder="Имя*" class="form-control" required>
                                         <input ng-model="callMeBack.email" name="email" type="email" placeholder="Email*" class="form-control" required>
