@@ -60,6 +60,21 @@
                         </div>
                     @endif
 
+                    <div class="sidebar-widget widget seller-contact-widget">
+                        <h4 class="widgettitle"> Хотите быть в курсе наших новостей и скидок? Подпишитесь на рассылку! </h4>
+                        <div ng-controller="subscribeWidget" style="position: relative" id="subscribeWidget" class="vehicle-enquiry-in">
+
+                            <form id="subscribe_form">
+                                <input ng-model="subscribe.name" name="name" type="text" placeholder="Имя" class="form-control">
+                                <input ng-model="subscribe.email" name="email" type="email" placeholder="Email*" class="form-control" required>
+                                <input ng-click="subscribe.send()" name="send" type="button" class="btn btn-primary" value="Подписаться">
+                            </form>
+
+                        </div>
+                    </div>
+
+                    <br>
+
                     <div class="widget sidebar-widget widget_recent_posts" ng-controller="lastBlogPostsWidget">
 
                         <div ng-if="blog.length > 0">
