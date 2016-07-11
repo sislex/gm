@@ -375,8 +375,12 @@
                                     <div class="calculations-result">
                                         <span class="meta-data">Выплата</span>
                                     <span class="loan-amount">
-                                        <span ng-if="((((price - downPayment) * (month/12) * percent/100) + (price - downPayment))/month)>0">
-                                            $@{{ ((((price - downPayment) * (month/12) * percent/100) + (price - downPayment))/month) | ceil }}
+                                        {{--<span ng-if="((((price - downPayment) * (month/12) * percent/100) + (price - downPayment))/month)>0">--}}
+                                            {{--$@{{ ((((price - downPayment) * (month/12) * percent/100) + (price - downPayment))/month) | ceil }}--}}
+                                        {{--</span>--}}
+                                        <span >
+{{--                                            $@{{ $@{{ ((price - downPayment)/((1 - (1 + percent / 12) ** (-month)) / (percent / 12))) }} }}--}}
+                                            $@{{ calc(price - downPayment, percent, month) }}
                                         </span>
                                         <span ng-if="((((price - downPayment) * (month/12) * percent/100) + (price - downPayment))/month)<=0">$0</span>
 
