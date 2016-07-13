@@ -322,7 +322,7 @@
 
                             <!-- Subscribe widget -->
                             <div class="sidebar-widget widget seller-contact-widget">
-                                <h4 class="widgettitle"> Хотите быть в курсе новых поступлений? Подпишись на рассылку! </h4>
+                                <h4 class="widgettitle" style="font-size: 11px;"> Хотите быть в курсе новых поступлений? Подпишись на рассылку! </h4>
                                 <div ng-controller="subscribeWidget" style="position: relative" id="subscribeWidget" class="vehicle-enquiry-in">
 
                                     <form id="subscribe_form">
