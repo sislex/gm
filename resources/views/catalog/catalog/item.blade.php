@@ -345,7 +345,7 @@
                                     downPayment = 0;
                                     month = 24;
                                     year = month / 12;
-                                    percent = 20
+                                    percent = 29.99
                                     ">
                                         <div class="form-group">
                                             <label>Первоначальный взнос</label>
