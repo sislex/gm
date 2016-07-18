@@ -111,6 +111,7 @@ Route::get('admin/settings/servicefiles/delete/{id}', ['middleware' => 'auth', '
 
 //    _counters
 Route::get('admin/settings/counters', ['middleware' => 'auth', 'uses' => 'Admin\SettingsController@counters']);
+Route::get('admin/settings/calc', ['middleware' => 'auth', 'uses' => 'Admin\SettingsController@calc']);
 Route::get('admin/settings/counters/add', ['middleware' => 'auth', 'uses' => 'Admin\SettingsController@addCounter']);
 Route::get('admin/settings/counters/show/{id}', ['middleware' => 'auth', 'uses' => 'Admin\SettingsController@showCounter']);
 Route::post('admin/settings/counters/update', ['middleware' => 'auth', 'uses' => 'Admin\SettingsController@updateCounter']);

@@ -159,6 +159,13 @@
             </a>
         </li>
         <li class="nav-item  ">
+            <a href="{{action('Admin\SettingsController@calc')}}" class="nav-link nav-toggle">
+                <span class="title">
+                    Калькулятор
+                </span>
+            </a>
+        </li>
+        <li class="nav-item  ">
             <a href="{{action('Admin\SettingsController@serviceFiles')}}" class="nav-link ">
                 <span class="title">
                     Служебные файлы

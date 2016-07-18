@@ -85,6 +85,12 @@ class SettingsController extends Controller
         return view('admin/settings/counters', ['counters' => $counters]);
     }
 
+    public function calc()
+    {
+        $counters = Counters::get();
+        return view('admin/settings/calc', ['counters' => $counters]);
+    }
+
     public function addCounter()
     {
         return view('admin/settings/showCounter');
