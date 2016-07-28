@@ -41,7 +41,7 @@
                             <tr>
                                 <td>Процент</td>
                                 <td>
-                                    <input type="text" value="29.99">
+                                    <input type="text" value="29.9">
                                 </td>
                                 <td>
                                     <input type="submit" value="Сохранить">

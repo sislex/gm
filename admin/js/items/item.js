@@ -16,7 +16,7 @@ myApp.controller('myCtrl', ['$scope', '$http',
     function($scope, $http) {
 
         $scope.calc = function(price, percent, month){
-            var pay = ((price)/((1 - (1 + percent / 12) ^ (-month)) / (percent / 12)));
+            var pay =  price/((1 - (Math.pow(1 + percent /100/ 12 , (-month)))) / (percent/100 / 12));
             return Math.ceil(pay, 0);
         };
 
