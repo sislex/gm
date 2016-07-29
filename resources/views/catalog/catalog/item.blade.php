@@ -248,7 +248,8 @@
                                                                 @{{ item.type_auto[0].children[0].text }}, @{{ item['Цвет'][0]['text'] }}
                                                             </span>
                                                             <span class="vehicle-cost pull-left">$@{{ item.item.price | ceil }}</span>
-                                                            <span class="vehicle-cost pull-right">@{{ obj.obj.price * currencies.BYR | ceil }} <span style="font-size: 10px">руб</span>.</span>
+{{--                                                            <span class="vehicle-cost pull-right">@{{ obj.obj.price * currencies.BYR | ceil }} <span style="font-size: 10px">руб</span>.</span>--}}
+                                                            <span class="vehicle-cost pull-right">@{{ item.item.price * currencies.BYR | ceil }} <span style="font-size: 10px">руб</span>.</span>
                                                         </div>
                                                     </li>
                                                 </ul>
