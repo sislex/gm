@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Counters;
 use App\Phones;
+use App\Calculator;
 use App\Currencies;
 use App\Email;
 use App\ServiceFiles;
@@ -87,8 +88,21 @@ class SettingsController extends Controller
 
     public function calc()
     {
-        $counters = Counters::get();
-        return view('admin/settings/calc', ['counters' => $counters]);
+        $percent = Calculator::where('name', '=', 'Процент')->first();
+        if(!$percent){
+            $percent = ['name' => 'Процент', 'value' => ''];
+            Calculator::create($percent);
+            $percent = Calculator::where('name', '=', 'percent')->first();
+        }
+
+        return view('admin/settings/calc', ['percent' => $percent]);
+    }
+
+    public function calcUpdate()
+    {
+        $input = \Request::all();
+        Calculator::find($input['id'])->update($input);
+        return \Redirect::action('Admin\SettingsController@calc');
     }
 
     public function addCounter()

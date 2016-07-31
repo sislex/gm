@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Items;
+use App\Calculator;
 
 class CatalogController extends Controller
 {
@@ -111,7 +112,9 @@ class CatalogController extends Controller
                 ." {$item['obj']['God_vypuska'][0]['text']}";
         }
 
-        return view('catalog/catalog/item', ['item' => $item, 'catalog_banner' => $catalog_banner_arr]);
+        $percent = Calculator::where('name', '=', 'Процент')->first();
+
+        return view('catalog/catalog/item', ['item' => $item, 'catalog_banner' => $catalog_banner_arr, 'percent' => $percent['value']]);
     }
 
     public function menu($pseudo_url){

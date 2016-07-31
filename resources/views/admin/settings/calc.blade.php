@@ -35,21 +35,25 @@
                     </tr>
                     </thead>
 
-                    @if(isset($counters) && count($counters))
-                        <tbody>
-                        @foreach($counters as $counter)
+
+                    <tbody>
+                    @if(isset($percent) && count($percent))
+                        <form action="{{action('Admin\SettingsController@calcUpdate')}}" method="post">
                             <tr>
-                                <td>Процент</td>
+                                <td>{{$percent['name']}}</td>
                                 <td>
-                                    <input type="text" value="29.9">
+                                    <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
+                                    <input type="hidden" name="id" value="{{$percent['id']}}">
+                                    <input type="hidden" name="name" value="{{$percent['name']}}">
+                                    <input type="text" name="value" value="{{$percent['value']}}">
                                 </td>
                                 <td>
                                     <input type="submit" value="Сохранить">
                                 </td>
                             </tr>
-                        @endforeach
-                        </tbody>
+                        </form>
                     @endif
+                    </tbody>
 
                 </table>
                 {{--@endif--}}

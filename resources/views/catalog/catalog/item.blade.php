@@ -345,7 +345,7 @@
                                     price = {{$item['price']}};
                                     downPayment = 0;
                                     month = 24;
-                                    percent = 29.9;
+                                    percent = {{$percent}};
                                     ">
                                         <div class="form-group">
                                             <label>Первоначальный взнос</label>
