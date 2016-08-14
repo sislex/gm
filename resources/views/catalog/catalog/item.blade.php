@@ -269,12 +269,12 @@
                                 <h4 class="widgettitle"> Заказать обратный звонок </h4>
                                 <div ng-controller="callMeBackWidget" style="position: relative" id="callMeBackWidget" class="vehicle-enquiry-in">
 
-                                    <form>
-                                        <input ng-model="callMeBack.name" name="name" type="text" placeholder="Имя*" class="form-control" required>
-                                        <input ng-model="callMeBack.email" name="email" type="email" placeholder="Email*" class="form-control" required>
+                                    <form ng-submit="callMeBack.send()">
+                                        <input ng-model="callMeBack.name" name="name" type="text" placeholder="Имя" class="form-control" >
+                                        <input ng-model="callMeBack.email" name="email" type="email" placeholder="Email" class="form-control" >
                                         <div class="row">
                                             <div class="col-md-7">
-                                                <input ng-model="callMeBack.phone" name="phone" type="text" placeholder="Телефон №*" class="form-control" required>
+                                                <input required ng-model="callMeBack.phone" name="phone" type="text" placeholder="Телефон №*" class="form-control">
                                             </div>
                                         </div>
                                         <textarea ng-model="callMeBack.comment" name="comment" class="form-control" placeholder="Комментарий"></textarea>
@@ -283,7 +283,7 @@
                                         {{--</label>--}}
 
 
-                                        <input ng-click="callMeBack.send()" name="send" type="button" class="btn btn-primary" value="Перезвоните мне">
+                                        <input name="send" type="submit" class="btn btn-primary" value="Перезвоните мне">
                                     </form>
 
                                 </div>
@@ -475,7 +475,7 @@
                     </div>
                     <div class="modal-body">
                         <p>Предложить свою цену, другие условия по преобретению или обмену.</p>
-                        <form>
+                        <form ng-submit="offerModal.send()">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
                                 <input ng-model="offerModal.name" type="text" class="form-control" name="name" placeholder="Имя">
@@ -490,7 +490,7 @@
                                 <div class="col-md-6">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-                                        <input ng-model="offerModal.phone" type="text" class="form-control" name="phone" placeholder="Телефон">
+                                        <input required ng-model="offerModal.phone" type="text" class="form-control" name="phone" placeholder="Телефон">
                                     </div>
                                 </div>
                             </div>
@@ -503,7 +503,7 @@
                                 </div>
                             </div>
                             <textarea ng-model="offerModal.comment" class="form-control" placeholder="Комментарий"></textarea>
-                            <input ng-click="offerModal.send()" type="button" class="btn btn-primary pull-right" name="action" value="Предложить">
+                            <input type="submit" class="btn btn-primary pull-right" name="action" value="Предложить">
                             <div class="clearfix"></div>
                         </form>
                     </div>
@@ -521,7 +521,7 @@
                     </div>
                     <div class="modal-body">
                         <p>Запишитесь на тестдрайв</p>
-                        <form>
+                        <form ng-submit="testdriveModal.send()">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
                                 <input ng-model="testdriveModal.name" type="text" class="form-control" name="name" placeholder="Имя">
@@ -536,7 +536,7 @@
                                 <div class="col-md-6">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-                                        <input ng-model="testdriveModal.phone" type="text" class="form-control" name="phone" placeholder="Телефон">
+                                        <input required ng-model="testdriveModal.phone" type="text" class="form-control" name="phone" placeholder="Телефон">
                                     </div>
                                 </div>
                             </div>
@@ -554,7 +554,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <input ng-click="testdriveModal.send()" type="button" class="btn btn-primary pull-right" name="action" value="Записаться">
+                            <input type="submit" class="btn btn-primary pull-right" name="action" value="Записаться">
                             <div class="clearfix"></div>
                         </form>
                     </div>
@@ -571,27 +571,27 @@
                         <h4>Поделиться ссылкой</h4>
                     </div>
                     <div class="modal-body">
-                        <form>
+                        <form ng-submit="sendModal.send()">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                <input ng-model="sendModal.name" type="text" class="form-control" name="name" placeholder="Имя">
+                                <input required ng-model="sendModal.name" type="text" class="form-control" name="name" placeholder="Имя">
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                                        <input ng-model="sendModal.email" type="email" class="form-control" name="email" placeholder="Ваш Email">
+                                        <input required ng-model="sendModal.email" type="email" class="form-control" name="email" placeholder="Ваш Email">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                                        <input ng-model="sendModal.friend" type="email" class="form-control" name="friend" placeholder="Email друга">
+                                        <input required ng-model="sendModal.friend" type="email" class="form-control" name="friend" placeholder="Email друга">
                                     </div>
                                 </div>
                             </div>
                             <textarea ng-model="sendModal.message" class="form-control" name="message" placeholder="Сообщение"></textarea>
-                            <input ng-click="sendModal.send()" type="button" class="btn btn-primary pull-right" name="action" value="Отправить">
+                            <input type="submit" class="btn btn-primary pull-right" name="action" value="Отправить">
                             <div class="clearfix"></div>
                         </form>
                     </div>
