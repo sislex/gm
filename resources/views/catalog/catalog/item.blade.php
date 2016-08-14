@@ -438,7 +438,7 @@
                     </div>
                     <div class="modal-body">
                         <p>Запросить дополнительную информацию у специалиста компании.</p>
-                        <form>
+                        <form ng-submit="infoModal.send()">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
                                 <input ng-model="infoModal.name" type="text" class="form-control" name="name" placeholder="Имя">
@@ -453,11 +453,11 @@
                                 <div class="col-md-6">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-                                        <input  ng-model="infoModal.phone" type="text" class="form-control" name="phone" placeholder="Телефон">
+                                        <input required ng-model="infoModal.phone" type="text" class="form-control" name="phone" placeholder="Телефон">
                                     </div>
                                 </div>
                             </div>
-                            <input ng-click="infoModal.send()" type="button" class="btn btn-primary pull-right" name="action" value="Запросить информацию">
+                            <input type="submit" class="btn btn-primary pull-right" name="action" value="Запросить информацию">
                             <div class="clearfix"></div>
                         </form>
                     </div>
