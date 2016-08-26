@@ -120,7 +120,7 @@
                                 <br>220006, г.Минск, ул.Маяковского 2, оф.11, тел. +375-(44)-7-832-832
                             </noindex>
                             <div style="font-size: smaller">
-                                <a href="http://goldenmotors.by" style="color: darkorange">Купить авто в Минске.</a> Продажа любых автомобилей в Беларуси.
+                                <a href="http://goldenmotors.by" style="color: darkorange">Купить авто в Минске.</a> Продажа автомобилей в Беларуси.
                             </div>
                         </p>
                     </div>
