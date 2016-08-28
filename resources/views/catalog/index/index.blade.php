@@ -15,9 +15,20 @@
                 || (!isset($main_slider['configuration']) && isset($main_slider['images']) && count($main_slider['images'])))
                     <div class="hero-slider heroflex flexslider clearfix" data-autoplay="yes" data-pagination="no" data-arrows="yes" data-style="fade" data-speed="7000" data-pause="yes">
                         <ul class="slides">
-                            @foreach($main_slider['images'] as $main_slider_image)
-                                <li class="parallax" style="background-image:url('/images/ui-components/main-slider/{{ $main_slider_image }}');"></li>
-                            @endforeach
+                            {{--@foreach($main_slider['images'] as $main_slider_image)--}}
+                                {{--<li class="parallax" style="background-image:url('/images/ui-components/main-slider/{{ $main_slider_image }}');"></li>--}}
+                            {{--@endforeach--}}
+                            @for($i = 0; $i < sizeof($main_slider['images']); $i++)
+                                <li class="parallax" style="background-image:url('/images/ui-components/main-slider/{{ $main_slider['images'][$i] }}');">
+                                    @if(isset($main_slider['urls'][$i]) && trim($main_slider['urls'][$i]) != '')
+                                        @if(strpos($main_slider['urls'][$i], 'http://') === 0 || strpos($main_slider['urls'][$i], 'https://') === 0)
+                                            <a href="{{ $main_slider['urls'][$i] }}" target="_blank"></a>
+                                        @else
+                                            <a href="{{ 'http://' . $main_slider['urls'][$i] }}" target="_blank"></a>
+                                        @endif
+                                    @endif
+                                </li>
+                            @endfor
                         </ul>
                     </div>
                 @elseif(isset($main_slider['configuration']) && $main_slider['configuration'] == 'html' && isset($main_slider['html']) && trim($main_slider['html']) != '')

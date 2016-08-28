@@ -76,7 +76,11 @@ class UIComponentsController extends Controller
                 }
                 if (isset($input['images'])) {
                     $arr['images'] = $input['images'];
-                    if (isset($input['urls'])){$arr['urls'] = $input['urls'];}
+                    
+                    if (isset($input['urls'])){
+                        $arr['urls'] = $input['urls'];
+                    }
+                    
                     $uicomponent->obj = json_encode($arr);
                     $uicomponent->update();
 

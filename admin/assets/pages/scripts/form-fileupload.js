@@ -128,7 +128,7 @@ var FormFileUpload = function () {
 
                 }
 
-                if($('#fileupload').attr("data-name") == 'partners-slider'){
+                if($('#fileupload').attr("data-name") == 'partners-slider' || $('#fileupload').attr("data-name") == 'main-slider'){
                     insertTD();
                 }
 
