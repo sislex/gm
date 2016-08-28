@@ -8,8 +8,6 @@
 <div ng-app="myApp" ng-controller="myCtrl">
     @if(isset($itemsNames))
     <div id="robot">
-        {{--        {{dd($itemsNames)}}--}}
-
         @foreach($itemsNames as $values)
             <a href="{{ action('Catalog\CatalogController@item', ['id' => $values['id']]) }}">{{$values['name']}}</a>
         @endforeach
@@ -18,11 +16,7 @@
     <!-- Start Page header -->
 
     @if(isset($catalog_banner['images'][0]))
-        <div class="page-header parallax" style="background-image:url('/images/ui-components/catalog-banner/{{ $catalog_banner['images'][0] }}');">
-            {{--<div class="container">--}}
-                {{--<h1 class="page-title">Listing results</h1>--}}
-            {{--</div>--}}
-        </div>
+        <div class="page-header parallax" style="background-image:url('/images/ui-components/catalog-banner/{{ $catalog_banner['images'][0] }}');"></div>
     @endif
 
     <!-- Actions bar -->
@@ -47,7 +41,7 @@
                                             </div>
                                             <div class="textb">
                                                 <a href="/catalog/auto/@{{ item.id }}">@{{item.name}}</a>
-                                                <span class="price">$ @{{item.price}}</span>
+                                                <span class="price">$ @{{ item.price }}</span>
                                             </div>
                                             <div class="delete"><a ng-click="obj.helpers.deleteFromWishList(item.id)"><i class="icon-delete"></i></a></div>
                                         </li>
@@ -72,7 +66,7 @@
                                             </div>
                                             <div class="textb">
                                                 <a href="/catalog/auto/@{{ item.id }}">@{{item.name}}</a>
-                                                <span class="price">$ @{{item.price}}</span>
+                                                <span class="price">$ @{{ item.price }}</span>
                                             </div>
                                         </li>
                                     </ul>
@@ -188,7 +182,7 @@
                                             <select
                                                     class="form-control input-circle"
                                                     ng-model="obj.help['price']['min']"
-                                                    ng-options="item for item in [1000,2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000, 12000, 14000, 16000, 18000, 20000, 25000, 30000, 45000, 50000, 100000]"
+                                                    ng-options="item for item in [1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000, 12000, 14000, 16000, 18000, 20000, 25000, 30000, 45000, 50000, 100000]"
                                                     ng-change="obj.helpers.makeObj('price', 'value')"
                                                     placeholder="Цена от"
                                                     >
@@ -199,7 +193,7 @@
                                             <select
                                                     class="form-control input-circle"
                                                     ng-model="obj.help['price']['max']"
-                                                    ng-options="item for item in [1000,2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000, 12000, 14000, 16000, 18000, 20000, 25000, 30000, 45000, 50000, 100000]"
+                                                    ng-options="item for item in [1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000, 12000, 14000, 16000, 18000, 20000, 25000, 30000, 45000, 50000, 100000]"
                                                     ng-change="obj.helpers.makeObj('price', 'value')"
                                                     placeholder="Цена до"
                                                     >
@@ -268,11 +262,12 @@
                                     <div class="result-item-image">
                                         <a  href="{{action('Catalog\CatalogController@item')}}/@{{ item.item['id'] }}" class="media-box" ng-show="item.images[0]">
                                             <img ng-src="/images/items/@{{ item.item['id'] }}/thumbnail/@{{ item.images[0] }}" alt="">
-                                        </a>
-                                        <span class="label label-default vehicle-age">@{{ item['God_vypuska'][0]['text'] }}</span>
 
-                                        <span ng-if="item.promo.hot > 0" class="label label-primary vehicle-hot"> Срочно </span>
-                                        <span ng-if="item.promo.new > 0" class="label label-success vehicle-new"> Новое </span>
+                                            <span class="label label-default vehicle-age">@{{ item['God_vypuska'][0]['text'] }}</span>
+                                            <span ng-if="item.promo.hot > 0" class="label label-primary vehicle-hot"> Срочно </span>
+                                            <span ng-if="item.promo.new > 0" class="label label-success vehicle-new"> Новое </span>
+                                            <span ng-if="item.promo.reserved > 0" class="label label-primary vehicle-reserved"> В резерве </span>
+                                        </a>
 
                                         <div class="result-item-view-buttons">
                                             <a ng-if="item['video']" href="https://www.youtube.com/watch?v=@{{ item['video'] }}" data-rel="prettyPhoto"><i class="fa fa-play"></i> Открыть видео</a>

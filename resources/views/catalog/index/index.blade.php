@@ -28,36 +28,6 @@
         </div>
         <!-- End Main Slider -->
 
-        <!-- Utiity Bar -->
-        {{--<div class="utility-bar">--}}
-            {{--<div class="container">--}}
-                {{--<div class="row">--}}
-                    {{--<div class="col-md-4 col-sm-6 col-xs-8">--}}
-                        {{--<div class="toggle-make">--}}
-                            {{--<a href="#"><i class="fa fa-navicon"></i></a>--}}
-                            {{--<span>Отсортировать по типу кузова</span>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-            {{--<div class="by-type-options">--}}
-                {{--<div class="container">--}}
-                    {{--<div class="row">--}}
-                        {{--<ul class="owl-carousel carousel-alt" data-columns="6" data-autoplay="" data-pagination="no" data-arrows="yes" data-single-item="no" data-items-desktop="6" data-items-desktop-small="4" data-items-mobile="3" data-items-tablet="4">--}}
-                            {{--<li class="item"> <a href='{{action('Catalog\CatalogController@index')}}#filter={"Тип кузова":{"0":{"text":"автобус"}}}'><img src="/catalog/images/body-types/wagon.png" alt=""> <span>Wagon</span></a></li>--}}
-                            {{--<li class="item"> <a href="results-list.html"><img src="/catalog/images/body-types/minivan.png" alt=""> <span>Minivan</span></a></li>--}}
-                            {{--<li class="item"> <a href="results-list.html"><img src="/catalog/images/body-types/coupe.png" alt=""> <span>Coupe</span></a></li>--}}
-                            {{--<li class="item"> <a href="results-list.html"><img src="/catalog/images/body-types/convertible.png" alt=""> <span>Convertible</span></a></li>--}}
-                            {{--<li class="item"> <a href="results-list.html"><img src="/catalog/images/body-types/crossover.png" alt=""> <span>Crossover</span></a></li>--}}
-                            {{--<li class="item"> <a href="results-list.html"><img src="/catalog/images/body-types/suv.png" alt=""> <span>SUV</span></a></li>--}}
-                            {{--<li class="item"> <a href="results-list.html#"><img src="/catalog/images/body-types/minicar.png" alt=""> <span>Minicar</span></a></li>--}}
-                            {{--<li class="item"> <a href="results-list.html"><img src="/catalog/images/body-types/sedan.png" alt=""> <span>Sedan</span></a></li>--}}
-                        {{--</ul>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-
         <!-- Start Body Content -->
         <div class="main" role="main">
             <div id="content" class="content full padding-b0">
@@ -74,18 +44,14 @@
                     @else
                         <div class="row">
                             <div class="col-md-6">
-                                <h1 class="uppercase strong">Welcome to AutoStars<br>Listing portal</h1>
-                                <p class="lead">AutoStars is the world's leading portal for<br>easy and quick <span class="accent-color">car buying and selling</span></p>
-                            </div>
-                            <div class="col-md-6">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis egestas rhoncus. Donec facilisis fermentum sem, ac viverra ante luctus vel. Donec vel mauris quam.</p>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis egestas rhoncus. Donec facilisis fermentum sem, ac viverra ante luctus vel. Donec vel mauris quam. Lorem ipsum dolor sit amet, <span class="accent-color">consectetur adipiscing</span> elit. Nulla convallis egestas rhoncus.</p>
+                                <h1 class="uppercase strong">Добро пожаловать на сайт компании Golden Motors</h1>
+                                <p class="lead">Будем рады оказать Вам помощь <span class="accent-color">с покупкой и продажей автомобиля.</span></p>
                             </div>
                         </div>
                         <div class="spacer-75"></div>
                     @endif
 
-                    <!-- Recently Listed Vehicles -->
+                    <!-- Recently Added Vehicles -->
                     <section class="listing-block recent-vehicles" ng-controller="lastCarsWidget" >
                         <div ng-if="(items.length>0)">
                             <div class="listing-header" >
@@ -99,11 +65,12 @@
                                                 <div class="vehicle-block format-standard">
                                                     <a href="{{action('Catalog\CatalogController@item')}}/@{{ item.item['id'] }}" class="media-box">
                                                         <img ng-src="/images/items/@{{ item.item['id'] }}/thumbnail/@{{ item.images[0] }}" alt="">
-                                                    </a>
-                                                    <span class="label label-default vehicle-age">@{{ item['God_vypuska'][0]['text'] }}</span>
 
-                                                    <span ng-if="item.promo.hot > 0" class="label label-primary vehicle-hot"> Срочно </span>
-                                                    <span ng-if="item.promo.new > 0" class="label label-success vehicle-new2"> Новое </span>
+                                                        <span class="label label-default vehicle-age">@{{ item['God_vypuska'][0]['text'] }}</span>
+                                                        <span ng-if="item.promo.hot > 0" class="label label-primary vehicle-hot"> Срочно </span>
+                                                        <span ng-if="item.promo.new > 0" class="label label-success vehicle-new2"> Новое </span>
+                                                        <span ng-if="item.promo.reserved > 0" class="label label-primary vehicle-reserved"> В резерве </span>
+                                                    </a>
 
                                                     <h5 class="vehicle-title"><a href="{{action('Catalog\CatalogController@item')}}/@{{ item.item['id'] }}">@{{ item.type_auto[0].children[0].text }} @{{ item.type_auto[0].children[0].children[0].text }} @{{ item['Версия/Модификация']  }} @{{ item.God_vypuska[0].text }}</a></h5>
                                                 <span class="vehicle-meta">

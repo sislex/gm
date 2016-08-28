@@ -30,25 +30,11 @@
                     </ol>
                 </div>
                 <div class="col-md-5 col-sm-6 col-xs-4">
-
                     <div class="ya-share2 pull-right" style="padding-top: 8px" data-services="vkontakte,facebook,odnoklassniki,moimir,gplus,twitter,viber,whatsapp"></div>
                     <span class="share-text pull-right" style="margin-right: 20px"><i class="icon-share"></i> Поделись </span>
-
                     <script type="text/javascript" src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js" charset="utf-8"></script>
                     <script type="text/javascript" src="//yastatic.net/share2/share.js" charset="utf-8"></script>
-
                 </div>
-                {{--<div class="col-md-4 col-sm-6 col-xs-4">--}}
-                    {{--<span class="share-text"><i class="icon-share"></i> Share this</span>--}}
-                    {{--<ul class="utility-icons social-icons social-icons-colored">--}}
-                        {{--<li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>--}}
-                        {{--<li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>--}}
-                        {{--<li class="googleplus"><a href="#"><i class="fa fa-google-plus"></i></a></li>--}}
-                        {{--<li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>--}}
-                        {{--<li class="pinterest"><a href="#"><i class="fa fa-pinterest"></i></a></li>--}}
-                        {{--<li class="delicious"><a href="#"><i class="fa fa-delicious"></i></a></li>--}}
-                    {{--</ul>--}}
-                {{--</div>--}}
             </div>
         </div>
     </div>
@@ -82,8 +68,6 @@
                         </div>
                         <div class="btn btn-info price" >@{{ obj.obj.price * currencies.BYR | ceil }} <span style="font-size: 14px">руб</span>.</div>
                         <div class="btn btn-info price">${{ intval($item['price']) }}</div>
-
-                        {{--<div class="btn btn-info price">${{ intval($item['price']) }}</div>--}}
 
                         @if(isset($item['obj']['Старая цена']) && $item['obj']['Старая цена']!='')
                             <div class="btn btn-warning old-price">${{$item['obj']['Старая цена']}}</div>
@@ -138,8 +122,6 @@
                                     @if(isset($item['obj']['VIN']))<li class="list-group-item"> <span class="badge">VIN</span> {{$item['obj']['VIN']}}</li>@endif
                                     @if(isset($item['obj']['Класс транспорта'][0]['text']))<li class="list-group-item"> <span class="badge">Класс транспорта</span> {{$item['obj']['Класс транспорта'][0]['text']}}</li>@endif
                                     @if(isset($item['obj']['Обмен'][0]['text']))<li class="list-group-item"> <span class="badge">Обмен</span> {{$item['obj']['Обмен'][0]['text']}}</li>@endif
-
-                                    {{--<li class="list-group-item"> <span class="badge">Расход</span> 6.8 L/100km</li>--}}
                                 </ul>
                             </div>
                         </div>
@@ -193,10 +175,7 @@
                                         <!-- End Toggle -->
                                     </div>
                                     <div id="vehicle-add-features" class="tab-pane fade">
-    {{--                                    @{{ obj.help }}--}}
-                                       <div
-                                               ng-repeat="key in ['Аудиооборудование', 'Интерьер и экстерьер', 'Оснащение', 'Противоугонная система', 'Системы безопасности', 'Электропакет']"
-                                               >
+                                       <div ng-repeat="key in ['Аудиооборудование', 'Интерьер и экстерьер', 'Оснащение', 'Противоугонная система', 'Системы безопасности', 'Электропакет']">
                                            <div ng-if="obj.help[key].length">
                                                <h4>@{{key}}</h4>
                                                <ul class="add-features-list">
@@ -237,18 +216,18 @@
                                                         <div class="vehicle-block format-standard">
                                                             <a href="{{action('Catalog\CatalogController@item')}}/@{{ item.item['id'] }}" class="media-box">
                                                                 <img ng-src="/images/items/@{{ item.item['id'] }}/thumbnail/@{{ item.images[0] }}" alt="">
-                                                            </a>
-                                                            <span class="label label-default vehicle-age">@{{ item['God_vypuska'][0]['text'] }}</span>
 
-                                                            <span ng-if="item.promo.hot > 0" class="label label-primary vehicle-hot"> Срочно </span>
-                                                            <span ng-if="item.promo.new > 0" class="label label-success vehicle-new2"> Новое </span>
+                                                                <span class="label label-default vehicle-age">@{{ item['God_vypuska'][0]['text'] }}</span>
+                                                                <span ng-if="item.promo.hot > 0" class="label label-primary vehicle-hot"> Срочно </span>
+                                                                <span ng-if="item.promo.new > 0" class="label label-success vehicle-new2"> Новое </span>
+                                                                <span ng-if="item.promo.reserved > 0" class="label label-primary vehicle-reserved"> В резерве </span>
+                                                            </a>
 
                                                             <h5 class="vehicle-title"><a href="{{action('Catalog\CatalogController@item')}}/@{{ item.item['id'] }}">@{{ item.type_auto[0].children[0].text }} @{{ item.type_auto[0].children[0].children[0].text }} @{{ item['Версия/Модификация'] }} @{{ item.God_vypuska[0].text }}</a></h5>
                                                             <span class="vehicle-meta">
                                                                 @{{ item.type_auto[0].children[0].text }}, @{{ item['Цвет'][0]['text'] }}
                                                             </span>
                                                             <span class="vehicle-cost pull-left">$@{{ item.item.price | ceil }}</span>
-{{--                                                            <span class="vehicle-cost pull-right">@{{ obj.obj.price * currencies.BYR | ceil }} <span style="font-size: 10px">руб</span>.</span>--}}
                                                             <span class="vehicle-cost pull-right">@{{ item.item.price * currencies.BYR | ceil }} <span style="font-size: 10px">руб</span>.</span>
                                                         </div>
                                                     </li>

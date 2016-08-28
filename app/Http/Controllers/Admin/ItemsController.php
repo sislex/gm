@@ -79,7 +79,6 @@ class ItemsController extends Controller
     public function show($id)
     {
         if ($id != '') {
-//            $item = Items::where('id', '=', $id)->get()->first();
             $item = Items::find($id);
 
             if ($item['obj']){

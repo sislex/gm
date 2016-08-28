@@ -769,6 +769,15 @@
                                         </select>
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label"> Резерв </label>
+                                    <div class="col-md-4">
+                                        <select form="promo" name="promo_reserved" class="form-control input-circle">
+                                            <option value="0" {{ isset($item['promo']['reserved']) && $item['promo']['reserved'] == false ? 'selected' : '' }}>нет</option>
+                                            <option value="1" {{ isset($item['promo']['reserved']) && $item['promo']['reserved'] == true ? 'selected' : '' }}>да</option>
+                                        </select>
+                                    </div>
+                                </div>
                                 <div class="form-actions">
                                     <div class="row">
                                         <div class="col-md-offset-3 col-md-9">

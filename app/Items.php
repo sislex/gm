@@ -61,6 +61,7 @@ class Items extends Model
         if(isset($input['promo_new']) && isset($input['promo_hot'])){
             $promo['new'] = $input['promo_new'];
             $promo['hot'] = $input['promo_hot'];
+            $promo['reserved'] = $input['promo_reserved'];
             $input['promo'] = json_encode($promo);
         }
 
