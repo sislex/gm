@@ -10,7 +10,9 @@
             <li>
                 {{ $uicomponent['name'] == 'main-slider' ? 'Основной слайдер' :
                     ($uicomponent['name'] == 'logo' ? 'Логотип' :
-                        ($uicomponent['name'] == 'favicon' ? 'Иконка сайта' : '')) }}
+                        ($uicomponent['name'] == 'favicon' ? 'Иконка сайта' :
+                            ($uicomponent['name'] == 'partners-slider' ? 'Лента партнеров' :
+                                ($uicomponent['name'] == 'catalog-banner' ? 'Баннер каталога' : '')))) }}
             </li>
         </ul>
     </div>
@@ -21,7 +23,9 @@
     <h3 class="page-title">
         {{ $uicomponent['name'] == 'main-slider' ? 'Основной слайдер: редактирование' :
                     ($uicomponent['name'] == 'logo' ? 'Логотип: редактирование' :
-                        ($uicomponent['name'] == 'favicon' ? 'Иконка сайта: редактирование' : '')) }}
+                        ($uicomponent['name'] == 'favicon' ? 'Иконка сайта: редактирование' :
+                            ($uicomponent['name'] == 'partners-slider' ? 'Лента партнеров: редактирование' :
+                                ($uicomponent['name'] == 'catalog-banner' ? 'Баннер каталога: редактирование' : '')))) }}
     </h3>
     <!-- END PAGE TITLE-->
 
@@ -221,8 +225,6 @@
 //            var sortedIDs = $(obj).sortable("toArray");
             var arr = [];
             $(".sortable").find('.name a').each(function(){
-
-
                 arr.push($(this).html());
             });
 
@@ -252,14 +254,6 @@
                 objUpdate();
             }
         });
-
-
-
-
-
-
-
-
     </script>
 @endsection
 
