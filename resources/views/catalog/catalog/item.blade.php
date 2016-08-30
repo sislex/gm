@@ -48,10 +48,13 @@
                 <!-- Vehicle Details -->
                 <article class="single-vehicle-details">
                     <div class="single-vehicle-title">
+
                         <span class="badge-premium-listing">№{{$item['id']}} добавлено: {{date('d-m-Y', strtotime($item['created_at']))}}</span>
                         <h1 class="post-title">
                             {{$item['name'] or ''}}
                         </h1>
+                        <span class="viewed-count">Просмотров: {{ $item['views_count'] or '1' }}</span>
+
                     </div>
                     <div class="single-listing-actions">
                         <div class="btn-group pull-right" role="group">

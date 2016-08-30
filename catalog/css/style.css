@@ -3278,7 +3278,7 @@ h1.page-title{
 	padding-right:30px;
 	margin-bottom:10px
 }
-.single-vehicle-details .badge-premium-listing{
+.single-vehicle-details .badge-premium-listing, .single-vehicle-details .viewed-count{
 	padding:0 10px 0 15px;
 	height:24px;
 	color:#fff;
@@ -3293,7 +3293,13 @@ h1.page-title{
 	top:10px;
 	border-radius:0 3px 3px 0;
 }
-.single-vehicle-details .badge-premium-listing:before {
+.single-vehicle-details .viewed-count{
+    top:-27px;
+    background-color:#889aa5;
+    /*float: right;*/
+    /*right:-177px;*/
+}
+.single-vehicle-details .badge-premium-listing:before, .single-vehicle-details .viewed-count:before {
   border-bottom: 12px transparent solid;
   border-right: 12px #5cb85c solid;
   border-top: 12px transparent solid;
@@ -3304,7 +3310,10 @@ h1.page-title{
   top: 0;
   width: 0;
 }
-.single-vehicle-details .badge-premium-listing:after {
+.single-vehicle-details .viewed-count:before{
+    border-right: 12px #889aa5 solid;
+}
+.single-vehicle-details .badge-premium-listing:after, .single-vehicle-details .viewed-count:after {
   background: white;
   border: 2px #6fc76f solid;
   border-radius: 50%;
@@ -3314,6 +3323,9 @@ h1.page-title{
   position: absolute;
   width: 6px;
   top: 9px;
+}
+.single-vehicle-details .viewed-count:after{
+	border: 2px #aaadaf solid;
 }
 .single-vehicle-title{
 	border-bottom:1px solid #ddd;
@@ -3329,7 +3341,7 @@ h1.page-title{
 	padding-top:20px;
 	margin-bottom:45px;
 }
-.single-listing-actions .badge-premium-listing{
+.single-listing-actions .badge-premium-listing, .single-listing-actions .viewed-count {
 	display:none;
 }
 .single-listing-actions .btn-group > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {
@@ -5018,7 +5030,7 @@ h1.page-title{
 .is-sticky .actions-bar{
 	width:100%;
 }
-@media print {.single-vehicle-details .recent-vehicles, .calculator-widget, .seller-contact-widget, .additional-images, .single-listing-actions, .badge-premium-listing, .utility-bar, .page-header, .header-right, .navbar, .site-footer{
+@media print {.single-vehicle-details .recent-vehicles, .calculator-widget, .seller-contact-widget, .additional-images, .single-listing-actions, .badge-premium-listing, .viewed-count, .utility-bar, .page-header, .header-right, .navbar, .site-footer{
 	display:none;
 }
 .list-group{
@@ -5591,7 +5603,11 @@ body{
 		display:inline-block;
 		margin-top:12px;
 	}
-	.single-vehicle-title .badge-premium-listing{
+	.single-listing-actions .viewed-count{
+		display: inline-block;
+		margin-top:12px;
+	}
+	.single-vehicle-title .badge-premium-listing, .single-vehicle-title .viewed-count{
 		display:none;
 	}
 	.single-vehicle-details .post-title{

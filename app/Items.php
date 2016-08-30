@@ -67,4 +67,22 @@ class Items extends Model
 
         return $input;
     }
+
+    static function updateViewsCounter($id){
+        if($id){
+            $item = Items::find($id);
+
+            if(isset($item['obj'])){
+                $obj = json_decode($item['obj'], true);
+
+                if(isset($obj['views_count'])){
+                    $obj['views_count']++;
+                } else {
+                    $obj['views_count'] = 1;
+                }
+                $item['obj'] = json_encode($obj);
+                $item->save();
+            }
+        }
+    }
 }

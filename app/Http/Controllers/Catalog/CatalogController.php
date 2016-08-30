@@ -76,10 +76,18 @@ class CatalogController extends Controller
 
     public function item($id = 0)
     {
+        Items::updateViewsCounter($id);
+
         $item = Items::find($id);
         if ($item['obj']){
             $obj = json_decode($item['obj'], true);
             $item['obj'] = $obj;
+
+            if (!isset($obj['views_count'])){
+                $item['views_count'] = 1;
+            } else {
+                $item['views_count'] = $obj['views_count'];
+            }
 
             if (!isset($obj['images'])){
                 $item->images = [];
