@@ -53,7 +53,7 @@
                         <h1 class="post-title">
                             {{$item['name'] or ''}}
                         </h1>
-                        <span class="viewed-count">Просмотров: {{ $item['views_count'] or '1' }}</span>
+                        <span class="viewed-count"><img src="/images/eye.svg" alt=""> Просмотров: {{ $item['views_count'] or '1' }}</span>
 
                     </div>
                     <div class="single-listing-actions">
