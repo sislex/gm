@@ -88,6 +88,8 @@
                             <li><a ng-click="obj.helpers.changeOrderValue('-price')">Цене (от Дорогих к Дешевым)</a></li>
                             <li><a ng-click="obj.helpers.changeOrderValue('Probeg')">Пробегу (от Меньшего к Большему)</a></li>
                             <li><a ng-click="obj.helpers.changeOrderValue('-Probeg')">Пробегу (от Большего к Меньшему)</a></li>
+                            {{--<li><a ng-click="obj.helpers.changeOrderValue('views_count')">Просмотру (от Меньшего к Большему)</a></li>--}}
+                            {{--<li><a ng-click="obj.helpers.changeOrderValue('-views_count')">Просмотру (от Большего к Меньшему)</a></li>--}}
                         </ul>
                     </div>
 
@@ -256,7 +258,8 @@
                                 </div>
                             </div>
                             <div id="results-holder" class="results-grid-view" ng-show="cloneItems" ng-init="order='-item.id'">
-                                <!-- Result Item -->
+                            <!-- Result Item -->
+                                @{{ obj.helpers.printCloneItems() }}
 
                                 <div class="result-item format-standard" ng-repeat="item in cloneItems | orderBy:order">
                                     <div class="result-item-image">
@@ -328,4 +331,5 @@
 
 @section('PAGE-LEVEL-SCRIPTS')
     <script src="/catalog/js/catalog/index.js" type="text/javascript"></script>
+
 @endsection
