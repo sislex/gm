@@ -61,7 +61,19 @@ class CatalogController extends Controller
                         $year = $obj['God_vypuska'][0]['text'];
                     }
 
-                    $name = "{$mark} {$model} {$modification} {$year} ";
+                    if ($modification != ''){
+                        $name = "{$mark} {$model} {$modification} {$year}";
+                    } else {
+                        $name = "{$mark} {$model} {$year}";
+                    }
+
+                    // adding or updating 'name' field containing full name of the item
+                    $obj['name'] = trim($name);
+                    $item = Items::where('id','=',$value['id'])->get()->first();
+                    if (isset($item->obj) && $item->obj != $obj){
+                        $item->obj = json_encode($obj);
+                        $item->save();
+                    }
 
                     $itemsNames[] = ['id' => $value['id'], 'name' => $name];
                 }

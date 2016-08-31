@@ -88,8 +88,8 @@
                             <li><a ng-click="obj.helpers.changeOrderValue('-price')">Цене (от Дорогих к Дешевым)</a></li>
                             <li><a ng-click="obj.helpers.changeOrderValue('Probeg')">Пробегу (от Меньшего к Большему)</a></li>
                             <li><a ng-click="obj.helpers.changeOrderValue('-Probeg')">Пробегу (от Большего к Меньшему)</a></li>
-                            {{--<li><a ng-click="obj.helpers.changeOrderValue('views_count')">Просмотру (от Меньшего к Большему)</a></li>--}}
-                            {{--<li><a ng-click="obj.helpers.changeOrderValue('-views_count')">Просмотру (от Большего к Меньшему)</a></li>--}}
+                            <li><a ng-click="obj.helpers.changeOrderValue('name')">Названию (в Прямом порядке)</a></li>
+                            <li><a ng-click="obj.helpers.changeOrderValue('-name')">Названию (в Обратном порядке)</a></li>
                         </ul>
                     </div>
 
@@ -258,9 +258,8 @@
                                 </div>
                             </div>
                             <div id="results-holder" class="results-grid-view" ng-show="cloneItems" ng-init="order='-item.id'">
-                            <!-- Result Item -->
-                                @{{ obj.helpers.printCloneItems() }}
 
+                            <!-- Result Item -->
                                 <div class="result-item format-standard" ng-repeat="item in cloneItems | orderBy:order">
                                     <div class="result-item-image">
                                         <a  href="{{action('Catalog\CatalogController@item')}}/@{{ item.item['id'] }}" class="media-box" ng-show="item.images[0]">
@@ -296,7 +295,6 @@
                                                         <i class="fa fa-star"  ng-if="obj.helpers.checkId(wishList, item.item['id'])" style="color: #F5CF44"></i>
                                                         Избранное
                                                     </a>
-{{--                                                    <a href="{{action('Catalog\CatalogController@item')}}/@{{ item.item['id'] }}" class="btn btn-default btn-sm">Enquire</a><br>--}}
                                                 </div>
                                             </div>
                                         </div>

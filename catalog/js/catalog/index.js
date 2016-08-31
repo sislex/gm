@@ -278,7 +278,7 @@ myApp.controller('myCtrl', ['$scope', '$http',
                 }
             }
         };
-
+        
         var lochash    = location.hash.substr(1),
             rows = lochash.split('&'),
             hash = {};
