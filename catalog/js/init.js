@@ -661,6 +661,7 @@ $(document).ready(function(){
 
 	// Vehicle Details Clone
 	$( ".badge-premium-listing" ).clone().appendTo( ".single-listing-actions" );
+	$( ".viewed-count" ).clone().appendTo( ".single-listing-actions" );
 });
 
 // FITVIDS

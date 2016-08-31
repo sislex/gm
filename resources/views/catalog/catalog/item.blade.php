@@ -75,7 +75,6 @@
                         @if(isset($item['obj']['Старая цена']) && $item['obj']['Старая цена']!='')
                             <div class="btn btn-warning old-price">${{$item['obj']['Старая цена']}}</div>
                         @endif
-
                     </div>
 
                     <div class="row">
