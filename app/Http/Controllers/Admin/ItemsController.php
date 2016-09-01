@@ -29,10 +29,18 @@ class ItemsController extends Controller
     {
         $input = \Request::all();
 
-        if(isset($input['check'])){$type = $input['check'];}
-        else{$type = '';}
+        if(isset($input['check'])){
+            $type = $input['check'];
+        }else{
+            $type = '';
+        }
 
-        $items = Items::where('published', '=', 1)->orderBy('id', 'desc')->take($limit)->get()->toArray();
+        if($type == 'published'){
+            $items = Items::where('published', '=', 1)->orderBy('id', 'desc')->take($limit)->get()->toArray();
+        }else{
+            $items = Items::orderBy('id', 'desc')->take($limit)->get()->toArray();
+        }
+
         $arr = [];
 
         foreach($items as $value){

@@ -5614,27 +5614,27 @@ body{
 		margin-top:12px;
 	}
 
-	@media screen and ( min-width: 768px) {
+	@media only screen and ( min-width: 768px) {
 		.single-listing-actions .viewed-count {
 			top: -10px;
 		}
 	}
 
-	@media screen and ( min-width: 728px ) and ( max-width: 750px) {
+	@media only screen and ( min-width: 728px ) and ( max-width: 750px) {
 		.single-listing-actions .viewed-count {
 			top: -20px;
 			margin-right: 5px;
 		}
 	}
 
-	@media screen and ( min-width: 615px ) and ( max-width: 727px) {
+	@media only screen and ( min-width: 615px ) and ( max-width: 727px) {
 		.single-listing-actions .viewed-count {
 			top: -18px;
 			/*margin-right: 15px;*/
 		}
 	}
 
-	@media screen and ( min-width: 414px ) and ( max-width: 614px) {
+	@media only screen and ( min-width: 414px ) and ( max-width: 614px) {
 		.single-listing-actions .viewed-count {
 			top: 10px;
 			margin-right: 15px;
@@ -5647,11 +5647,11 @@ body{
 		}
 	}*/
 
-	@media screen and (max-width: 480px) { 
-		.single-listing-actions .viewed-count {
-			top: 10px;
-		}
-	}
+	/*@media only screen and (max-width: 480px) {*/
+		/*.single-listing-actions .viewed-count {*/
+			/*top: 10px;*/
+		/*}*/
+	/*}*/
 
 	.single-vehicle-title .badge-premium-listing, .single-vehicle-title .viewed-count{
 		display:none;
