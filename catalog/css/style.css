@@ -5641,9 +5641,15 @@ body{
 		}
 	}
 
-	@media screen and ( min-width: 300px ) and ( max-width: 413px) {
+/*	@media screen and ( min-width: 300px ) and ( max-width: 413px) {
 		.single-listing-actions .viewed-count {
 			top: 0px;
+		}
+	}*/
+
+	@media screen and (max-width: 480px) { 
+		.single-listing-actions .viewed-count {
+			top: 10px;
 		}
 	}
 
