@@ -67,6 +67,16 @@ iframe{
 	border:0;
 }
 
+
+/* ==================================================
+  style for ngCloack Angular directive
+================================================== */
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak, .ng-hide {
+	display: none !important;
+}
+
+
 /* ==================================================
    1. Basic Styles
 ================================================== */

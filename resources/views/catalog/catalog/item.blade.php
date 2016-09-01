@@ -69,7 +69,7 @@
                             <a href="#" data-toggle="modal" data-target="#sendModal" class="btn btn-default" title="Поделиться ссылкой с другом"><i class="fa fa-send"></i> <span>Поделиться</span></a>
                             <a href="javascript:void(0)" onclick="window.print();" class="btn btn-default" title="Распечатать эту страницу"><i class="fa fa-print"></i> <span>Распечатать</span></a>
                         </div>
-                        <div class="btn btn-info price" >@{{ obj.obj.price * currencies.BYR | ceil }} <span style="font-size: 14px">руб</span>.</div>
+                        <div class="btn btn-info price" ng-cloak ng-if="(obj.obj.price * currencies.BYR) > 0">@{{ obj.obj.price * currencies.BYR | ceil }} <span style="font-size: 14px">руб</span>.</div>
                         <div class="btn btn-info price">${{ intval($item['price']) }}</div>
 
                         @if(isset($item['obj']['Старая цена']) && $item['obj']['Старая цена']!='')
