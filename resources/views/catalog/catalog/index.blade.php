@@ -88,8 +88,8 @@
                             <li><a ng-click="obj.helpers.changeOrderValue('-price')">Цене (от Дорогих к Дешевым)</a></li>
                             <li><a ng-click="obj.helpers.changeOrderValue('Probeg')">Пробегу (от Меньшего к Большему)</a></li>
                             <li><a ng-click="obj.helpers.changeOrderValue('-Probeg')">Пробегу (от Большего к Меньшему)</a></li>
-                            <li><a ng-click="obj.helpers.changeOrderValue('name')">Названию (в Прямом порядке)</a></li>
-                            <li><a ng-click="obj.helpers.changeOrderValue('-name')">Названию (в Обратном порядке)</a></li>
+                            <li><a ng-click="obj.helpers.changeOrderValue('name')">Названию (A-Z в Прямом порядке)</a></li>
+                            <li><a ng-click="obj.helpers.changeOrderValue('-name')">Названию (Z-A в Обратном порядке)</a></li>
                         </ul>
                     </div>
 
