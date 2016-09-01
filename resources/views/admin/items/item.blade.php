@@ -86,6 +86,7 @@
                                             ng-options="item.text for item in obj.help.type_auto[0].children | orderBy:'text':false"
                                             ng-change="obj.helpers.makeObj('type_auto', 'sublist')"
                                             class="form-control input-circle"
+                                            required
                                             >
                                         <option value=""> любая </option>
                                     </select>
@@ -100,6 +101,7 @@
                                             ng-options="item.text for item in obj.help.type_auto[1].children | orderBy:'text':false"
                                             ng-change="obj.helpers.makeObj('type_auto', 'sublist')"
                                             class="form-control input-circle"
+                                            required
                                             >
                                         <option value=""> любая </option>
                                     </select>
