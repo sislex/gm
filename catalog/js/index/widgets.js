@@ -120,6 +120,13 @@ myApp.controller('callMeBackWidget', ['$scope', '$http',
                 //$(selector + ' .ok').remove();
             });
         };
+        // $scope.notOk = function(selector){
+        //     var notOk = $('<div class="notOk"><div class="shadow"></div><div class="text"> Ошибка! Вы не указали телефон. </div></div>');
+        //     $(selector).prepend(notOk);
+        //     $(selector + ' .notOk').fadeIn(1500, function(){
+        //         //$(selector + ' .ok').remove();
+        //     });
+        // };
         $scope.callMeBack = {
             type : 'Заказ обратного звонка',
             name : '',
@@ -140,16 +147,21 @@ myApp.controller('callMeBackWidget', ['$scope', '$http',
             // ---
 
             send : function(){
-                $scope.ok('#callMeBackWidget');
-                $http.post('/mail/index',{callMeBackWidget : $scope.callMeBack})
-                    .success(function(data, status, headers, config){
-                        console.log('запрос отправлен успешно');
-                        $scope.callMeBack.clear();
-                    })
-                    .error(function(data, status, headers, config){
-                        console.log('ошибка при отправке запроса');
-                        $scope.callMeBack.clear();
-                    });
+                if ($scope.callMeBack.phone.trim() != '') {
+                    $scope.ok('#callMeBackWidget');
+                    $http.post('/mail/index',{callMeBackWidget : $scope.callMeBack})
+                        .success(function(data, status, headers, config){
+                            console.log('запрос отправлен успешно');
+                            $scope.callMeBack.clear();
+                        })
+                        .error(function(data, status, headers, config){
+                            console.log('ошибка при отправке запроса');
+                            $scope.callMeBack.clear();
+                        });
+                } else {
+                    // do nothing
+                }
+                
             },
             clear : function(){
                 $scope.callMeBack.name = '';

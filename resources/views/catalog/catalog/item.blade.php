@@ -255,7 +255,7 @@
                                         <input ng-model="callMeBack.email" name="email" type="email" placeholder="Email" class="form-control" >
                                         <div class="row">
                                             <div class="col-md-7">
-                                                <input required ng-model="callMeBack.phone" name="phone" type="text" placeholder="Телефон №*" class="form-control">
+                                                <input ng-model="callMeBack.phone" name="phone" type="tel" ng-trim="true" required placeholder="Телефон №*" class="form-control">
                                             </div>
                                         </div>
                                         <textarea ng-model="callMeBack.comment" name="comment" class="form-control" placeholder="Комментарий"></textarea>

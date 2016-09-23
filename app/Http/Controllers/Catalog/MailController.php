@@ -11,6 +11,8 @@ class MailController extends Controller
     {
         $input = \Request::all();
 
+//        dd($input);
+
         if(isset($input['modal']) || isset($input['callMeBackWidget']) || isset($input['subscribeWidget'])){
             $transport = \Swift_SmtpTransport::newInstance('smtp.yandex.ru', 465, 'ssl');
             $transport->setUsername('new.goldenmotors@tut.by');
@@ -32,25 +34,26 @@ class MailController extends Controller
             }
 
 //            if((isset($mail_data['phone']) && trim($mail_data['phone']) != '') || (isset($mail_data['email']) && trim($mail_data['email']) != '')){
-                if(isset($mail_data['friend']) && trim($mail_data['friend'] != '')){
-                    $mail_sending_result = \Mail::send('catalog.mail.tpl2-share-with-friend', ['mail_data' => $mail_data], function($message) use ($mail_data)
-                    {
-                        $message->from('new.goldenmotors@tut.by', 'Автосалон Golden Motors');
-                        $message->to($mail_data['friend'])->subject("Письмо с сайта [goldenmotors.by]");
-                    });
+            if(isset($mail_data['friend']) && trim($mail_data['friend'] != '')){
+                $mail_sending_result = \Mail::send('catalog.mail.tpl2-share-with-friend', ['mail_data' => $mail_data], function($message) use ($mail_data)
+                {
+                    $message->from('new.goldenmotors@tut.by', 'Автосалон Golden Motors');
+                    $message->to($mail_data['friend'])->subject("Письмо с сайта [goldenmotors.by]");
+                });
 
-                    return 'Письмо отправлено. Код: ' .$mail_sending_result;
+                return 'Письмо отправлено. Код: ' .$mail_sending_result;
 
-                } else {
-                    $mail_sending_result = \Mail::send('catalog.mail.tpl1-general', ['mail_data' => $mail_data], function($message) use ($mail_data)
-                    {
-                        $message->from('new.goldenmotors@tut.by', 'Автосалон Golden Motors');
-                        $message->to('goldenmotors.by@gmail.com', 'Автосалон Golden Motors')->subject("Письмо с сайта [goldenmotors.by] - " .$mail_data['type']);
+            } else {
+                $mail_sending_result = \Mail::send('catalog.mail.tpl1-general', ['mail_data' => $mail_data], function($message) use ($mail_data)
+                {
+                    $message->from('new.goldenmotors@tut.by', 'Автосалон Golden Motors');
+//                        $message->to('goldenmotors.by@gmail.com', 'Автосалон Golden Motors')->subject("Письмо с сайта [goldenmotors.by] - " .$mail_data['type']);
 //                        $message->to('sislex@ya.ru', 'Автосалон Golden Motors')->subject("Письмо с сайта [goldenmotors.by] - " .$mail_data['type']);
-                    });
+                    $message->to('closed@tut.by', 'Автосалон Golden Motors')->subject("Письмо с сайта [goldenmotors.by] - " .$mail_data['type']);
+                });
 
-                    return 'Письмо отправлено. Код: ' .$mail_sending_result;
-                }
+                return 'Письмо отправлено. Код: ' .$mail_sending_result;
+            }
 //            }else{
 //                return 'Письмо не отправлено: не указаны контактные данные.';
 //            }

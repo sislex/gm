@@ -71,7 +71,8 @@
                             <li class="envelope"><a href="mailto:goldenmotors.by@gmail.com"><i class="fa fa-envelope-o"></i></a></li>
                             <li class="facebook"><a href="https://www.facebook.com/goldenmotors.by/" target="_blank"><i class="fa fa-facebook"></i></a></li>
                             <li class="vk"><a href="https://vk.com/club37638314" target="_blank"><i class="fa fa-vk"></i></a></li>
-                            <li class="twitter"><a href="https://twitter.com/goldenmotors_by" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                            {{--<li class="twitter"><a href="https://twitter.com/goldenmotors_by" target="_blank"><i class="fa fa-twitter"></i></a></li>--}}
+                            <li class="twitter"><a href="https://twitter.com/goldenmotors_" target="_blank"><i class="fa fa-twitter"></i></a></li>
                             <li class="google-plus"><a href="https://plus.google.com/+GoldenmotorsBy" target="_blank"><i class="fa fa-google-plus"></i></a></li>
                             <li class="youtube"><a href="http://www.youtube.com/user/goldenmotorsby" target="_blank"><i class="fa fa-youtube"></i></a></li>
                             <li class="instagram"><a href="https://www.instagram.com/goldenmotors.by/" target="_blank"><i class="fa fa-instagram"></i></a></li>
@@ -128,7 +129,8 @@
                         <ul class="social-icons social-icons-colored pull-right">
                             <li class="facebook"><a href="https://www.facebook.com/goldenmotors.by/" target="_blank" rel="nofollow"><i class="fa fa-facebook"></i></a></li>
                             <li class="vk"><a href="https://vk.com/club37638314" target="_blank" rel="nofollow"><i class="fa fa-vk"></i></a></li>
-                            <li class="twitter"><a href="https://twitter.com/goldenmotors_by" target="_blank" rel="nofollow"><i class="fa fa-twitter"></i></a></li>
+                            {{--<li class="twitter"><a href="https://twitter.com/goldenmotors_by" target="_blank" rel="nofollow"><i class="fa fa-twitter"></i></a></li>--}}
+                            <li class="twitter"><a href="https://twitter.com/goldenmotors_" target="_blank" rel="nofollow"><i class="fa fa-twitter"></i></a></li>
                             <li class="google-plus"><a href="https://plus.google.com/+GoldenmotorsBy" target="_blank" rel="nofollow"><i class="fa fa-google-plus"></i></a></li>
                             <li class="youtube"><a href="http://www.youtube.com/user/goldenmotorsby" target="_blank" rel="nofollow"><i class="fa fa-youtube"></i></a></li>
                             <li class="instagram"><a href="https://www.instagram.com/goldenmotors.by/" target="_blank" rel="nofollow"><i class="fa fa-instagram"></i></a></li>
