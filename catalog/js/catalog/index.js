@@ -307,30 +307,34 @@ myApp.controller('myCtrl', ['$scope', '$http',
             subscribe : false,
             url : window.location.href,
             send : function(){
-                $scope.ok('#callMeBackWidget');
-                console.log($scope.obj.help.type_auto );
-                if($scope.obj.help.type_auto && $scope.obj.help.type_auto[0]){$scope.mail.type = $scope.obj.help.type_auto[0].text;}
-                if($scope.obj.help.type_auto && $scope.obj.help.type_auto[1]){$scope.mail.mark = $scope.obj.help.type_auto[1].text;}
-                if($scope.obj.help.type_auto && $scope.obj.help.type_auto[2]){$scope.mail.model = $scope.obj.help.type_auto[2].text;}
-                if($scope.obj.help['God_vypuska']){$scope.mail.year_min = $scope.obj.help['God_vypuska']['min'].text;}
-                if($scope.obj.help['God_vypuska']){$scope.mail.year_max = $scope.obj.help['God_vypuska']['max'].text;}
-                if($scope.obj.help['price']){$scope.mail.price_min = $scope.obj.help['price']['min'];}
-                if($scope.obj.help['price']){$scope.mail.price_max = $scope.obj.help['price']['max'];}
-                if($scope.obj.help['Тип двигателя'] && $scope.obj.help['Тип двигателя'][0]){$scope.mail.engine = $scope.obj.help['Тип двигателя'][0].text;}
-                if($scope.obj.help['Тип кузова'] && $scope.obj.help['Тип кузова'][0]){$scope.mail.body = $scope.obj.help['Тип кузова'][0].text;}
-                if($scope.obj.help['Трансмиссия'] && $scope.obj.help['Трансмиссия'][0]){$scope.mail.transmission = $scope.obj.help['Трансмиссия'][0].text;}
+                if ($scope.mail.phone.trim() != '') {
+                    $scope.ok('#callMeBackWidget');
+                    // console.log($scope.obj.help.type_auto );
+                    if($scope.obj.help.type_auto && $scope.obj.help.type_auto[0]){$scope.mail.type = $scope.obj.help.type_auto[0].text;}
+                    if($scope.obj.help.type_auto && $scope.obj.help.type_auto[1]){$scope.mail.mark = $scope.obj.help.type_auto[1].text;}
+                    if($scope.obj.help.type_auto && $scope.obj.help.type_auto[2]){$scope.mail.model = $scope.obj.help.type_auto[2].text;}
+                    if($scope.obj.help['God_vypuska']){$scope.mail.year_min = $scope.obj.help['God_vypuska']['min'].text;}
+                    if($scope.obj.help['God_vypuska']){$scope.mail.year_max = $scope.obj.help['God_vypuska']['max'].text;}
+                    if($scope.obj.help['price']){$scope.mail.price_min = $scope.obj.help['price']['min'];}
+                    if($scope.obj.help['price']){$scope.mail.price_max = $scope.obj.help['price']['max'];}
+                    if($scope.obj.help['Тип двигателя'] && $scope.obj.help['Тип двигателя'][0]){$scope.mail.engine = $scope.obj.help['Тип двигателя'][0].text;}
+                    if($scope.obj.help['Тип кузова'] && $scope.obj.help['Тип кузова'][0]){$scope.mail.body = $scope.obj.help['Тип кузова'][0].text;}
+                    if($scope.obj.help['Трансмиссия'] && $scope.obj.help['Трансмиссия'][0]){$scope.mail.transmission = $scope.obj.help['Трансмиссия'][0].text;}
 
-                //console.log($scope.mail);
+                    //console.log($scope.mail);
 
-                $http.post('/mail/index',{callMeBackWidget : $scope.mail})
-                    .success(function(data, status, headers, config){
-                        console.log('запрос отправлен успешно');
-                        //$scope.mail.clear();
-                    })
-                    .error(function(data, status, headers, config){
-                        console.log('ошибка при отправке запроса');
-                        //$scope.mail.clear();
-                    });
+                    $http.post('/mail/index',{callMeBackWidget : $scope.mail})
+                        .success(function(data, status, headers, config){
+                            console.log('запрос отправлен успешно');
+                            //$scope.mail.clear();
+                        })
+                        .error(function(data, status, headers, config){
+                            console.log('ошибка при отправке запроса');
+                            //$scope.mail.clear();
+                        });
+                } else {
+                    // do nothing
+                }
             },
             clear : function(){
                 $scope.mail.name = '';
@@ -340,7 +344,5 @@ myApp.controller('myCtrl', ['$scope', '$http',
                 $scope.mail.subscribe = false;
             }
         };
-
-
     }
 ]);

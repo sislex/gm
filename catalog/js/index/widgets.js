@@ -161,7 +161,6 @@ myApp.controller('callMeBackWidget', ['$scope', '$http',
                 } else {
                     // do nothing
                 }
-                
             },
             clear : function(){
                 $scope.callMeBack.name = '';
@@ -240,17 +239,21 @@ mailApp.controller('mailWidget', ['$scope', '$http',
             phone : '',
             url : window.location.href,
             send : function(){
-                $scope.ok('#infoModal');
+                if ($scope.infoModal.phone.trim() != '') {
+                    $scope.ok('#infoModal');
 
-                $http.post('/mail/index',{modal : $scope.infoModal})
-                    .success(function(data, status, headers, config){
-                        console.log('запрос отправлен успешно');
-                        $scope.infoModal.clear();
-                    })
-                    .error(function(data, status, headers, config){
-                        console.log('ошибка при отправке запроса');
-                        $scope.infoModal.clear();
-                    });
+                    $http.post('/mail/index',{modal : $scope.infoModal})
+                        .success(function(data, status, headers, config){
+                            console.log('запрос отправлен успешно');
+                            $scope.infoModal.clear();
+                        })
+                        .error(function(data, status, headers, config){
+                            console.log('ошибка при отправке запроса');
+                            $scope.infoModal.clear();
+                        });
+                } else {
+
+                }
             },
             clear : function(){
                 $scope.infoModal.name = '';
@@ -267,17 +270,21 @@ mailApp.controller('mailWidget', ['$scope', '$http',
             comment : '',
             url : window.location.href,
             send : function(){
-                $scope.ok('#offerModal');
+                if ($scope.offerModal.phone.trim() != '') {
+                    $scope.ok('#offerModal');
 
-                $http.post('/mail/index',{modal : $scope.offerModal})
-                    .success(function(data, status, headers, config){
-                        console.log('запрос отправлен успешно');
-                        $scope.offerModal.clear();
-                    })
-                    .error(function(data, status, headers, config){
-                        console.log('ошибка при отправке запроса');
-                        $scope.offerModal.clear();
-                    });
+                    $http.post('/mail/index',{modal : $scope.offerModal})
+                        .success(function(data, status, headers, config){
+                            console.log('запрос отправлен успешно');
+                            $scope.offerModal.clear();
+                        })
+                        .error(function(data, status, headers, config){
+                            console.log('ошибка при отправке запроса');
+                            $scope.offerModal.clear();
+                        });
+                } else {
+                    // do nothing
+                }
             },
             clear : function(){
                 $scope.offerModal.name = '';
@@ -296,17 +303,21 @@ mailApp.controller('mailWidget', ['$scope', '$http',
             time : '',
             url : window.location.href,
             send : function(){
-                $scope.ok('#testdriveModal');
+                if ($scope.testdriveModal.phone.trim() != '') {
+                    $scope.ok('#testdriveModal');
 
-                $http.post('/mail/index',{modal : $scope.testdriveModal})
-                    .success(function(data, status, headers, config){
-                        console.log('запрос отправлен успешно');
-                        $scope.testdriveModal.clear();
-                    })
-                    .error(function(data, status, headers, config){
-                        console.log('ошибка при отправке запроса');
-                        $scope.testdriveModal.clear();
-                    });
+                    $http.post('/mail/index',{modal : $scope.testdriveModal})
+                        .success(function(data, status, headers, config){
+                            console.log('запрос отправлен успешно');
+                            $scope.testdriveModal.clear();
+                        })
+                        .error(function(data, status, headers, config){
+                            console.log('ошибка при отправке запроса');
+                            $scope.testdriveModal.clear();
+                        });
+                } else {
+                    // do nothing
+                }
             },
             clear : function(){
                 $scope.testdriveModal.name = '';
