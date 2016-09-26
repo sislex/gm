@@ -47,9 +47,9 @@ class MailController extends Controller
                 $mail_sending_result = \Mail::send('catalog.mail.tpl1-general', ['mail_data' => $mail_data], function($message) use ($mail_data)
                 {
                     $message->from('new.goldenmotors@tut.by', 'Автосалон Golden Motors');
-//                        $message->to('goldenmotors.by@gmail.com', 'Автосалон Golden Motors')->subject("Письмо с сайта [goldenmotors.by] - " .$mail_data['type']);
+                        $message->to('goldenmotors.by@gmail.com', 'Автосалон Golden Motors')->subject("Письмо с сайта [goldenmotors.by] - " .$mail_data['type']);
 //                    $message->to('sislex@ya.ru', 'Автосалон Golden Motors')->subject("Письмо с сайта [goldenmotors.by] - " .$mail_data['type']);
-                    $message->to('closed@tut.by', 'Автосалон Golden Motors')->subject("Письмо с сайта [goldenmotors.by] - " .$mail_data['type']);
+//                    $message->to('closed@tut.by', 'Автосалон Golden Motors')->subject("Письмо с сайта [goldenmotors.by] - " .$mail_data['type']);
                 });
 
                 return 'Письмо отправлено. Код: ' .$mail_sending_result;

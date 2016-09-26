@@ -321,8 +321,6 @@ myApp.controller('myCtrl', ['$scope', '$http',
                     if($scope.obj.help['Тип кузова'] && $scope.obj.help['Тип кузова'][0]){$scope.mail.body = $scope.obj.help['Тип кузова'][0].text;}
                     if($scope.obj.help['Трансмиссия'] && $scope.obj.help['Трансмиссия'][0]){$scope.mail.transmission = $scope.obj.help['Трансмиссия'][0].text;}
 
-                    //console.log($scope.mail);
-
                     $http.post('/mail/index',{callMeBackWidget : $scope.mail})
                         .success(function(data, status, headers, config){
                             console.log('запрос отправлен успешно');
