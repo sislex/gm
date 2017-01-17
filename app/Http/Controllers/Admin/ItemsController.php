@@ -48,6 +48,11 @@ class ItemsController extends Controller
                 if($value['obj']!=''){
                     $obj = json_decode($value['obj'], true);
                     unset($value['obj']);
+
+//                    if ($value['id'] == 296) {
+//                        dd($obj);
+//                    }
+
                 }else{
                     $obj = [];
                 }
@@ -63,6 +68,8 @@ class ItemsController extends Controller
                 $arr[] = $obj;
             }
         }
+
+//        dd($arr);
 
      return $arr;
     }
@@ -119,10 +126,16 @@ class ItemsController extends Controller
         $input = \Request::all();
         $input = Items::modifiedData($input);
 
-//        dd($input);
+        $k = json_decode($input['obj'],true);
+        if (isset($input['id']) && isset($k['images'])){
+            $item = Items::find($input['id']);
+            $obj = json_decode($item->obj, true);
+            $k['images'] = $obj['images'];
+        }
+
+        $input['obj'] = json_encode($k);
 
         if($input['id']){
-//            dd($input);
             Items::find($input['id'])->update($input);
         }else{
             $input['id'] = Items::create($input);
