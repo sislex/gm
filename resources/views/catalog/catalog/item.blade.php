@@ -283,7 +283,8 @@
                                                 {{--{{ \App\Phones::where('type','=','мобильный телефон')->first()->value('phone') }}--}}
                                             {{--</a>--}}
 
-                                                <a href="tel://{{$item['obj']['телефон'][0]['text']}}"> {{$item['obj']['телефон'][0]['text']}} </a>
+                                                {{--<a href="tel://{{$item['obj']['телефон'][0]['text']}}"> {{$item['obj']['телефон'][0]['text']}} </a>--}}
+                                                <a href="tel:{{$item['obj']['телефон'][0]['text']}}"> {{$item['obj']['телефон'][0]['text']}} </a>
                                             </strong>
                                         </span>
                                         <br>
@@ -293,7 +294,8 @@
                                             @if(isset($item['obj']['телефон 2'][0]['text']))
                                             <i class="fa fa-phone" style="font-size: medium"></i>
                                             <strong>
-                                                <a href="tel://{{$item['obj']['телефон 2'][0]['text']}}"> {{$item['obj']['телефон 2'][0]['text']}} </a>
+                                                {{--<a href="tel://{{$item['obj']['телефон 2'][0]['text']}}"> {{$item['obj']['телефон 2'][0]['text']}} </a>--}}
+                                                <a href="tel:{{$item['obj']['телефон 2'][0]['text']}}"> {{$item['obj']['телефон 2'][0]['text']}} </a>
                                             </strong>
                                             @endif
                                             Продавец: Голденмоторс
@@ -390,7 +392,8 @@
                                 <span>
                                     <i class="fa fa-phone" style="font-size: medium"></i>
                                     <strong>
-                                        <a href="tel://+375447832832"> +375-(44)-7-832-832 </a>
+                                        {{--<a href="tel://+375447832832"> +375-(44)-7-832-832 </a>--}}
+                                        <a href="tel:+375447832832"> +375-(44)-7-832-832 </a>
                                     </strong>
                                     Кредитный консультант
                                 </span>
