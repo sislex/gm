@@ -126,14 +126,16 @@ class ItemsController extends Controller
         $input = \Request::all();
         $input = Items::modifiedData($input);
 
-        $k = json_decode($input['obj'],true);
-        if (isset($input['id']) && isset($k['images'])){
-            $item = Items::find($input['id']);
-            $obj = json_decode($item->obj, true);
-            $k['images'] = $obj['images'];
-        }
+        if (isset($input['id']) && isset($input['obj'])) {
+            $k = json_decode($input['obj'],true);
+            if (isset($k['images'])){
+                $item = Items::find($input['id']);
+                $obj = json_decode($item->obj, true);
+                $k['images'] = $obj['images'];
+            }
 
-        $input['obj'] = json_encode($k);
+            $input['obj'] = json_encode($k);
+        }
 
         if($input['id']){
             Items::find($input['id'])->update($input);
