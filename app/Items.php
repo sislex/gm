@@ -43,8 +43,8 @@ class Items extends Model
                 $price = '';
             }
 
-            $price = isset($input['price'])
-                ? "Цена {$input['price']}$" : '';
+//            $price = isset($input['price'])
+//                ? "Цена {$input['price']}$" : '';
 
             if(isset($input['title']) && $input['title']==''){
                 $input['title'] = "Купить {$mark} {$model} {$god} {$toplivo} {$price} в Минске Голден Моторс";

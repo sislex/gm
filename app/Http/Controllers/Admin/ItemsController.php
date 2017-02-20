@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Items;
+use Illuminate\Support\Facades\Storage;
+use Mockery\CountValidator\Exception;
 
 class ItemsController extends Controller
 {
@@ -48,11 +49,6 @@ class ItemsController extends Controller
                 if($value['obj']!=''){
                     $obj = json_decode($value['obj'], true);
                     unset($value['obj']);
-
-//                    if ($value['id'] == 296) {
-//                        dd($obj);
-//                    }
-
                 }else{
                     $obj = [];
                 }
@@ -68,8 +64,6 @@ class ItemsController extends Controller
                 $arr[] = $obj;
             }
         }
-
-//        dd($arr);
 
      return $arr;
     }
@@ -156,7 +150,6 @@ class ItemsController extends Controller
     public function updateImages()
     {
         $input = \Request::all();
-//        dd($input);
 
         if(!isset($input['images'])){
             $input['images'] = [];
@@ -180,6 +173,19 @@ class ItemsController extends Controller
      */
     public function delete($id)
     {
+        $disk = Storage::disk('my_images');
+        if ($disk->exists('items/' . (string)$id)) {
+
+            $is_valid_dir = is_dir($disk->getAdapter()->getPathPrefix() . 'items/' . (string)$id);
+            if ($is_valid_dir) {
+                try {
+                    $disk->deleteDirectory('items/' . $id);
+                } catch (Exception $e) {
+                    dd('Возникла непредвиденная ошибка: ' . $e->getMessage(), '\n');
+                }
+            }
+        }
+
         $item = Items::find($id);
         $item->delete();
 

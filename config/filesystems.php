@@ -48,6 +48,11 @@ return [
             'root'   => storage_path('app'),
         ],
 
+        'my_images' => [
+            'driver' => 'local',
+            'root'   => storage_path('../images'),
+        ],
+
         'ftp' => [
             'driver'   => 'ftp',
             'host'     => 'ftp.example.com',
