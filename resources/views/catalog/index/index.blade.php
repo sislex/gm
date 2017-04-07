@@ -223,22 +223,30 @@
                 </div>
                 <!-- End Partners slider -->
 
+        <!--
                 <div class="spacer-50"></div>
 
+        -->
                 <!-- Social networks widget -->
+        <!--
                 <div class="container">
                     <div class="row">
                         <div class="col-md-4 text-align-center" >
+        -->
                             <!-- LightWidget WIDGET -->
-                            <div style="border: 1px solid #ddd; border-radius: 2px;" class="instaWidget">
-                                <div>Наш <a href="http://instagram.com/goldenmotors.by" target="_blank" rel="nofollow">Instagram</a></div>
-                                <script src="//lightwidget.com/widgets/lightwidget.js"></script>
-                                <iframe src="//lightwidget.com/widgets/64c4385207ad531c8fc0b9af04cc74ec.html" id="lightwidget_64c4385207" name="lightwidget_64c4385207"  scrolling="no" allowtransparency="true" class="lightwidget-widget" style="width: 100%; border: 0; overflow: hidden;"></iframe>
-                            </div>
-                        </div>
-                        <div class="col-md-4 text-align-center" >
-                            <script type="text/javascript" src="//vk.com/js/api/openapi.js?133"></script>
-                            <!-- VK Widget -->
+        <!--
+
+                    <div style="border: 1px solid #ddd; border-radius: 2px;" class="instaWidget">
+                        <div>Наш <a href="http://instagram.com/goldenmotors.by" target="_blank" rel="nofollow">Instagram</a></div>
+                        <script src="//lightwidget.com/widgets/lightwidget.js"></script>
+                        <iframe src="//lightwidget.com/widgets/64c4385207ad531c8fc0b9af04cc74ec.html" id="lightwidget_64c4385207" name="lightwidget_64c4385207"  scrolling="no" allowtransparency="true" class="lightwidget-widget" style="width: 100%; border: 0; overflow: hidden;"></iframe>
+                    </div>
+                </div>
+                <div class="col-md-4 text-align-center" >
+                    <script type="text/javascript" src="//vk.com/js/api/openapi.js?133"></script>
+        -->
+                    <!-- VK Widget -->
+        <!--
                             <div id="vk_groups"></div>
                             <script type="text/javascript">
                                 VK.Widgets.Group("vk_groups", {mode: 0, width: "330", height: "250", color1: 'FFFFFF', color2: '000000', color3: '5E81A8'}, 37638314);
@@ -254,10 +262,10 @@
                         </div>
                     </div>
                 </div>
+
+        -->
                 <!-- End of Social networks widget>
 
-            </div>
-        </div>
         <!-- End Body Content -->
     </div>
 @endsection
