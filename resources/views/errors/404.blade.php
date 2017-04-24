@@ -1,47 +1,36 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Be right back.</title>
+@extends('catalog.layout')
 
-        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+{{--@section('title', $content['title'])--}}
+{{--@section('keywords', $content['keywords'])--}}
+{{--@section('description', $content['description'])--}}
 
-        <style>
-            html, body {
-                height: 100%;
-            }
+@section('content')
 
-            body {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                color: #B0BEC5;
-                display: table;
-                font-weight: 100;
-                font-family: 'Lato';
-            }
-
-            .container {
-                text-align: center;
-                display: table-cell;
-                vertical-align: middle;
-            }
-
-            .content {
-                text-align: center;
-                display: inline-block;
-            }
-
-            .title {
-                font-size: 72px;
-                margin-bottom: 40px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <div class="content">
-                <div class="title">404</div>
-            </div>
+<!-- Start Body Content -->
+<div id="content" class="content full" ng-app="myApp">
+    <div class="container">
+        <div class="text-align-center error-404">
+            <h1 class="huge" style="color: lightgrey">404</h1>
+            <hr class="sm">
+            <p><strong>Извините, страница не найдена!</strong></p>
+            <p>Запрашиваемая Вами страница была перемещена, удалена, переименована<br> или вероятно никогда не существовала.</p>
+            {{--<p>The page you are looking for was moved, removed, renamed<br>or might never existed. You stumbled upon a broken link :(</p>--}}
         </div>
-    </body>
-</html>
+        <div class="spacer-30"></div>
+    </div>
+</div>
+<!-- End Body Content -->
+
+
+@endsection
+
+@section('PAGE-LEVEL-PLUGINS')
+    <script src="/admin/assets/global/plugins/angularjs/angular.min.js" type="text/javascript"></script>
+    <script src="/admin/js/checklist-model.js" type="text/javascript"></script>
+    <script src="/admin/assets/global/plugins/angularjs/angular-cookies.min.js" type="text/javascript"></script>
+@endsection
+
+@section('PAGE-LEVEL-SCRIPTS')
+    <script src="/catalog/js/catalog/index.js" type="text/javascript"></script>
+    <script src="/catalog/js/index/widgets.js" type="text/javascript"></script>
+@endsection
