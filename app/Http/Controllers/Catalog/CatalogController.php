@@ -88,66 +88,96 @@ class CatalogController extends Controller
 
     public function item($id = 0)
     {
-        Items::updateViewsCounter($id);
+        if ($id) {
+            $item = Items::find($id);
+            if ($item) {
+                Items::updateViewsCounter($id);
 
-        $item = Items::find($id);
-        if ($item['obj']){
-            $obj = json_decode($item['obj'], true);
-            $item['obj'] = $obj;
+                if ($item['obj']){
+                    $obj = json_decode($item['obj'], true);
+                    $item['obj'] = $obj;
 
-            if (!isset($obj['views_count'])){
-                $item['views_count'] = 1;
+                    if (!isset($obj['views_count'])){
+                        $item['views_count'] = 1;
+                    } else {
+                        $item['views_count'] = $obj['views_count'];
+                    }
+
+                    if (!isset($obj['images'])){
+                        $item->images = [];
+                    } else {
+                        $item->images = $obj['images'];
+                    }
+                }
+
+                $catalog_banner = UIComponents::where('name','=','catalog-banner')->get()->first();
+                $catalog_banner_arr = [];
+
+                if(isset($catalog_banner) && isset($catalog_banner->obj)){
+                    $obj = json_decode($catalog_banner->obj);
+                    if(isset($obj->images)){
+                        $catalog_banner_arr['images'] = $obj->images;
+                    }
+                    if(isset($obj->html)){
+                        $catalog_banner_arr['html'] = $obj->html;
+                    }
+                }
+
+                if(isset($item['obj']['Версия/Модификация']) && trim($item['obj']['Версия/Модификация']) != ''){
+                    $item['name'] = "{$item['obj']['type_auto'][0]['children'][0]['text']}"
+                        ." {$item['obj']['type_auto'][0]['children'][0]['children'][0]['text']}"
+                        ." {$item['obj']['Версия/Модификация']}"
+                        ." {$item['obj']['God_vypuska'][0]['text']}";
+                } else {
+                    $item['name'] = "{$item['obj']['type_auto'][0]['children'][0]['text']}"
+                        ." {$item['obj']['type_auto'][0]['children'][0]['children'][0]['text']}"
+                        ." {$item['obj']['God_vypuska'][0]['text']}";
+                }
+
+                $percent = Calculator::where('name', '=', 'Процент')->first();
+
+                return view('catalog/catalog/item', ['item' => $item, 'catalog_banner' => $catalog_banner_arr, 'percent' => $percent['value']]);
             } else {
-                $item['views_count'] = $obj['views_count'];
+                // Go To 404 page if $id is not valid (not found in database)
+                abort(404);
             }
 
-            if (!isset($obj['images'])){
-                $item->images = [];
-            } else {
-                $item->images = $obj['images'];
-            }
-        }
-
-        $catalog_banner = UIComponents::where('name','=','catalog-banner')->get()->first();
-        $catalog_banner_arr = [];
-
-        if(isset($catalog_banner) && isset($catalog_banner->obj)){
-            $obj = json_decode($catalog_banner->obj);
-            if(isset($obj->images)){
-                $catalog_banner_arr['images'] = $obj->images;
-            }
-            if(isset($obj->html)){
-                $catalog_banner_arr['html'] = $obj->html;
-            }
-        }
-
-        if(isset($item['obj']['Версия/Модификация']) && trim($item['obj']['Версия/Модификация']) != ''){
-            $item['name'] = "{$item['obj']['type_auto'][0]['children'][0]['text']}"
-                ." {$item['obj']['type_auto'][0]['children'][0]['children'][0]['text']}"
-                ." {$item['obj']['Версия/Модификация']}"
-                ." {$item['obj']['God_vypuska'][0]['text']}";
         } else {
-            $item['name'] = "{$item['obj']['type_auto'][0]['children'][0]['text']}"
-                ." {$item['obj']['type_auto'][0]['children'][0]['children'][0]['text']}"
-                ." {$item['obj']['God_vypuska'][0]['text']}";
+            // Go To 404 page if $id is not set or zero
+            abort(404);
         }
-
-        $percent = Calculator::where('name', '=', 'Процент')->first();
-
-        return view('catalog/catalog/item', ['item' => $item, 'catalog_banner' => $catalog_banner_arr, 'percent' => $percent['value']]);
     }
 
-    public function menu($pseudo_url){
-        $content = Content::where('pseudo_url','=',$pseudo_url)->get()->first();
-
-        return view('catalog/content/menu', ['content' => $content]);
+    public function menu($pseudo_url = ''){
+        if ($pseudo_url) {
+            $content = Content::where('pseudo_url','=',$pseudo_url)->get()->first();
+            if ($content) {
+                return view('catalog/content/menu', ['content' => $content]);
+            } else {
+                // Go To 404 page if $pseudo_url is not valid (not found in database)
+                abort(404);
+            }
+        } else {
+            // Go To 404 page if $pseudo_url is not set or empty string
+            abort(404);
+        }
     }
 
-    public function news($pseudo_url){
-        $content = Content::where('pseudo_url','=',$pseudo_url)->get()->first();
-        $categories = Content::getCategories('news');
+    public function news($pseudo_url = ''){
+        if ($pseudo_url) {
+            $content = Content::where('pseudo_url','=',$pseudo_url)->get()->first();
+            if ($content) {
+                $categories = Content::getCategories('news');
 
-        return view('catalog/content/news/news', ['content' => $content, 'categories' => $categories]);
+                return view('catalog/content/news/news', ['content' => $content, 'categories' => $categories]);
+            } else {
+                // Go To 404 page if $pseudo_url is not valid (not found in database)
+                abort(404);
+            }
+        } else {
+            // Go To 404 page if $pseudo_url is not set or empty string
+            abort(404);
+        }
     }
 
     public function news_index(){
@@ -160,19 +190,38 @@ class CatalogController extends Controller
     }
 
     public function news_category($pseudo_url){
-        $content = Content::where('pseudo_url','=',$pseudo_url)->get()->first();
+        if ($pseudo_url) {
+            $content = Content::where('pseudo_url','=',$pseudo_url)->get()->first();
+            if ($content) {
+                $news_pages = Content::getContent('news',$content->id);
+                $categories = Content::getCategories('news');
 
-        $news_pages = Content::getContent('news',$content->id);
-        $categories = Content::getCategories('news');
-
-        return view('catalog/content/news/index', ['content' => $content, 'news_pages' => $news_pages, 'categories' => $categories, 'active_category_id' => $content->id]);
+                return view('catalog/content/news/index', ['content' => $content, 'news_pages' => $news_pages, 'categories' => $categories, 'active_category_id' => $content->id]);
+            } else {
+                // Go To 404 page if $pseudo_url is not valid (not found in database)
+                abort(404);
+            }
+        } else {
+            // Go To 404 page if $pseudo_url is not set
+            abort(404);
+        }
     }
 
-    public function blog($pseudo_url){
-        $content = Content::where('pseudo_url','=',$pseudo_url)->get()->first();
-        $categories = Content::getCategories('blog');
+    public function blog($pseudo_url = ''){
+        if ($pseudo_url) {
+            $content = Content::where('pseudo_url','=',$pseudo_url)->get()->first();
+            if ($content) {
+                $categories = Content::getCategories('blog');
 
-        return view('catalog/content/blog/blog', ['content' => $content, 'categories' => $categories]);
+                return view('catalog/content/blog/blog', ['content' => $content, 'categories' => $categories]);
+            } else {
+                // Go To 404 page if $pseudo_url is not valid (not found in database)
+                abort(404);
+            }
+        } else {
+            // Go To 404 page if $pseudo_url is not set
+            abort(404);
+        }
     }
 
     public function blog_index(){
@@ -185,12 +234,21 @@ class CatalogController extends Controller
     }
 
     public function blog_category($pseudo_url){
-        $content = Content::where('pseudo_url','=',$pseudo_url)->get()->first();
+        if ($pseudo_url) {
+            $content = Content::where('pseudo_url','=',$pseudo_url)->get()->first();
+            if ($content) {
+                $blog_pages = Content::getContent('blog',$content->id);
+                $categories = Content::getCategories('blog');
 
-        $blog_pages = Content::getContent('blog',$content->id);
-        $categories = Content::getCategories('blog');
-
-        return view('catalog/content/blog/index', ['content' => $content, 'blog_pages' => $blog_pages, 'categories' => $categories, 'active_category_id' => $content->id]);
+                return view('catalog/content/blog/index', ['content' => $content, 'blog_pages' => $blog_pages, 'categories' => $categories, 'active_category_id' => $content->id]);
+            } else {
+                // Go To 404 page if $pseudo_url is not valid (not found in database)
+                abort(404);
+            }
+        } else {
+            // Go To 404 page if $pseudo_url is not set
+            abort(404);
+        }
     }
 
     public function getLastContent()
