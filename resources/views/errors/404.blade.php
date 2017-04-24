@@ -14,7 +14,6 @@
             <hr class="sm">
             <p><strong>Извините, страница не найдена!</strong></p>
             <p>Запрашиваемая Вами страница была перемещена, удалена, переименована<br> или вероятно никогда не существовала.</p>
-            {{--<p>The page you are looking for was moved, removed, renamed<br>or might never existed. You stumbled upon a broken link :(</p>--}}
         </div>
         <div class="spacer-30"></div>
     </div>
