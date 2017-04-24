@@ -423,7 +423,7 @@
                                 <label class="col-md-3 control-label"> Доп. информация </label>
                                 <div class="col-md-4">
                                     {{--<input type="text" class="form-control input-circle" value="{{ $item{'text'} }}" placeholder="Enter text">--}}
-                                    <textarea rows="6" class="form-control input-circle" name="text" placeholder="Введите доп. информацию о товаре">{{ $item['text'] or '' }}</textarea>
+                                    <textarea rows="6" id="summernote_1" class="form-control input-circle" name="text" placeholder="Введите доп. информацию о товаре">{{ $item['text'] or '' }}</textarea>
                                 </div>
                             </div>
                         </div>
@@ -1013,6 +1013,8 @@
     <script src="/admin/assets/global/plugins/jquery-file-upload/js/jquery.fileupload-validate.js" type="text/javascript"></script>
     <script src="/admin/assets/global/plugins/jquery-file-upload/js/jquery.fileupload-ui.js" type="text/javascript"></script>
 
+    <script src="/admin/assets/global/plugins/bootstrap-summernote/summernote.js" type="text/javascript"></script>
+
     <script src="/admin/assets/global/plugins/angularjs/angular.min.js"></script>
     <script src="/admin/js/checklist-model.js" type="text/javascript"></script>
 @endsection
@@ -1020,6 +1022,9 @@
 @section('PAGE-LEVEL-SCRIPTS')
     <script src="/admin/assets/pages/scripts/form-fileupload.js" type="text/javascript"></script>
     <script src="/admin/js/items/item.js" type="text/javascript"></script>
+
+    <script src="/admin/assets/pages/scripts/components-editors.js" type="text/javascript"></script>
+
 
     <script type="text/javascript">
 
@@ -1175,6 +1180,9 @@
     <link href="/admin/assets/global/plugins/jquery-file-upload/blueimp-gallery/blueimp-gallery.min.css" rel="stylesheet" type="text/css" />
     <link href="/admin/assets/global/plugins/jquery-file-upload/css/jquery.fileupload.css" rel="stylesheet" type="text/css" />
     <link href="/admin/assets/global/plugins/jquery-file-upload/css/jquery.fileupload-ui.css" rel="stylesheet" type="text/css" />
+
+    <link href="/admin/assets/global/plugins/bootstrap-summernote/summernote.css" rel="stylesheet" type="text/css" />
+
     <style>
         .preview img {
             width: 100%;

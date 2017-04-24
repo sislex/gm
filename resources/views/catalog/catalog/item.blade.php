@@ -141,7 +141,8 @@
                                 </ul>
                                 <div class="tab-content">
                                     <div id="vehicle-overview" class="tab-pane fade in active">
-                                        {{$item['text']}}
+                                        {{--{{$item['text']}}--}}
+                                        {!! $item['text'] !!}
                                     </div>
                                     <div id="vehicle-specs" class="tab-pane fade" ng-init="obj.specificationsJson='{{ $item['specifications'] or '' }}'">
                                         <div class="accordion" id="toggleArea">
