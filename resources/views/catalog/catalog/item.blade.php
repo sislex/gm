@@ -79,7 +79,7 @@
 
                     <div class="row">
                         <div class="col-md-8">
-                            <div class="single-listing-images">
+                            <div class="single-listing-images" id="single-listing-images">
                                 <div class="featured-image format-image">
                                     @if(isset($item['images'][0]))
                                         @if(!file_exists('/images/items/'.$item['id'].'/'.$item['images'][0]))
@@ -96,7 +96,8 @@
                                         @foreach($item['images'] as $key => $img)
                                             @if($key)
                                                 <li class="item format-image">
-                                                    <a href="/images/items/{{ $item['id'] }}/{{ $img }}" data-rel="prettyPhoto[gallery]" class="media-box">
+{{--                                                    <a href="/images/items/{{ $item['id'] }}/{{ $img }}" data-rel="prettyPhoto[gallery]" class="media-box">--}}
+                                                    <a href="/images/items/{{ $item['id'] }}/{{ $img }}" onclick="updateItemMainPhoto('{{ $img }}', '{{ $i }}')" data-rel="prettyPhoto[gallery]" class="media-box">
                                                         <img src="/images/items/{{ $item['id'] }}/thumbnail/{{ $img }}" alt="Фотография {{++$i}} {{$item['name']}}">
                                                     </a>
                                                 </li>
@@ -495,7 +496,7 @@
             </div>
         </div>
 
-    <!-- BOOK TEST DRIVE POPUP -->
+        <!-- BOOK TEST DRIVE POPUP -->
         <div class="modal fade" id="testdriveModal" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -600,10 +601,80 @@
         setTimeout(function() {
             if (window.AUTOSTARS) {
                 window.AUTOSTARS.OwlCarousel($('#images-slider'));
-                AUTOSTARS.PrettyPhoto($(".single-listing-images a[data-rel^='prettyPhoto']"));
+
+                if ($(window).width() >= 768) {
+                    AUTOSTARS.PrettyPhoto($(".single-listing-images a[data-rel^='prettyPhoto']"));
+                } else {
+                    $(".featured-image a").removeAttr("data-rel");
+                    $(".owl-carousel li a").removeAttr("data-rel");
+
+                    $(".featured-image").click(function (e) {
+                        e.preventDefault();
+                        var item_images = <?php echo json_encode($item['images']); ?>;
+                        var featured_image_name = $(".featured-image a img").attr("src").replace("/images/items/{{ $item['id'] }}/","");
+                        var featured_image_index = item_images.indexOf(featured_image_name);
+
+                        if (featured_image_index != -1) {
+//                            var pWidth = $(this).innerWidth(); //use .outerWidth() if you want borders
+                            var pWidth = $(".featured-image a img").innerWidth(); //use .outerWidth() if you want borders
+//                            var pOffset = $(this).offset();
+                            var pOffset = $(".featured-image a img").offset();
+                            var x = e.pageX - pOffset.left;
+
+//                            alert("pWidth: " +pWidth + ", pOffset: " + pOffset + ", x: " +x);
+
+                            var new_featured_image_name = "";
+                            if(pWidth/2 > x) {
+                                {{-- slide to the left --}}
+                                var new_featured_image_name = item_images[featured_image_index -1];
+                                if (!new_featured_image_name) {
+                                    new_featured_image_name = item_images[item_images.length-1];
+                                }
+                            } else {
+                                {{-- slide to the right --}}
+                                var new_featured_image_name = item_images[featured_image_index +1];
+                                if (!new_featured_image_name) {
+                                    new_featured_image_name = item_images[0];
+                                }
+                            }
+//                            alert(new_featured_image_name);
+                            var new_featured_image_number = item_images.indexOf(new_featured_image_name) +1;
+                            $(".featured-image a").attr("href","/images/items/{{ $item['id'] }}/" +new_featured_image_name);
+                            $(".featured-image a img").attr("src","/images/items/{{ $item['id'] }}/" +new_featured_image_name);
+                            $(".featured-image a img").attr("alt","Фотография " +new_featured_image_number +" {{ $item['name'] }}");
+                        }
+                        return false;
+                    });
+
+                    setTimeout(function(){
+                        var zoom_parent = document.getElementById("single-listing-images");
+                        var zoom_el = zoom_parent.getElementsByClassName("zoom");
+                        while (zoom_el[0]){
+                            zoom_el[0].parentNode.removeChild(zoom_el[0]);
+                        }
+                    },200);
+                }
+//                AUTOSTARS.PrettyPhoto($(".single-listing-images a[data-rel^='prettyPhoto']"));
             }
         }, 500);
     </script>
+
+    {{-- photo gallery hack --}}
+    <script>
+        function updateItemMainPhoto($photo_name, $photo_number){
+            if ($(window).width() < 768) {
+                ++$photo_number;
+                $(".featured-image a").attr("href","/images/items/{{ $item['id'] }}/" +$photo_name);
+                $(".featured-image a img").attr("src","/images/items/{{ $item['id'] }}/" +$photo_name);
+                $(".featured-image a img").attr("alt","Фотография " +$photo_number +" {{ $item['name'] }}");
+                $(".additional-images").click(function (event) {
+                    event.preventDefault();
+                    return false;
+                })
+            }
+        }
+    </script>
+
     @if(isset($item['obj']['mapX']) && isset($item['obj']['mapY']))
     <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
     <script type="text/javascript">

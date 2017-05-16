@@ -263,7 +263,7 @@
                                 <div class="result-item format-standard" ng-repeat="item in cloneItems | orderBy:order">
                                     <div class="result-item-image">
                                         <a  href="{{action('Catalog\CatalogController@item')}}/@{{ item.item['id'] }}" class="media-box" ng-show="item.images[0]">
-                                            <img ng-src="/images/items/@{{ item.item['id'] }}/thumbnail/@{{ item.images[0] }}" alt="">
+                                            <img ng-src="/images/items/@{{ item.item['id'] }}/thumbnail/@{{ item.images[0] }}" alt="@{{ item.images[0] }}">
 
                                             <span class="label label-default vehicle-age">@{{ item['God_vypuska'][0]['text'] }}</span>
                                             <span ng-if="item.promo.hot > 0" class="label label-primary vehicle-hot"> Срочно </span>
