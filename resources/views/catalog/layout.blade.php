@@ -23,7 +23,6 @@
     <link href="/catalog/css/bootstrap.css" rel="stylesheet" type="text/css">
     <link href="/catalog/css/bootstrap-theme.css" rel="stylesheet" type="text/css">
     <link href="/catalog/css/style.css" rel="stylesheet" type="text/css">
-    <link href="/catalog/vendor/prettyphoto/css/prettyPhoto.css" rel="stylesheet" type="text/css">
     <link href="/catalog/vendor/owl-carousel/css/owl.carousel.css" rel="stylesheet" type="text/css">
     <link href="/catalog/vendor/owl-carousel/css/owl.theme.css" rel="stylesheet" type="text/css">
     <!--[if lte IE 9]><link rel="stylesheet" type="text/css" href="/catalog/css/ie.css" media="screen" /><![endif]-->
@@ -192,7 +191,6 @@
 
 <script src="/catalog/js/utils.js"></script> <!-- Jquery Library Call -->
 <script src="/catalog/js/jquery-2.0.0.min.js"></script> <!-- Jquery Library Call -->
-<script src="/catalog/vendor/prettyphoto/js/prettyphoto.js"></script> <!-- PrettyPhoto Plugin -->
 <script src="/catalog/js/ui-plugins.js"></script> <!-- UI Plugins -->
 <script src="/catalog/js/helper-plugins.js"></script> <!-- Helper Plugins -->
 <script src="/catalog/vendor/owl-carousel/js/owl.carousel.min.js"></script> <!-- Owl Carousel -->
