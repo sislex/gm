@@ -60,6 +60,8 @@ class MailController extends Controller
 
                 });
 
+                dd($mail_sending_result);
+
                 return 'Письмо отправлено. Код: ' .$mail_sending_result;
             }
         }else{

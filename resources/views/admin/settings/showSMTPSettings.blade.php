@@ -73,9 +73,9 @@
                                     <label class="col-md-3 control-label"> Security </label>
                                     <div class="col-md-7">
                                         <select required class="form-control input-circle" name="security" placeholder="Выберите тип шифрования соединения">
-                                                <option value="SSL" {{ $smtp['security'] == 'SSL' || $smtp['security'] == '' ? 'selected' : '' }}> SSL </option>
-                                                <option value="TLS" {{ $smtp['security'] == 'TLS' ? 'selected' : '' }}> TLS </option>
-                                                <option value="None" {{ $smtp['security'] == 'None' ? 'selected' : '' }}> Нет </option>
+                                                <option value="ssl" {{ $smtp['security'] == 'ssl' || $smtp['security'] == '' ? 'selected' : '' }}> SSL </option>
+                                                <option value="tls" {{ $smtp['security'] == 'tls' ? 'selected' : '' }}> TLS </option>
+                                                <option value="none" {{ $smtp['security'] == 'none' ? 'selected' : '' }}> Нет </option>
                                         </select>
                                     </div>
                                 </div>
