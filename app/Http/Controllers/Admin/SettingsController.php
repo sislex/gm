@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\SMTP;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -230,11 +231,14 @@ class SettingsController extends Controller
         return \Redirect::action('Admin\SettingsController@currencies');
     }
     
-    //    email settings
+
+//    email settings
     public function email()
     {
-        $emails = Email::get();
-        return view('admin/settings/email', ['emails' => $emails]);
+        $email = Email::all()->first();
+        $smtp = SMTP::all()->first();
+
+        return view('admin/settings/email', ['email' => $email, 'smtp' => $smtp]);
     }
 
     public function addEmail()
@@ -260,8 +264,7 @@ class SettingsController extends Controller
         $input = \Request::all();
 
         if ($input['id']) {
-            $email = Email::find($input['id'])->update($input);
-///            $email['id'] = $input['id'];
+            Email::find($input['id'])->update($input);
         } else {
             Email::create($input);
         }
@@ -275,6 +278,39 @@ class SettingsController extends Controller
         return \Redirect::action('Admin\SettingsController@email');
     }
 
+
+
+
+// SMTP Settings
+    public function showSMTPSettings($id = '')
+    {
+        $smtp = SMTP::find($id);
+
+        if (!$smtp['id']) {
+            $smtp = [];
+            $smtp['id'] = '';
+            $smtp['security'] = '';
+        }
+
+        return view('admin/settings/showSMTPSettings', ['smtp' => $smtp]);
+    }
+
+    public function updateSMTPSettings()
+    {
+        $input = \Request::all();
+
+        if ($input['id']) {
+            SMTP::find($input['id'])->update($input);
+        } else {
+            SMTP::create($input);
+        }
+
+        return \Redirect::action('Admin\SettingsController@email');
+    }
+
+
+
+// Currencies
     public function getCurrencies()
     {
         $currencies = Currencies::get();

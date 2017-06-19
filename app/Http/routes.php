@@ -139,3 +139,6 @@ Route::get('admin/settings/email/add', ['middleware' => 'auth', 'uses' => 'Admin
 Route::get('admin/settings/email/show/{id?}', ['middleware' => 'auth', 'uses' => 'Admin\SettingsController@showEmail']);
 Route::get('admin/settings/email/delete/{id}', ['middleware' => 'auth', 'uses' => 'Admin\SettingsController@deleteEmail']);
 Route::post('admin/settings/email/update', ['middleware' => 'auth', 'uses' => 'Admin\SettingsController@updateEmail']);
+
+Route::get('admin/settings/smtp/show/{id?}', ['middleware' => 'auth', 'uses' => 'Admin\SettingsController@showSMTPSettings']);
+Route::post('admin/settings/smtp/update{id?}', ['middleware' => 'auth', 'uses' => 'Admin\SettingsController@updateSMTPSettings']);

@@ -53,22 +53,19 @@
                             <img src="/catalog/images/logo.png" alt="Logo">
                         </a>
                     @endif
-
-                    {{--<span class="site-tagline">--}}
-                        {{--Продавай и покупай,<br>на GOLDENMOTORS.BY!--}}
-                    {{--</span>--}}
-
                     <span class="site-tagline">
                         Надежное авто на вес золота!
                     </span>
                 </div>
                 <div class="header-right" style="font-size: 20px">
                     <div class="copyrights-right">
-                        {{--<div class="phone"><a href="tel://+375447832832"><i class="fa fa-phone"></i> +375-(44)-783-28-32 </a></div>--}}
                         <div class="phone"><a href="tel:+375447832832"><i class="fa fa-phone"></i> +375-(44)-783-28-32 </a></div>
                         <ul class="social-icons social-icons-colored pull-right">
                             <li class="skype"><a href="skype:goldenmotors.by?add"><i class="fa fa-skype"></i></a></li>
-                            <li class="envelope"><a href="mailto:goldenmotors.by@gmail.com"><i class="fa fa-envelope-o"></i></a></li>
+
+                            @if (\App\Email::getEmail())
+                                <li class="envelope"><a href="mailto:{{ \App\Email::getEmail() }}"><i class="fa fa-envelope-o"></i></a></li>
+                            @endif
 
                             {{-- <li class="facebook"><a href="https://www.facebook.com/goldenmotors.by/" target="_blank"><i class="fa fa-facebook"></i></a></li> --}}
                             {{-- <li class="vk"><a href="https://vk.com/club37638314" target="_blank"><i class="fa fa-vk"></i></a></li> --}}

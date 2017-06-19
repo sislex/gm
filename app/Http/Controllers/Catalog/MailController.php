@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Catalog;
 
+use App\Email;
 use App\Http\Controllers\Controller;
+use App\SMTP;
 use App\UIComponents;
 
 class MailController extends Controller
@@ -11,13 +13,19 @@ class MailController extends Controller
     {
         $input = \Request::all();
 
-//        dd($input);
-
         if(isset($input['modal']) || isset($input['callMeBackWidget']) || isset($input['subscribeWidget'])){
-            $transport = \Swift_SmtpTransport::newInstance('smtp.yandex.ru', 465, 'ssl');
-            $transport->setUsername('new.goldenmotors@tut.by');
-            $transport->setPassword('Gold3nMotors_2016');
+
+            $smtp = SMTP::all()->first();
+
+            $transport = \Swift_SmtpTransport::newInstance($smtp->server, $smtp->port, $smtp->security);
+            $transport->setUsername($smtp->login);
+            $transport->setPassword($smtp->password);
             $yandex = new \Swift_Mailer($transport);
+
+//            $transport = \Swift_SmtpTransport::newInstance('smtp.yandex.ru', 465, 'ssl');
+//            $transport->setUsername('new.goldenmotors@tut.by');
+//            $transport->setPassword('Gold3nMotors_2016');
+//            $yandex = new \Swift_Mailer($transport);
 
             \Mail::setSwiftMailer($yandex);
 
@@ -33,7 +41,6 @@ class MailController extends Controller
                 $mail_data = $input['subscribeWidget'];
             }
 
-//            if((isset($mail_data['phone']) && trim($mail_data['phone']) != '') || (isset($mail_data['email']) && trim($mail_data['email']) != '')){
             if(isset($mail_data['friend']) && trim($mail_data['friend'] != '')){
                 $mail_sending_result = \Mail::send('catalog.mail.tpl2-share-with-friend', ['mail_data' => $mail_data], function($message) use ($mail_data)
                 {
@@ -46,10 +53,11 @@ class MailController extends Controller
             } else {
                 $mail_sending_result = \Mail::send('catalog.mail.tpl1-general', ['mail_data' => $mail_data], function($message) use ($mail_data)
                 {
-                    $message->from('new.goldenmotors@tut.by', 'Автосалон Golden Motors');
-                      $message->to('goldenmotors.by@gmail.com', 'Автосалон Golden Motors')->subject("Письмо с сайта [goldenmotors.by] - " .$mail_data['type']);
-//                      $message->to('sislex@ya.ru', 'Автосалон Golden Motors')->subject("Письмо с сайта [goldenmotors.by] - " .$mail_data['type']);
-//                    $message->to('closed@tut.by', 'Автосалон Golden Motors')->subject("Письмо с сайта [goldenmotors.by] - " .$mail_data['type']);
+                    $send_email_to = Email::getEmail();
+                    $send_email_from = SMTP::all()->first()->login;
+                    $message->from($send_email_from, 'Автосалон Golden Motors');
+                    $message->to($send_email_to, 'Автосалон Golden Motors')->subject("Письмо с сайта [goldenmotors.by] - " .$mail_data['type']);
+
                 });
 
                 return 'Письмо отправлено. Код: ' .$mail_sending_result;
@@ -58,16 +66,6 @@ class MailController extends Controller
             return 'Ошибка: нет данных для обработки.';
         }
 
-//        $files = [
-//            'logo' =>  public_path().'/images/ui-components/logo/'.UIComponents::getLogo(),
-//            'logo_tpl' =>  '/images/ui-components/logo/'.UIComponents::getLogo(),
-//        ];
-
-//        $mailData['files'] = $files;
-//        $mailData['type'] = 'mail';
-
-//        \Mail::send('catalog.mail.index', $mailData, function($message)
         return 'Нераспознанная ошибка.';
     }
-
 }

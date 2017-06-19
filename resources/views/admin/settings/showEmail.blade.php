@@ -10,14 +10,14 @@
                     Email
                 </a>
                 <i class="fa fa-circle"></i>
-                Добавить Email
+                Изменить
             </li>
         </ul>
     </div>
     @endsection
 
     @section('content')
-            <!-- BEGIN CONTENT BODY -->
+    <!-- BEGIN CONTENT BODY -->
 
     <!-- BEGIN NAV TAB -->
     <ul class="nav nav-tabs">
@@ -39,7 +39,7 @@
                     <div class="portlet box green">
                         <div class="portlet-title">
                             <div class="caption">
-                                <i class="fa"></i> Описание email
+                                <i class="fa"></i> Email для получения почты
                             </div>
                         </div>
                         <div class="portlet-body form">
@@ -58,7 +58,7 @@
                                 <div class="row">
                                     <div class="col-md-offset-3 col-md-9">
                                         <button type="submit" class="btn btn-circle green">Сохранить</button>
-                                        <a href="{{action('Admin\SettingsController@showEmail', ['id' => $email['id']])}}" class="btn btn-circle red btn-outline">Отменить</a>
+                                        <a href="{{action('Admin\SettingsController@email')}}" class="btn btn-circle red btn-outline">Отменить</a>
                                     </div>
                                 </div>
                             </div>

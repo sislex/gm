@@ -10,4 +10,14 @@ class Email extends Model
     protected $fillable = [
         'email'
     ];
+
+    static function getEmail(){
+        $email = Email::all()->first();
+
+        if ($email) {
+            return $email->email;
+        } else {
+            return '';
+        }
+    }
 }
