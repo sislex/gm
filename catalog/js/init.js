@@ -4,9 +4,9 @@ jQuery(function($){
 var AUTOSTARS = window.AUTOSTARS || {};
 	window.AUTOSTARS = AUTOSTARS;
 
-	/* ==================================================
-        Contact Form Validations
-    ================================================== */
+/* ==================================================
+	Contact Form Validations
+================================================== */
 	AUTOSTARS.ContactForm = function(){
 		$('.contact-form').each(function(){
 			var formInstance = $(this);
@@ -42,6 +42,7 @@ var AUTOSTARS = window.AUTOSTARS || {};
 		});
 		});
 	}
+
 /* ==================================================
 	Scroll to Top
 ================================================== */
@@ -54,7 +55,7 @@ var AUTOSTARS = window.AUTOSTARS || {};
 		$arrow.on("click", function(e) {
 			$('body,html').animate({ scrollTop: "0" }, 750, 'easeOutExpo' );
 			e.preventDefault();
-		})
+		});
 
 		$(window).scroll(function() {
 			didScroll = true;
@@ -72,6 +73,7 @@ var AUTOSTARS = window.AUTOSTARS || {};
 			}
 		}, 250);
 	}
+
 /* ==================================================
    Accordion
 ================================================== */
@@ -92,6 +94,7 @@ var AUTOSTARS = window.AUTOSTARS || {};
 			event.preventDefault();
 		});
 	}
+
 /* ==================================================
    Toggle
 ================================================== */
@@ -110,6 +113,7 @@ var AUTOSTARS = window.AUTOSTARS || {};
 			event.preventDefault();
 		});
 	}
+
 /* ==================================================
    Tooltip
 ================================================== */
@@ -121,6 +125,7 @@ var AUTOSTARS = window.AUTOSTARS || {};
        		$(this).focus();
 		});
 	}
+
 /* ==================================================
    Twitter Widget
 ================================================== */
@@ -136,6 +141,7 @@ var AUTOSTARS = window.AUTOSTARS || {};
         	});
 		});
 	}
+
 /* ==================================================
    Hero Flex Slider
 ================================================== */
@@ -167,6 +173,7 @@ var AUTOSTARS = window.AUTOSTARS || {};
 				});
 		});
 	}
+
 /* ==================================================
    Flex Slider
 ================================================== */
@@ -198,6 +205,7 @@ var AUTOSTARS = window.AUTOSTARS || {};
 				});
 		});
 	}
+
 /* ==================================================
    Owl Carousel
 ================================================== */
@@ -233,6 +241,7 @@ var AUTOSTARS = window.AUTOSTARS || {};
 				});
 		});
 	}
+
 /* ==================================================
    PrettyPhoto
 ================================================== */
@@ -244,6 +253,7 @@ var AUTOSTARS = window.AUTOSTARS || {};
 			  deeplinking: false
 		});
 	}
+
 /* ==================================================
    Animated Counters
 ================================================== */
@@ -260,6 +270,7 @@ var AUTOSTARS = window.AUTOSTARS || {};
 			});
 		});
 	}
+
 /* ==================================================
    SuperFish menu
 ================================================== */
@@ -275,6 +286,7 @@ var AUTOSTARS = window.AUTOSTARS || {};
 		$(".dd-menu > ul > li > ul > li:has(ul)").find("a:first").append(" <i class='fa fa-angle-right'></i>");
 		$(".dd-menu > ul > li > ul > li > ul > li:has(ul)").find("a:first").append(" <i class='fa fa-angle-right'></i>");
 	}
+
 /* ==================================================
    Header Functions
 ================================================== */
@@ -292,11 +304,14 @@ var AUTOSTARS = window.AUTOSTARS || {};
 		function menuScroll() {
 			var lastScroll = 0;
 			$(window).scroll(function(event){
+
 				//Sets the current scroll position
 				var st = $(this).scrollTop();
+
 				//Determines up-or-down scrolling
 				if (st > lastScroll && $(window).width() > 992){
-				   //Replace this with your function call for downward-scrolling
+
+					//Replace this with your function call for downward-scrolling
 				   $searchform.slideUp();
 				   $bselect.css('visibility','hidden');
 				}
@@ -321,6 +336,7 @@ var AUTOSTARS = window.AUTOSTARS || {};
 		}, 250);
 
 	}
+
 /* ==================================================
 	Responsive Nav Menu
 ================================================== */
@@ -347,6 +363,7 @@ var AUTOSTARS = window.AUTOSTARS || {};
 			}
 		});
 	}
+
 /* ==================================================
    IsoTope Portfolio
 ================================================== */
@@ -414,29 +431,9 @@ var AUTOSTARS = window.AUTOSTARS || {};
 				});
 
 			}
-
 		});
-		//$(window).load(function() {
-		//	var IsoTopeCont = $(".isotope-grid");
-		//	IsoTopeCont.isotope({
-		//		itemSelector: ".grid-item",
-		//		layoutMode: 'sloppyMasonry'
-		//	});
-		//	if ($(".grid-holder").length > 0){
-		//		var $container_blog = $('.grid-holder');
-		//		$container_blog.isotope({
-		//		itemSelector : '.grid-item'
-		//		});
-        //
-		//		$(window).resize(function() {
-		//		var $container_blog = $('.grid-holder');
-		//		$container_blog.isotope({
-		//			itemSelector : '.grid-item'
-		//		});
-		//		});
-		//	}
-		//});
 	}
+
 /* ==================================================
    IsoTope Portfolio
 ================================================== */
@@ -464,6 +461,7 @@ var AUTOSTARS = window.AUTOSTARS || {};
 			});
 			$('.password-input').hidePassword(true);
 		}
+
 /* ==================================================
    Search Results Listing
 ================================================== */
@@ -478,6 +476,7 @@ var AUTOSTARS = window.AUTOSTARS || {};
 				$(".result-item").css('height',$tallestCol);
 			});
 		}
+
 /* ==================================================
    Pricing Tables
 ================================================== */
@@ -492,6 +491,7 @@ var AUTOSTARS = window.AUTOSTARS || {};
 			$(this).find('> div .features').css('height',$tallestCol);
 		});
 	}
+
 /* ==================================================
    Init Functions
 ================================================== */
@@ -508,12 +508,6 @@ $(document).ready(function(){
 		AUTOSTARS.OwlCarousel();
 	//}, 1000);
 
-
-	//setTimeout(function(){
-	//	AUTOSTARS.PrettyPhoto();
-	//}, 1000);
-
-	//AUTOSTARS.PrettyPhoto();
 	AUTOSTARS.SuperFish();
 	AUTOSTARS.Counters();
 	AUTOSTARS.IsoTope();
@@ -538,11 +532,6 @@ $(document).ready(function(){
 	var soffset = $(".site-header-wrapper").height() + 89;
 	var goffset = $(".site-header-wrapper").height() + 19;
 	var boffset = $(".site-footer").height() + 90;
-	//if($(window).width() > 767 ){
-	//	$(".tsticky").sticky({topSpacing:toffset});
-	//	$(".tbsticky").sticky({topSpacing:soffset, bottomSpacing: boffset});
-	//	$(".tbssticky").sticky({topSpacing:goffset, bottomSpacing: boffset});
-	//}
 
 	$('.dropdown-toggle.selectpicker').on("click",function(e){
 		$('.bootstrap-select .dropdown-menu').css("visibility", "visible");
@@ -583,10 +572,7 @@ $(document).ready(function(){
 		$(".by-type-options").slideToggle();
 		return false;
 	});
-	//$(".search-trigger").on("click", function(){
-	//	$(".search-form").slideToggle();
-	//	return false;
-	//});
+
 	var GridView;
 	function GridViewFunction() {
 		var GridView = setTimeout(function(){
@@ -669,21 +655,6 @@ $(".fw-video, .format-video .post-media").fitVids();
 
 
 $(window).load(function(){
-	// $(".format-image").each(function(){
-	// 	$(this).find(".media-box").append("<span class='zoom'><span class='icon'><i class='icon-expand'></i></span></span>");
-	// });
-	// $(".format-standard").each(function(){
-	// 	$(this).find(".media-box").append("<span class='zoom'><span class='icon'><i class='icon-plus'></i></span></span>");
-	// });
-	// $(".format-video").each(function(){
-	// 	$(this).find(".media-box").append("<span class='zoom'><span class='icon'><i class='icon-music-play'></i></span></span>");
-	// });
-	// $(".format-link").each(function(){
-	// 	$(this).find(".media-box").append("<span class='zoom'><span class='icon'><i class='fa fa-link'></i></span></span>");
-	// });
-	// $(".additional-images .owl-carousel .item-video").each(function(){
-	// 	$(this).append("<span class='icon'><i class='fa fa-play'></i></span>");
-	// });
 	AUTOSTARS.StickyHeader();
 });
 
@@ -722,8 +693,8 @@ $("[data-appear-animation]").each(function() {
 	AppDelFunction($this);
 	AppDelStopFunction();
 });
-// Animation Progress Bars
 
+// Animation Progress Bars
 var AppAni;
 function AppAniFunction($anim) {
 	$anim.appear(function() {
@@ -750,24 +721,6 @@ $("[data-appear-progress-animation]").each(function() {
 	AppAniFunction($this);
 	AppAniStopFunction();
 });
-
-// Parallax Jquery Callings
-//if(!Modernizr.touch) {
-//	$(window).on('load', function () {
-//		parallaxInit();
-//	});
-//}
-//function parallaxInit() {
-//	$('.parallax1').parallax("50%", 0.1);
-//	$('.parallax2').parallax("50%", 0.1);
-//	$('.parallax3').parallax("50%", 0.1);
-//	$('.parallax4').parallax("50%", 0.1);
-//	$('.parallax5').parallax("50%", 0.1);
-//	$('.parallax6').parallax("50%", 0.1);
-//	$('.parallax7').parallax("50%", 0.1);
-//	$('.parallax8').parallax("50%", 0.1);
-//	/*add as necessary*/
-//}
 
 // Window height/Width Getter Classes
 var wheighter = $(window).height();
