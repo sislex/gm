@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html class="no-js">
 <head>
     <!-- Basic Page Needs
@@ -193,8 +193,9 @@
 <script src="/catalog/vendor/owl-carousel/js/owl.carousel.min.js"></script> <!-- Owl Carousel -->
 <script src="/catalog/vendor/password-checker.js"></script> <!-- Password Checker -->
 <script src="/catalog/js/bootstrap.js"></script> <!-- UI -->
-<script src="/catalog/js/init.js"></script> <!-- All Scripts -->
 <script src="/catalog/vendor/flexslider/js/jquery.flexslider.js"></script> <!-- FlexSlider -->
+<script src="/catalog/js/init.js"></script> <!-- All Scripts -->
+
 <!--<script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>-->
 
 @yield('PAGE-LEVEL-PLUGINS')
@@ -204,7 +205,6 @@
 <!-- BEGIN COUNTERS -->
 @if(\App\Counters::getCounters() != '')
     @foreach(\App\Counters::getCounters() as $counter)
-        <!-- {{ $counter['name'] }} -->
         {!! $counter['text'] !!}
     @endforeach
 @endif

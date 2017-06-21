@@ -264,7 +264,7 @@
                 </div>
 
         -->
-                <!-- End of Social networks widget>
+                <!-- End of Social networks widget -->
 
         <!-- End Body Content -->
     </div>

@@ -41,7 +41,7 @@ var AUTOSTARS = window.AUTOSTARS || {};
 			return false;
 		});
 		});
-	}
+	};
 
 /* ==================================================
 	Scroll to Top
@@ -72,7 +72,7 @@ var AUTOSTARS = window.AUTOSTARS || {};
 				}
 			}
 		}, 250);
-	}
+	};
 
 /* ==================================================
    Accordion
@@ -93,7 +93,7 @@ var AUTOSTARS = window.AUTOSTARS || {};
 			}
 			event.preventDefault();
 		});
-	}
+	};
 
 /* ==================================================
    Toggle
@@ -112,7 +112,7 @@ var AUTOSTARS = window.AUTOSTARS || {};
 			}
 			event.preventDefault();
 		});
-	}
+	};
 
 /* ==================================================
    Tooltip
@@ -124,7 +124,7 @@ var AUTOSTARS = window.AUTOSTARS || {};
        		e.preventDefault();
        		$(this).focus();
 		});
-	}
+	};
 
 /* ==================================================
    Twitter Widget
@@ -140,7 +140,7 @@ var AUTOSTARS = window.AUTOSTARS || {};
             	hideReplies: true
         	});
 		});
-	}
+	};
 
 /* ==================================================
    Hero Flex Slider
@@ -172,7 +172,7 @@ var AUTOSTARS = window.AUTOSTARS || {};
 					nextText: ""
 				});
 		});
-	}
+	};
 
 /* ==================================================
    Flex Slider
@@ -204,7 +204,7 @@ var AUTOSTARS = window.AUTOSTARS || {};
 					nextText: ""
 				});
 		});
-	}
+	};
 
 /* ==================================================
    Owl Carousel
@@ -240,7 +240,7 @@ var AUTOSTARS = window.AUTOSTARS || {};
 					transitionStyle: 'carouselStyle'
 				});
 		});
-	}
+	};
 
 /* ==================================================
    PrettyPhoto
@@ -252,7 +252,7 @@ var AUTOSTARS = window.AUTOSTARS || {};
 			  social_tools: "",
 			  deeplinking: false
 		});
-	}
+	};
 
 /* ==================================================
    Animated Counters
@@ -269,7 +269,7 @@ var AUTOSTARS = window.AUTOSTARS || {};
 				});
 			});
 		});
-	}
+	};
 
 /* ==================================================
    SuperFish menu
@@ -285,7 +285,7 @@ var AUTOSTARS = window.AUTOSTARS || {};
 		$(".dd-menu > ul > li:has(ul)").find("a:first").append(" <i class='fa fa-angle-down'></i>");
 		$(".dd-menu > ul > li > ul > li:has(ul)").find("a:first").append(" <i class='fa fa-angle-right'></i>");
 		$(".dd-menu > ul > li > ul > li > ul > li:has(ul)").find("a:first").append(" <i class='fa fa-angle-right'></i>");
-	}
+	};
 
 /* ==================================================
    Header Functions
@@ -335,7 +335,7 @@ var AUTOSTARS = window.AUTOSTARS || {};
 			}
 		}, 250);
 
-	}
+	};
 
 /* ==================================================
 	Responsive Nav Menu
@@ -362,7 +362,7 @@ var AUTOSTARS = window.AUTOSTARS || {};
 				$("#menu-toggle").css("display","none");
 			}
 		});
-	}
+	};
 
 /* ==================================================
    IsoTope Portfolio
@@ -432,7 +432,7 @@ var AUTOSTARS = window.AUTOSTARS || {};
 
 			}
 		});
-	}
+	};
 
 /* ==================================================
    IsoTope Portfolio
@@ -460,7 +460,7 @@ var AUTOSTARS = window.AUTOSTARS || {};
 				$input.passy('generate', 8);
 			});
 			$('.password-input').hidePassword(true);
-		}
+		};
 
 /* ==================================================
    Search Results Listing
@@ -475,7 +475,7 @@ var AUTOSTARS = window.AUTOSTARS || {};
 				if($tallestCol == 0) $tallestCol = 'auto';
 				$(".result-item").css('height',$tallestCol);
 			});
-		}
+		};
 
 /* ==================================================
    Pricing Tables
@@ -490,7 +490,7 @@ var AUTOSTARS = window.AUTOSTARS || {};
 			if($tallestCol == 0) $tallestCol = 'auto';
 			$(this).find('> div .features').css('height',$tallestCol);
 		});
-	}
+	};
 
 /* ==================================================
    Init Functions
@@ -679,7 +679,7 @@ function AppDelFunction($appd) {
 			setTimeout(function() {
 				$appd.addClass("appear-animation-visible");
 			}, delay);
-			clearTimeout();
+			// clearTimeout();
 		}, {accX: 0, accY: -150});
 	} else {
 		$appd.addClass("appear-animation-visible");
@@ -710,7 +710,7 @@ function AppAniFunction($anim) {
 				}, 500, "easeOutQuad");
 			});
 		}, delay);
-		clearTimeout();
+		// clearTimeout();
 	}, {accX: 0, accY: -50});
 }
 function AppAniStopFunction() {
