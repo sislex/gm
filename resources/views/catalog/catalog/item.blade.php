@@ -100,9 +100,19 @@
                                 <div class="featured-image format-image">
                                     @if(isset($item['images'][0]))
                                         @if(!file_exists('/images/items/'.$item['id'].'/'.$item['images'][0]))
-                                            <a href="/images/items/{{ $item['id'] }}/{{ $item['images'][0] }}" onclick="slideItemMainPhoto(event)" class="media-box">
-                                                <img src="/images/items/{{ $item['id'] }}/{{ $item['images'][0] }}" alt="Фотография 1 {{$item['name']}}">
-                                            </a>
+                                            <div class="img-con">
+                                                <a href="/images/items/{{ $item['id'] }}/{{ $item['images'][0] }}" class="media-box">
+                                                    <img src="/images/items/{{ $item['id'] }}/{{ $item['images'][0] }}" alt="Фотография 1 {{$item['name']}}">
+                                                </a>
+                                            </div>
+                                            <div class="img-nav">
+                                                <div class="control" onclick="slidePrevItemImage(event)">
+                                                    <i class="prev fa fa-chevron-left fa-3x" aria-hidden="true"></i>
+                                                </div>
+                                                <div class="control" onclick="slideNextItemImage(event)">
+                                                    <i class="next fa fa-chevron-right fa-3x" aria-hidden="true"></i>
+                                                </div>
+                                            </div>
                                         @endif
                                     @endif
                                 </div>
@@ -732,40 +742,54 @@
 
     {{-- photo gallery hack --}}
     <script>
-        function slideItemMainPhoto(e) {
+
+        {{-- slide item image to the left --}}
+        function slidePrevItemImage(e) {
             e.preventDefault();
             var item_images = <?php echo json_encode($item['images']); ?>;
-            var featured_image_name = $(".featured-image a img").attr("src").replace("/images/items/{{ $item['id'] }}/", "");
+            var featured_image_name = $(".featured-image div a img").attr("src").replace("/images/items/{{ $item['id'] }}/", "");
             var featured_image_index = item_images.indexOf(featured_image_name);
 
             if (featured_image_index != -1) {
-//                            var pWidth = $(this).innerWidth(); //use .outerWidth() if you want borders
-                var pWidth = $(".featured-image a img").innerWidth(); //use .outerWidth() if you want borders
-//                            var pOffset = $(this).offset();
-                var pOffset = $(".featured-image a img").offset();
-                var x = e.pageX - pOffset.left;
-
                 var new_featured_image_name = "";
-                if (pWidth / 2 > x) {
-                            {{-- slide to the left --}}
-                    var new_featured_image_name = item_images[featured_image_index - 1];
-                    if (!new_featured_image_name) {
-                        new_featured_image_name = item_images[item_images.length - 1];
-                    }
-                } else {
-                            {{-- slide to the right --}}
-                    var new_featured_image_name = item_images[featured_image_index + 1];
-                    if (!new_featured_image_name) {
-                        new_featured_image_name = item_images[0];
-                    }
+
+                var new_featured_image_name = item_images[featured_image_index - 1];
+                if (!new_featured_image_name) {
+                    new_featured_image_name = item_images[item_images.length - 1];
                 }
+
                 var new_featured_image_number = item_images.indexOf(new_featured_image_name) + 1;
-                $(".featured-image a").attr("href", "/images/items/{{ $item['id'] }}/" + new_featured_image_name);
-                $(".featured-image a img").attr("src", "/images/items/{{ $item['id'] }}/" + new_featured_image_name);
-                $(".featured-image a img").attr("alt", "Фотография " + new_featured_image_number + " {{ $item['name'] }}");
+                $(".featured-image div a").attr("href", "/images/items/{{ $item['id'] }}/" + new_featured_image_name);
+                $(".featured-image div a img").attr("src", "/images/items/{{ $item['id'] }}/" + new_featured_image_name);
+                $(".featured-image div a img").attr("alt", "Фотография " + new_featured_image_number + " {{ $item['name'] }}");
             }
             return false;
         }
+
+        {{-- slide item image to the right --}}
+        function slideNextItemImage(e) {
+            e.preventDefault();
+            var item_images = <?php echo json_encode($item['images']); ?>;
+            var featured_image_name = $(".featured-image div a img").attr("src").replace("/images/items/{{ $item['id'] }}/", "");
+            var featured_image_index = item_images.indexOf(featured_image_name);
+
+            if (featured_image_index != -1) {
+                var new_featured_image_name = "";
+
+                var new_featured_image_name = item_images[featured_image_index + 1];
+                if (!new_featured_image_name) {
+                    new_featured_image_name = item_images[0];
+                }
+
+                var new_featured_image_number = item_images.indexOf(new_featured_image_name) + 1;
+                $(".featured-image div a").attr("href", "/images/items/{{ $item['id'] }}/" + new_featured_image_name);
+                $(".featured-image div a img").attr("src", "/images/items/{{ $item['id'] }}/" + new_featured_image_name);
+                $(".featured-image div a img").attr("alt", "Фотография " + new_featured_image_number + " {{ $item['name'] }}");
+            }
+            return false;
+        }
+
+
         function updateItemMainPhoto($photo_name, $photo_number) {
             ++$photo_number;
             $(".featured-image a").attr("href", "/images/items/{{ $item['id'] }}/" + $photo_name);

@@ -5781,3 +5781,69 @@ body{
 }
 
 #callMeBackWidget .ok .text{font-size: 28px;}
+
+.img-slider-container {
+
+}
+
+.img-slider {
+
+}
+
+.img-slider-nav {
+
+}
+
+
+
+
+
+.img-con{
+	position: relative;
+	width: auto;
+	margin: 0 auto;
+}
+
+.img-nav {
+	color: #ffffff;
+	margin: 0 auto;
+	/*opacity: 0.6;*/
+	display: block;
+	position: absolute;
+	top:0;
+	left: 0px;
+	width:100%;
+	/*height:100%;*/
+
+	height: 80%;
+	padding: 0 11px;
+}
+
+.img-con:hover .imgnav{
+	display: inline-block;
+}
+
+.control {
+	float: left;
+	height: 100%;
+	width: 50%;
+	/*opacity: 0;*/
+}
+
+/*.control:hover {*/
+	/*opacity:0.6;*/
+/*}*/
+
+.prev {
+	position: absolute;
+	bottom: 50%;
+	left: 20px;
+	opacity: 0.6;
+}
+
+.next {
+	position: absolute;
+	bottom: 50%;
+	right: 20px;
+	opacity: 0.6;
+}
